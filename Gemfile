@@ -26,13 +26,7 @@ gem 'spring',        group: :development
 
 
 
-group :development do
-  gem 'pg'
-end
-
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
 
 # Use ActiveModel has_secure_password
