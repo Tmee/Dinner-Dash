@@ -28,9 +28,9 @@ gem 'bcrypt'
 gem 'pg'
 
 # gem 'uglifier', '>= 1.0.3'
-  # Add Foundation Here
-  gem 'compass-rails' # you need this or you get an err
-  gem 'zurb-foundation', '~> 4.0.0'
+# Add Foundation Here
+gem 'compass-rails' # you need this or you get an err
+gem 'zurb-foundation', '~> 4.0.0'
 
 group :development, :test do
   gem 'rspec-rails'
