@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'users#home'
 
   resources :users
   resources :fillings
@@ -16,3 +16,4 @@ Rails.application.routes.draw do
   get 'admin/dashboard'
 
 end
+
