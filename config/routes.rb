@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :fillings
 
 
-  get '/',          to: 'users#index'
+  get '/',          to: 'users#home'
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
