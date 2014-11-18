@@ -1,30 +1,53 @@
 class Seed
   def initialize
     generate_users
-    generate_items
-    generate_orders
+    # generate_items
+    # generate_orders
   end
 
   def generate_users
-    50.times do |i|
-      user = User.create!(
-        name: Faker::Name.name,
-        email: Faker::Internet.email
-        )
-      puts "User #{i}: #{user.name} - #{user.email} created!"
-    end
+    User.create!(
+      first_name: "Rachel",
+      last_name:  "Warbelow",
+      email:      "demo+rachel@jumpstartlab.com",
+      password:   "password"
+    )
+
+    User.create!(
+      first_name: "Jeff",
+      email:      "demo+jeff@jumpstartlab.com",
+      username:   "j3",
+      password:   "password"
+    )
+
+    User.create!(
+      first_name: "Jorge",
+      last_name:  "Tellez",
+      email:      "demo+jorge@jumpstartlab.com",
+      username:   "novohispano",
+      password:   "password"
+    )
+
+    User.create!(
+      first_name: "Josh",
+      last_name:  "Cheek",
+      email:      "demo+josh@jumpstartlab.com",
+      username:   "josh",
+      password:   "password"
+    )
+    puts "User #{i}: #{user.name} - #{user.email} created!"
   end
 
-  def generate_items
-    500.times do |i|
-      filling = Filling.create!(
-        name: Faker::Commerce.product_name,
-        description: Faker::Lorem.paragraph,
-        image_url: "http://robohash.org/#{i}.png?set=set1&size=200x200"
-        )
-      puts "Filling #{i}: #{item.name} created!"
-    end
-  end
+  # def generate_items
+  #   500.times do |i|
+  #     filling = Filling.create!(
+  #       name: Faker::Commerce.product_name,
+  #       description: Faker::Lorem.paragraph,
+  #       image_url: "http://robohash.org/#{i}.png?set=set1&size=200x200"
+  #       )
+  #     puts "Filling #{i}: #{item.name} created!"
+  #   end
+  # end
 
   # def generate_orders
   #   100.times do |i|
