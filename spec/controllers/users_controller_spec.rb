@@ -3,23 +3,23 @@ require 'rails_helper'
 RSpec.describe UsersController, :type => :controller do
 
   let(:valid_attributes) {
-    { first_name: "Jim", 
-      last_name: "Jones", 
-      email: "jimmy@jones.com", 
+    { first_name: "Jim",
+      last_name: "Jones",
+      email: "jimmy@jones.com",
       username: "Jim",
       password: "password",
       password_confirmation: "password" }
   }
 
   let(:invalid_attributes) {
-    { first_name: nil, 
-      last_name: nil, 
-      email: nil, 
+    { first_name: nil,
+      last_name: nil,
+      email: nil,
       username: nil,
       password: nil,
       password_confirmation: nil}
   }
-  
+
   let(:valid_session) { {} }
 
   describe "GET index" do
@@ -89,9 +89,9 @@ RSpec.describe UsersController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        {first_name: "NewName", 
-         last_name: "Smith", 
-         email: "NewMail", 
+        {first_name: "NewName",
+         last_name: "Smith",
+         email: "NewMail",
          username: "Newsername",
          password: "password",
          password_confirmation: "password"
