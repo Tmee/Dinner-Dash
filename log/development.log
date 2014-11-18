@@ -190,3 +190,89 @@ Migrating to ChangeItemTypeColumn (20141118115619)
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141118115619"]]
   [1m[36m (6.6ms)[0m  [1mCOMMIT[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-18 05:51:39 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/skuhlmann/.rvm/gems/ruby-2.1.2/gems/railties-4.1.7/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2014-11-18 05:51:43 -0700
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (6.9ms)[0m  SELECT "items".* FROM "items"
+  Rendered items/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 608ms (Views: 599.0ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2014-11-18 05:51:44 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-18 05:51:44 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-18 05:51:44 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-18 05:51:44 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-18 05:51:44 -0700
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2014-11-18 05:51:44 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-18 05:51:44 -0700
+
+
+Started GET "/items/new" for 127.0.0.1 at 2014-11-18 05:51:46 -0700
+Processing by ItemsController#new as HTML
+  Rendered items/_form.html.erb (31.1ms)
+  Rendered items/new.html.erb within layouts/application (35.4ms)
+Completed 200 OK in 71ms (Views: 67.1ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/items" for 127.0.0.1 at 2014-11-18 05:52:08 -0700
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+4KsDVSqQxbCc6mzzcWJEnZAaFcOHkxtC4mycZv44M0=", "item"=>{"title"=>"Wheat Tortilla", "description"=>"Round and brown", "price"=>"1", "food_group"=>"Tortilla"}, "commit"=>"Create Item"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (11.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Wheat Tortilla' LIMIT 1
+  [1m[36mSQL (5.8ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:08.772124"], ["description", "Round and brown"], ["food_group", "Tortilla"], ["price", 1], ["title", "Wheat Tortilla"], ["updated_at", "2014-11-18 12:52:08.772124"]]
+  [1m[35m (6.4ms)[0m  COMMIT
+Redirected to http://localhost:8080/items/1
+Completed 302 Found in 46ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/items/1" for 127.0.0.1 at 2014-11-18 05:52:08 -0700
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered items/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 40ms (Views: 37.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2014-11-18 05:52:14 -0700
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  Rendered items/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 45ms (Views: 44.0ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/items/1" for 127.0.0.1 at 2014-11-18 05:53:25 -0700
+Processing by ItemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+4KsDVSqQxbCc6mzzcWJEnZAaFcOHkxtC4mycZv44M0=", "id"=>"1"}
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 1]]
+  [1m[35m (5.5ms)[0m  COMMIT
+Redirected to http://localhost:8080/items
+Completed 302 Found in 9ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2014-11-18 05:53:25 -0700
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 35ms (Views: 34.6ms | ActiveRecord: 0.2ms)

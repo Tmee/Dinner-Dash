@@ -273,3 +273,1022 @@
   [1m[36m (7.7ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
   [1m[35mItem Exists (0.4ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
   [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:37:14.619166"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.619166"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:37:14.629199"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.629199"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mItem Load (6.4ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Completed 500 Internal Server Error in 15ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#new as HTML
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.658465"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.658465"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 500 Internal Server Error in 2ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.671748"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.671748"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/6
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "items"
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:37:14.680506"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.680506"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/7
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:37:14.687299"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.687299"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/8
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT  "items".* FROM "items"   ORDER BY "items"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 14ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.714749"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.714749"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"NewTitle", "description"=>"NewDescription", "price"=>"3", "food_group"=>"NewGroup"}, "id"=>"9"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (5.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'NewTitle' AND "items"."id" != 9) LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "items" SET "description" = $1, "food_group" = $2, "title" = $3, "updated_at" = $4 WHERE "items"."id" = 9[0m  [["description", "NewDescription"], ["food_group", "NewGroup"], ["title", "NewTitle"], ["updated_at", "2014-11-18 12:37:14.724797"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/9
+Completed 302 Found in 12ms (ActiveRecord: 6.8ms)
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.733709"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.733709"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"10"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 10) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/10
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.742175"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.742175"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"11"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 11) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/11
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.753399"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.753399"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"12"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 12) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.763257"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.763257"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"13"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 13) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.771988"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:37:14.771988"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items"
+Processing by ItemsController#destroy as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:37:14.794085"], ["description", "Crispy"], ["food_group", "Vegetables"], ["price", 1], ["title", "Lettuce"], ["updated_at", "2014-11-18 12:37:14.794085"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.7ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:39:05.024010"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.024010"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#index as HTML
+Completed 500 Internal Server Error in 8ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:39:05.043179"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.043179"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 17]]
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#new as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.056183"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.056183"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"18"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 18]]
+Completed 500 Internal Server Error in 2ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.068701"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.068701"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/19
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:39:05.075441"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.075441"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/20
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:39:05.082065"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.082065"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/21
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT  "items".* FROM "items"   ORDER BY "items"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 10ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.8ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 8ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.111171"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.111171"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"NewTitle", "description"=>"NewDescription", "price"=>"3", "food_group"=>"NewGroup"}, "id"=>"22"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 22]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'NewTitle' AND "items"."id" != 22) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "items" SET "description" = $1, "food_group" = $2, "title" = $3, "updated_at" = $4 WHERE "items"."id" = 22[0m  [["description", "NewDescription"], ["food_group", "NewGroup"], ["title", "NewTitle"], ["updated_at", "2014-11-18 12:39:05.116063"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/22
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 22]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.122760"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.122760"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"23"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 23]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 23) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/23
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.129772"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.129772"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"24"}
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 24]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.5ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 24) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/24
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.141494"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.141494"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"25"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 25]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 25) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 5ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.151351"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.151351"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"26"}
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 26]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 26) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 6ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.165095"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:39:05.165095"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items"
+Processing by ItemsController#destroy as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 27]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:39:05.187045"], ["description", "Crispy"], ["food_group", "Vegetables"], ["price", 1], ["title", "Lettuce"], ["updated_at", "2014-11-18 12:39:05.187045"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:31.928672"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:31.928672"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:52:31.947365"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:31.947365"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 30]]
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#new as HTML
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:31.958924"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:31.958924"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "items"
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:31.973391"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:31.973391"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/32
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:52:31.979758"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:31.979758"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/33
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:52:31.986264"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:31.986264"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/34
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"   ORDER BY "items"."id" DESC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.5ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:32.009130"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:32.009130"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"NewTitle", "description"=>"NewDescription", "price"=>"3", "food_group"=>"NewGroup"}, "id"=>"35"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'NewTitle' AND "items"."id" != 35) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "items" SET "description" = $1, "food_group" = $2, "title" = $3, "updated_at" = $4 WHERE "items"."id" = 35  [["description", "NewDescription"], ["food_group", "NewGroup"], ["title", "NewTitle"], ["updated_at", "2014-11-18 12:52:32.014862"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/35
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:32.020097"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:32.020097"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"36"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 36) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/36
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:32.026405"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:32.026405"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"37"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 37) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/37
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:32.033774"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:32.033774"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"38"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 38) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:32.042905"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:32.042905"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"39"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 39]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 39) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:32.052687"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:52:32.052687"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+Processing by ItemsController#destroy as HTML
+  Parameters: {"id"=>"40"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 40]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "items" WHERE "items"."id" = $1  [["id", 40]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "items"
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:52:32.076125"], ["description", "Crispy"], ["food_group", "Vegetables"], ["price", 1], ["title", "Lettuce"], ["updated_at", "2014-11-18 12:52:32.076125"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.477562"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.477562"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:53:41.493161"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.493161"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"43"}
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 43]]
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#new as HTML
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.510690"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.510690"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"44"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 44]]
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items"
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.522475"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.522475"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/45
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:53:41.528753"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.528753"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/46
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:53:41.534620"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.534620"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/47
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"   ORDER BY "items"."id" DESC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.4ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[35m (0.6ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 11ms (Views: 1.2ms | ActiveRecord: 1.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.568406"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.568406"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"NewTitle", "description"=>"NewDescription", "price"=>"3", "food_group"=>"NewGroup"}, "id"=>"48"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 48]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'NewTitle' AND "items"."id" != 48) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "items" SET "description" = $1, "food_group" = $2, "title" = $3, "updated_at" = $4 WHERE "items"."id" = 48  [["description", "NewDescription"], ["food_group", "NewGroup"], ["title", "NewTitle"], ["updated_at", "2014-11-18 12:53:41.572966"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/48
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 48]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.578262"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.578262"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"49"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 49]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 49) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/49
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.584732"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.584732"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"50"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 50]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 50) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/50
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.592981"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.592981"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"51"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 51]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 51) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.8ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.606276"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.606276"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"52"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 52]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 52) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.617438"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:53:41.617438"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+Processing by ItemsController#destroy as HTML
+  Parameters: {"id"=>"53"}
+  [1m[35mItem Load (0.1ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 53]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "items" WHERE "items"."id" = $1  [["id", 53]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:53:41.638085"], ["description", "Crispy"], ["food_group", "Vegetables"], ["price", 1], ["title", "Lettuce"], ["updated_at", "2014-11-18 12:53:41.638085"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:02.929630"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:02.929630"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:54:02.944714"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:02.944714"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"56"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 56]]
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#new as HTML
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:02.961752"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:02.961752"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"57"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 57]]
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items"
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:02.972228"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:02.972228"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/58
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:54:02.978084"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:02.978084"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/59
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-18 12:54:02.983914"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:02.983914"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/60
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"   ORDER BY "items"."id" DESC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by ItemsController#create as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.7ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:03.009796"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:03.009796"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"NewTitle", "description"=>"NewDescription", "price"=>"3", "food_group"=>"NewGroup"}, "id"=>"61"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 61]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'NewTitle' AND "items"."id" != 61) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "items" SET "description" = $1, "food_group" = $2, "title" = $3, "updated_at" = $4 WHERE "items"."id" = 61  [["description", "NewDescription"], ["food_group", "NewGroup"], ["title", "NewTitle"], ["updated_at", "2014-11-18 12:54:03.015154"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items/61
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 61]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:03.020338"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:03.020338"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"62"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 62]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 62) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/62
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:03.026620"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:03.026620"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"63"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 63]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Carnitas' AND "items"."id" != 63) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items/63
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:03.033197"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:03.033197"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"64"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 64]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 64) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:03.041883"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:03.041883"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#update as HTML
+  Parameters: {"item"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"65"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 65]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" IS NULL AND "items"."id" != 65) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:03.051979"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:03.051979"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+Processing by ItemsController#destroy as HTML
+  Parameters: {"id"=>"66"}
+  [1m[35mItem Load (0.6ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 66]]
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "items" WHERE "items"."id" = $1  [["id", 66]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/items
+Completed 302 Found in 6ms (ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "items"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:03.063830"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-18 12:54:03.063830"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ItemsController#destroy as HTML
+  Parameters: {"id"=>"67"}
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 67]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 67]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/items
+Completed 302 Found in 1ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-18 12:54:03.081895"], ["description", "Crispy"], ["food_group", "Vegetables"], ["price", 1], ["title", "Lettuce"], ["updated_at", "2014-11-18 12:54:03.081895"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lettuce' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
