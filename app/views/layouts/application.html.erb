@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title>Los Amigos Gordos</title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -13,9 +13,57 @@
 
   <body>
 
+    <div class="row">
+      <div class="large-9 columns">
+        <h1>Los Amigos Gordos</h1>
+        <p>Fresh food, However you like it</p>
+      </div>
+      <div class="large-6 columns">
+        <ul class="button-group right">
+          <form method='<%=login_path%>' action='post'>
+              <table>
+                <tr>
+                  <td>
+                    <input type='text' placeholder="Username" name='username'/>
+                  </td>
+                  <td>
+                    <input type='text' placeholder='Password' name='password'/>
+                  </td>
+                  <td><a class="tiny button";"round button" href="<%=login_path%>">Login</a></td>
+                  <td><a class="tiny button";"round button" href="REGISTRAION">Register</a></td>
+                </tr>
+              </table>
+          </form>
+         </ul>
+        </div>
+      </div>
+
+
+
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
+
   </body>
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Copyright no one at all. Go to town.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>
 
 

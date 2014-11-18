@@ -4,12 +4,10 @@ Rails.application.routes.draw do
   resources :users
   resources :items
 
-  get    '/login',  to: 'sessions#new'
+
+  get '/',          to: 'users#index'
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
-  get '/', to: 'layouts#application'
-
 
 
 end
