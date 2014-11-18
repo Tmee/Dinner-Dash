@@ -10,11 +10,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'spring', group: :developmentga
+gem 'spring', group: :development
 gem 'unicorn'
 gem 'pg'
+gem 'rails_12factor', group: :production
 gem 'compass-rails'
-gem 'zurb-foundation', '~> 4.0.0'
+gem 'foundation-rails', '~> 5.4.5.0'
 
 group :development, :test do
   gem 'rspec-rails'
