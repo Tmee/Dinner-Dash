@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if @user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user_path(user), notice: "Welcome to Storedom, #{user.name}."
+      redirect_to user_path(user), notice: "Welcome to Los Amigos Gordos, #{user.name}."
     else
       redirect_to login_path, notice: "We could not log you in. Please try again."
     end
