@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'users#home'
 
   resources :users
   resources :fillings
 
 
-  get '/',          to: 'users#index'
+  get '/',          to: 'users#home'
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
@@ -16,3 +16,4 @@ Rails.application.routes.draw do
   get 'admin/dashboard'
 
 end
+
