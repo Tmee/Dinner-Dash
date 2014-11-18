@@ -44,7 +44,7 @@ RSpec.describe Item, :type => :model do
     expect(item).not_to be_valid
   end
 
-  it 'cannot create a fan with the same title' do
+  it 'cannot create a item with the same title' do
     item1 = Item.create(title: "Lettuce", description: "Crispy", price: 1, food_group: "Vegetables")
     item2 = Item.create(title: "Lettuce", description: "Crispy", price: 1, food_group: "Vegetables")
 
