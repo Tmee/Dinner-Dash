@@ -58,7 +58,7 @@ RSpec.describe UsersController, :type => :controller do
       it "creates a new user" do
         expect {
           post :create, {:user => valid_attributes}, valid_session
-        }.to change(user, :count).by(1)
+        }.to change(User, :count).by(1)
       end
 
       it "assigns a newly created user as @user" do
@@ -89,17 +89,22 @@ RSpec.describe UsersController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        {title: "NewTitle", description: "NewDescription", price: 3, food_group: "NewGroup" }
+        {first_name: "NewName", 
+         last_name: "Smith", 
+         email: "NewMail", 
+         username: "Newsername",
+         password: "password",
+         password_confirmation: "password"
+         }
       }
 
       it "updates the requested user" do
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => new_attributes}, valid_session
         user.reload
-        expect(user.title).to eq("NewTitle")
-        expect(user.description).to eq("NewDescription")
-        expect(user.price).to eq(3)
-        expect(user.food_group).to eq("NewGroup")
+        expect(user.first_name).to eq("NewName")
+        expect(user.last_name).to eq("Smith")
+        expect(user.email).to eq("NewMail")
       end
 
       it "assigns the requested user as @user" do
@@ -135,7 +140,7 @@ RSpec.describe UsersController, :type => :controller do
       user = User.create! valid_attributes
       expect {
         delete :destroy, {:id => user.to_param}, valid_session
-      }.to change(user, :count).by(-1)
+      }.to change(User, :count).by(-1)
     end
 
     it "redirects to the users list" do
