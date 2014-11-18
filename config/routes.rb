@@ -5,14 +5,18 @@ Rails.application.routes.draw do
   resources :users
   resources :fillings
 
-  get    '/login',  to: 'sessions#new'
+
+  get '/',          to: 'users#index'
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+<<<<<<< HEAD
+=======
   get '/', to: 'layouts#application'
 
   get 'admin/fillings'
   get 'admin/dashboard'
 
+>>>>>>> master
 
 end

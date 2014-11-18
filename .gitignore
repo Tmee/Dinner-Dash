@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+log/development.log
+=======
 *.db
 *.log
 *.keep
+>>>>>>> master
