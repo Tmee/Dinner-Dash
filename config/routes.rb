@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'users#index'
 
   resources :users
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/', to: 'layouts#application'
 
+  get 'admin/fillings'
+  get 'admin/dashboard'
 
 
 end
