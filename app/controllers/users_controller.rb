@@ -4,21 +4,44 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def create
     @user = User.new(user_params)
+
     if @user.save
-      redirect_to login_path, notice: "User created. Please log in."
+      redirect_to @user, notice: "User created. Please log in."
     else
       flash.now[:notice] = "User could not be created."
       render :new    end
   end
 
-  def show
+  def update
     @user = User.find(params[:id])
+
+    if @user.update_attributes(user_params)
+      redirect_to user_path(@user), notice: "You have updated a user."
+    else
+      flash.now[:alert] = "The user was not updated. Please try again."
+      render :edit
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    
+    @user.destroy
+    redirect_to users_path, notice: "The user was deleted."
   end
 
   private
