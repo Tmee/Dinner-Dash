@@ -710,7 +710,7 @@ ActionView::MissingTemplate (Missing template users/show, application/show with 
   actionpack (4.1.7) lib/action_dispatch/routing/route_set.rb:678:in `call'
   rack (1.5.2) lib/rack/etag.rb:23:in `call'
   rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
-  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  rack (1.5.2) lib/rack/.rb:11:in `call'
   actionpack (4.1.7) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
   actionpack (4.1.7) lib/action_dispatch/middleware/flash.rb:254:in `call'
   rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
