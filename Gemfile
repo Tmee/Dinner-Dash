@@ -24,7 +24,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'unicorn'
-gem 'bcrypt'
+#gem 'bcrypt'
 gem 'pg'
 
 # gem 'uglifier', '>= 1.0.3'
