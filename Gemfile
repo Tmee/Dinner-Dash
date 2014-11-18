@@ -16,12 +16,13 @@ gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'compass-rails'
 gem 'foundation-rails', '~> 5.4.5.0'
+gem 'bcrypt', '~> 3.1.7'
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'better_errors'
   gem 'pry'
+  gem 'capybara'
+  gem 'selenium'
 end
-
-gem 'bcrypt', '~> 3.1.7'
-
