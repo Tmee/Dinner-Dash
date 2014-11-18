@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   resources :users
 
   get '/login',     to: 'sessions#new'
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
 
 
   root 'users#index'
+=======
+  resources :items
+>>>>>>> origin/30_item_model
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
