@@ -4,8 +4,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
+  end
+
+  def edit
   end
 
   def create
@@ -17,8 +24,18 @@ class UsersController < ApplicationController
       render :new    end
   end
 
-  def show
-    @user = User.find(params[:id])
+  def update
+    if @user.update_attributes(user_params)
+      redirect_to user_path(@user), notice: "You have updated a user."
+    else
+      flash.now[:alert] = "The user was not updated. Please try again."
+      render :edit
+    end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path, notice: "The user was deleted."
   end
 
   private
