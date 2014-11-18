@@ -1,0 +1,35 @@
+<h1>Listing fillings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Food Group</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fillings.each do |filling| %>
+      <tr>
+        <td><%= filling.title %></td>
+        <td><%= filling.description %></td>
+        <td><%= filling.price %></td>
+        <td><%= filling.food_group %></td>
+        <td>
+          <ul>
+            <li><%= link_to 'Show', filling %></li>
+            <li><%= link_to 'Edit', edit_filling_path(filling) %></li>
+            <li><%= link_to 'Destroy', filling, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Filling', new_filling_path %>

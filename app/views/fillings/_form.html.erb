@@ -1,10 +1,10 @@
-<%= form_for(@item) do |f| %>
-  <% if @item.errors.any? %>
+<%= form_for(@filling) do |f| %>
+  <% if @filling.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <h2><%= pluralize(@filling.errors.count, "error") %> prohibited this filling from being saved:</h2>
 
       <ul>
-      <% @item.errors.full_messages.each do |message| %>
+      <% @filling.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -27,7 +27,7 @@
     <%= f.label :food_group %><br>
     <%= f.text_field :food_group %>
   </div>
-  <div class="actions">
+  <div>
     <%= f.submit %>
   </div>
 <% end %>

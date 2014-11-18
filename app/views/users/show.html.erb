@@ -1,4 +1,13 @@
-  <h1>Welcome, <%= @user.first_name %></h1>
+<p id="notice"><%= notice %></p>
 
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
-<%=  link_to 'log out', logout_path, method: :delete %>
+<ul>
+  <li><%= @user.email%></li>
+  <li><%= @user.username%></li>
+  <li></li>
+
+<ul>
+  <li><%= link_to 'Edit', edit_user_path(@user) %></li>
+  <li><%= link_to 'Back', user_path %></li>
+</ul>

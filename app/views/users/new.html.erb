@@ -1,18 +1,8 @@
-<%= form_for(@user) do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+<h1>New user</h1>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+<%= render 'form' %>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<%= link_to 'Back', users_path %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
 
-  <%= f.submit %>
-<% end %>

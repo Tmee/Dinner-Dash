@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @filling.title %></h1>
+
+<ul>
+  <li><%= @filling.description%></li>
+  <li><%= @filling.price%></li>
+  <li><%= @filling.food_group%></li>
+
+<ul>
+  <li><%= link_to 'Edit', edit_filling_path(@filling) %></li>
+  <li><%= link_to 'Back', fillings_path %></li>
+</ul>

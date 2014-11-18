@@ -1,0 +1,8 @@
+<h1>Editing <%= "#{@user.first_name} #{@user.last_name}" %></h1>
+
+<%= render 'form' %>
+
+<ul>
+  <li><%= link_to 'Show', @user %></li>
+  <li><%= link_to 'Back', users_path %></li>
+</ul>

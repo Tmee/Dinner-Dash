@@ -11,12 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118211530) do
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20141118115619) do
+=======
+ActiveRecord::Schema.define(version: 20141118040601) do
+>>>>>>> Add user spec tests and validation
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "fillings", force: true do |t|
+  create_table "items", force: true do |t|
     t.string   "title"
     t.string   "description"
     t.integer  "price"
