@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   def fillings
     @fillings = Filling.all
-    @items = Items.all
+    @items = Item.all
     @user = User.find_by(session[:user_id])
   end
 
