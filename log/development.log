@@ -8592,3 +8592,128 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-18 12:26:35
 
 
 Started POST "/__better_errors/70231758670580/variables" for 127.0.0.1 at 2014-11-18 12:26:39 -0700
+
+
+Started GET "/login" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 247ms (Views: 229.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 157ms (Views: 156.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/javascripts/vendor/modernizr.js" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/vendor/modernizr.js"):
+  actionpack (4.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.7) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.7) lib/rails/engine.rb:514:in `call'
+  railties (4.1.7) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.4ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (27.3ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.alerts.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.cookie.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.forms.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.placeholder.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.section.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.tooltips.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/foundation/index.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-18 12:36:07 -0700
