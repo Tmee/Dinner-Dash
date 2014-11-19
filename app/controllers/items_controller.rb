@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
     def index
       @items = Item.all
     end
 
     def show
-      @item = Item.find(params[:id])
     end
 
     def new
@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
     end
 
     def edit
-      @item = Item.find(params[:id])
     end
 
     def create
@@ -28,8 +27,6 @@ class ItemsController < ApplicationController
     end
 
     def update
-      @item = item.find(params[:id])
-
       if @item.update_attributes(item_params)
         redirect_to item_path(@item), notice: "You have updated a product."
       else
@@ -39,8 +36,6 @@ class ItemsController < ApplicationController
     end
 
     def destroy
-      @item = Item.find(params[:id])
-
       @item.destroy
       redirect_to items_path, notice: "The product was deleted."
     end
@@ -49,5 +44,9 @@ class ItemsController < ApplicationController
 
     def item_params
       params.require(:item).permit(:name, :price)
+    end
+
+    def set_item
+      @item = Item.find(params[:id])
     end
 end
