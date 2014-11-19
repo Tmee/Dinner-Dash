@@ -10,7 +10,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
 
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
 
   config.assets.js_compressor = :uglifier
