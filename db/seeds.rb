@@ -58,31 +58,11 @@ class Seed
   end
 
   def generate_items
-    Item.create!(
-      name: "Burrito",
-      price: 500
-    )
-
-    Item.create!(
-      name: "Torta",
-      price: 400
-    )
-
-    Item.create!(
-      name: "Taco",
-      price: 100
-    )
-
-    Item.create!(
-      name: "Tamale",
-      price: 200
-    )
-
-    Item.create!(
-      name: "Salad",
-      price: 300
-    )
-
+    Item.create!(name: "Burrito", price: 500)
+    Item.create!(name: "Torta", price: 400)
+    Item.create!(name: "Taco", price: 100)
+    Item.create!(name: "Tamale", price: 200)
+    Item.create!(name: "Salad", price: 300)
     puts "Items generated!"
   end
 
