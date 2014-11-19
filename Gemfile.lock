@@ -32,6 +32,8 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -58,6 +60,7 @@ GEM
       sass (~> 3.2.19)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -83,9 +86,11 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_portile (0.6.1)
+    mini_portile (0.6.0)
     minitest (5.4.3)
     multi_json (1.10.1)
+    nokogiri (1.6.4.1)
+      mini_portile (~> 0.6.0)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -185,6 +190,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   better_errors
+  binding_of_caller
   capybara
   coffee-rails (~> 4.0.0)
   compass-rails
@@ -192,6 +198,7 @@ DEPENDENCIES
   foundation-rails (~> 5.4.5.0)
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   paperclip
   pg
   pry
