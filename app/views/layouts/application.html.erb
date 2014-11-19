@@ -18,7 +18,13 @@
         <p>Custom Food, Made Fresh</p>
       </div>
 
-      <%= form_tag login_path do %>
+      <% if current_user %>
+      <div class="small-3 columns">
+        <%= link_to "Sign Out", logout_path, method: :delete %>
+      </div>
+      <% else %>
+
+        <%= form_tag login_path do %>
 
           <div class="row-right">
           <div class="large-12
@@ -26,8 +32,6 @@
             <div class="row collapse">
 
             <% if flash[:error] %>
-
-
               <div class="small-3 columns">
                 <%= text_field_tag :username, nil, placeholder: "Username" %>
               </div>
@@ -41,30 +45,25 @@
                   <li><a href="/register" class="tiny button">Sign Up!</a></li>
                 </ul>
               </div>
-
               <div class="small-5 columns">
                 <small class="error">Invalid entry</small>
               </div>
-
-
             <% else %>
-
               <div class="small-3 columns">
                 <%= text_field_tag :username, nil, placeholder: "Username" %>
               </div>
               <div class="small-3 columns">
                 <%= password_field_tag :password, nil, placeholder:  "Password" %>
               </div>
-
               <div class="small-6 columns">
                 <ul class="stack-for-small button-group">
                   <li><input type='submit' class="tiny button" value="Log in"></li><%end%>
                   <li><a href="/register" class="tiny button">Sign Up!</a></li>
                 </ul>
               </div>
-
-
             <% end %>
+
+          <% end %>
 
             </div>
           </div>
