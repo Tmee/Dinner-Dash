@@ -21,6 +21,7 @@ gem 'faker'
 gem 'paperclip'
 
 group :development, :test do
+  gem 'nokogiri'
   gem 'rspec-rails'
   gem 'better_errors'
   gem 'pry'
