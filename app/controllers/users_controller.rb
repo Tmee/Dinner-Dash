@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    get_roles
   end
 
   def new
@@ -48,5 +49,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name,:last_name,:email, :username, :password, :password_confirmation)
+  end
+
+  def get_roles
+    user = User.find(params[:id])
+    @user_roles = user.roles.map(&:name)
   end
 end

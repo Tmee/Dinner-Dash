@@ -7,6 +7,8 @@
   <li><%= @user.username%></li>
   <li></li>
 
+  <p><%= @user_roles.each {|role| role } %>
+
 <ul>
   <li><%= link_to 'Edit', edit_user_path(@user) %></li>
   <li><%= link_to 'Back', user_path %></li>
