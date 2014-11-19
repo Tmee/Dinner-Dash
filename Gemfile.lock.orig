@@ -86,11 +86,16 @@ GEM
     mini_portile (0.6.1)
     minitest (5.4.3)
     multi_json (1.10.1)
+<<<<<<< HEAD
+    nokogiri (1.6.4.1)
+      mini_portile (~> 0.6.0)
+=======
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+>>>>>>> Add image upload to filling
     pg (0.17.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
