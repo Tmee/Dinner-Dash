@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get '/menu',      to: 'items#menu_items'
   get '/register',  to: 'users#new'
 
+  get '/menu_item_builder/*', to: 'menu#menu_item_builder'
 end
