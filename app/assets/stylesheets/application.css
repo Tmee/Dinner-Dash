@@ -68,3 +68,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.row-right {
+  float: right;
+}
