@@ -18,7 +18,6 @@ gem 'compass-rails'
 gem 'foundation-rails', '~> 5.4.5.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
-gem 'paperclip'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -27,3 +26,10 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium'
 end
+<<<<<<< HEAD
+=======
+
+gem 'bcrypt', '~> 3.1.7'
+gem 'paperclip'
+
+>>>>>>> Add image upload to filling

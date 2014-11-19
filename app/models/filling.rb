@@ -4,4 +4,6 @@ class Filling < ActiveRecord::Base
   validates :price, presence: true, numericality: { :greater_than_or_equal_to => 0 }
   has_many  :line_item_fillings
   has_many  :line_items, through: :line_item_fillings
+  has_attached_file :image
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 end

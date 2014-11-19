@@ -48,6 +48,6 @@ class FillingsController < ApplicationController
     end
 
     def filling_params
-      params.require(:filling).permit(:title, :description, :price, :food_group)
+      params.require(:filling).permit(:title, :description, :price, :food_group, :image)
     end
 end
