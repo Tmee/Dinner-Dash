@@ -2,6 +2,7 @@ class Seed
   def initialize
     generate_users_and_roles
     # generate_orders
+    # generate_line_items
     generate_items
     # generate_fillings
   end
