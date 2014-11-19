@@ -10,4 +10,12 @@ class User < ActiveRecord::Base
     too_short: "must have at least %{count} letters",
     too_long: "must have at most %{count} letters"
   }
+
+  def is_admin?
+    self.roles.any? { |role| role.name == "admin"}
+  end
+
+  def is_webmaster?
+    self.roles.any? { |role| role.name == "webmaster"}
+  end 
 end
