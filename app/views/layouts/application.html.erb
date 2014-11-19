@@ -13,34 +13,71 @@
   <body>
 
     <div class="row">
-      <div class="large-9 columns">
+      <div class="large-12 columns">
         <h1><a href="/">Los Amigos Gordos</a></h1>
         <p>Custom Food, Made Fresh</p>
       </div>
 
       <%= form_tag login_path do %>
-        <div class="row">
-          <div class="large-15 columns">
+
+          <div class="row-right">
+          <div class="large-12
+           columns">
             <div class="row collapse">
-              <div class="small-4 columns">
+
+            <% if flash[:error] %>
+
+
+              <div class="small-3 columns">
                 <%= text_field_tag :username, nil, placeholder: "Username" %>
               </div>
               <div class="small-3 columns">
                 <%= password_field_tag :password, nil, placeholder:  "Password" %>
               </div>
-              <div class="small-5 columns">
+
+              <div class="small-6 columns">
                 <ul class="stack-for-small button-group">
-                  <%= submit_tag "Log In" %>
-        <% end %>
+                  <li><input type='submit' class="tiny button" value="Log in"></li>
                   <li><a href="/register" class="tiny button">Sign Up!</a></li>
                 </ul>
               </div>
+
+              <div class="small-5 columns">
+                <small class="error">Invalid entry</small>
+              </div>
+
+
+            <% else %>
+
+              <div class="small-3 columns">
+                <%= text_field_tag :username, nil, placeholder: "Username" %>
+              </div>
+              <div class="small-3 columns">
+                <%= password_field_tag :password, nil, placeholder:  "Password" %>
+              </div>
+
+              <div class="small-6 columns">
+                <ul class="stack-for-small button-group">
+                  <li><input type='submit' class="tiny button" value="Log in"></li><%end%>
+                  <li><a href="/register" class="tiny button">Sign Up!</a></li>
+                </ul>
+              </div>
+
+
+            <% end %>
+
             </div>
           </div>
         </div><hr>
 
 
         <p id="notice"><%= notice %></p>
+
+
+
+
+
+
 
 
 
