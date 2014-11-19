@@ -27,21 +27,26 @@
 
             <% if flash[:error] %>
 
+
               <div class="small-3 columns">
                 <%= text_field_tag :username, nil, placeholder: "Username" %>
               </div>
               <div class="small-3 columns">
                 <%= password_field_tag :password, nil, placeholder:  "Password" %>
               </div>
+
               <div class="small-6 columns">
                 <ul class="stack-for-small button-group">
                   <li><input type='submit' class="tiny button" value="Log in"></li>
                   <li><a href="/register" class="tiny button">Sign Up!</a></li>
                 </ul>
               </div>
+
               <div class="small-5 columns">
                 <small class="error">Invalid entry</small>
               </div>
+
+
             <% else %>
 
               <div class="small-3 columns">
@@ -50,13 +55,17 @@
               <div class="small-3 columns">
                 <%= password_field_tag :password, nil, placeholder:  "Password" %>
               </div>
+
               <div class="small-6 columns">
                 <ul class="stack-for-small button-group">
                   <li><input type='submit' class="tiny button" value="Log in"></li><%end%>
                   <li><a href="/register" class="tiny button">Sign Up!</a></li>
                 </ul>
               </div>
+
+
             <% end %>
+
             </div>
           </div>
         </div><hr>
