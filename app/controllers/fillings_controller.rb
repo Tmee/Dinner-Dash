@@ -1,5 +1,4 @@
 class FillingsController < ApplicationController
-
   before_action :set_filling, only: [:show, :edit, :update, :destroy]
 
   def index
