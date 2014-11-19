@@ -7,9 +7,6 @@ class Seed
   end
 
  def generate_users_and_roles
-    admin_role     = Role.create!(name: "admin")
-    webmaster_role = Role.create!(name: "webmaster")
-
     User.create!(
       first_name: "Rachel",
       last_name:  "Warbelow",
@@ -50,18 +47,18 @@ class Seed
       password:   "password"
     )
 
-    admin_user.roles     = [admin_role]
-    webmaster_user.roles = [webmaster_role]
+    admin_user.roles     = [Role.create!(name: "admin")]
+    webmaster_user.roles = [Role.create!(name: "webmaster")]
 
     puts "Users generated!"
   end
 
   def generate_items
     Item.create!(name: "Burrito", price: 500)
-    Item.create!(name: "Torta", price: 400)
-    Item.create!(name: "Taco", price: 100)
-    Item.create!(name: "Tamale", price: 200)
-    Item.create!(name: "Salad", price: 300)
+    Item.create!(name: "Torta",   price: 400)
+    Item.create!(name: "Taco",    price: 100)
+    Item.create!(name: "Tamale",  price: 200)
+    Item.create!(name: "Salad",   price: 300)
     puts "Items generated!"
   end
 
