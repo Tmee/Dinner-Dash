@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root 'users#home'
 
   resources :users
-  resources :fillings
+  resources :admin, only: [:index]
 
+  scope 'admin' do
+    resources :items, :fillings
+    get   '/menu',   to: "admin#menu"
+  end
 
-  get '/',          to: 'users#home'
   get '/login',     to: 'sessions#new'
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -14,10 +17,5 @@ Rails.application.routes.draw do
   get '/menu',      to: 'items#menu_items'
   get '/register',  to: 'users#new'
 
-  get '/menu_item_builder/*', to: 'items#menu_item_builder'
-
-  get 'admin/fillings'
-  get 'admin/dashboard'
-
+  get '/menu_item_builder/*', to: 'menu#menu_item_builder'
 end
-
