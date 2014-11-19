@@ -69,6 +69,7 @@ class Seed
 
   def generate_fillings
     Filling.create!(
+<<<<<<< HEAD
       title:       "Steak",
       description: "It's meat. From an animal.",
       price:       100,
