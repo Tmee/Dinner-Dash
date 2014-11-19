@@ -18,20 +18,20 @@
         <p>Custom Food, Made Fresh</p>
       </div>
 
-
-      <form action="/login" method='POST' class="row-right"/>
+      <%= form_tag login_path do %>
         <div class="row">
           <div class="large-15 columns">
             <div class="row collapse">
               <div class="small-4 columns">
-                <input type="text" placeholder="Username" name="username"/>
+                <%= text_field_tag :username, nil, placeholder: "Username" %>
               </div>
               <div class="small-3 columns">
-                <input type="password" placeholder="Password" name="password"/>
+                <%= password_field_tag :password, nil, placeholder:  "Password" %>
               </div>
               <div class="small-5 columns">
                 <ul class="stack-for-small button-group">
-                  <li><input type="submit" value="Log in" class="tiny button"></li></form>
+                  <%= submit_tag "Log In" %>
+        <% end %>
                   <li><a href="/register" class="tiny button">Sign Up!</a></li>
                 </ul>
               </div>
