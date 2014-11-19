@@ -62,22 +62,32 @@ class Seed
     puts "Items generated!"
   end
 
+  # def generate_fillings
+  #   Filling.create!(
+  #     title:       "steak",
+  #     description: "It's meat.",
+  #     price:        100,
+  #     type:        "protein"
+  #   )
+  # end
+
   # def generate_orders
-  #   100.times do |i|
-  #     user  = User.find(Random.new.rand(1..50))
-  #     order = Order.create!(user_id: user.id)
+  #   states = %W(ordered completed canceled)
+  #   10.times do |i|
+  #     user  = User.find(Random.new.rand(1..5))
+  #     order = Order.create!(user_id: user.id, state: "#{states.sample}")
   #     add_items(order)
-  #     puts "Order #{i}: Order for #{user.name} created!"
   #   end
+  #   puts "Order's created!"
   # end
 
   # private
 
   # def add_items(order)
   #   10.times do |i|
-  #     filling = Filling.find(Random.new.rand(1..500))
-  #     order.items << item
-  #     puts "#{i}: Added item #{item.name} to order #{order.id}."
+  #     filling = Filling.find(Random.new.rand(1..20))
+  #     order.fillings << filling
+  #     puts "#{i}: Added filling #{filling.title} to order #{order.id}."
   #   end
   # end
 end
