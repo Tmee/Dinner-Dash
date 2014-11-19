@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get '/menu_item_builder/*', to: 'menu#menu_item_builder'
+
+  get '/menu', to: 'menu#menu_items'
 
 
   get 'admin/fillings'
