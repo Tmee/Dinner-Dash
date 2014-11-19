@@ -5,7 +5,7 @@ class Seed
     # generate_orders
   end
 
-  def generate_users
+ def generate_users
     User.create!(
       first_name: "Rachel",
       last_name:  "Warbelow",
@@ -45,7 +45,7 @@ class Seed
   #       description: Faker::Lorem.paragraph,
   #       image_url: "http://robohash.org/#{i}.png?set=set1&size=200x200"
   #       )
-  #     puts "Filling #{i}: #{item.name} created!"
+  #     puts "Filling #{i}: #{filling.name} created!"
   #   end
   # end
 
