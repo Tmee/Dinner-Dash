@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <%= favicon_link_tag 'favicon.ico' %>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Los Amigos Gordos</title>
-
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
@@ -15,34 +14,43 @@
 
     <div class="row">
       <div class="large-9 columns">
-        <h1>Los Amigos Gordos</h1>
-        <p>Fresh food, However you like it</p>
+        <h1><a href="/">Los Amigos Gordos</a></h1>
+        <p>Custom Food, Made Fresh</p>
       </div>
-      <div class="large-6 columns">
-        <ul class="button-group right">
-          <form method='<%=login_path%>' action='post'>
-              <table>
-                <tr>
-                  <td>
-                    <input type='text' placeholder="Username" name='username'/>
-                  </td>
-                  <td>
-                    <input type='text' placeholder='Password' name='password'/>
-                  </td>
-                  <td><a class="tiny button";"round button" href="<%=login_path%>">Login</a></td>
-                  <td><a class="tiny button";"round button" href="REGISTRAION">Register</a></td>
-                </tr>
-              </table>
-          </form>
-         </ul>
-        </div>
-      </div>
+
+
+      <form action="/login" method='POST' class="row-right"/>
+        <div class="row">
+          <div class="large-15 columns">
+            <div class="row collapse">
+              <div class="small-4 columns">
+                <input type="text" placeholder="Username" name="username"/>
+              </div>
+              <div class="small-3 columns">
+                <input type="password" placeholder="Password" name="password"/>
+              </div>
+              <div class="small-5 columns">
+                <ul class="stack-for-small button-group">
+                  <li><input type="submit" value="Log in" class="tiny button"></li></form>
+                  <li><a href="/register" class="tiny button">Sign Up!</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div><hr>
+
+
 
 
 
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
+
+
+
+
+
 
   </body>
 
