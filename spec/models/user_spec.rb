@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-    let(:user) do 
-      User.new(first_name: "Jim", 
-               last_name: "Jones", 
-               email: "jimmy@jones.com", 
+    let(:user) do
+      User.new(first_name: "Jim",
+               last_name: "Jones",
+               email: "jimmy@jones.com",
                username: "Jim",
                password: "password",
-               password_confirmation: "password" 
+               password_confirmation: "password"
                )
     end
 
-  it "is valid" do 
+  it "is valid" do
     expect(user).to be_valid
   end
 
-  it 'is invalid without a full name' do 
+  it 'is invalid without a full name' do
     user.first_name = nil
     expect(user).not_to be_valid
 
@@ -32,19 +32,19 @@ RSpec.describe User, :type => :model do
   end
 
   it 'cannot create a user with the same email' do
-    user1 = User.create(first_name: "Jim", 
-             last_name: "Jones", 
-             email: "test@jones.com", 
+    user1 = User.create(first_name: "Jim",
+             last_name: "Jones",
+             email: "test@jones.com",
              username: "Jim",
              password: "password",
-             password_confirmation: "password" 
+             password_confirmation: "password"
              )
-    user2 = User.create(first_name: "Jim", 
-             last_name: "Jones", 
-             email: "test@jones.com", 
+    user2 = User.create(first_name: "Jim",
+             last_name: "Jones",
+             email: "test@jones.com",
              username: "Jim",
              password: "password",
-             password_confirmation: "password" 
+             password_confirmation: "password"
              )
 
     expect(user2).not_to be_valid
