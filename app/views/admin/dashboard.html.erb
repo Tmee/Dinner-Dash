@@ -1,6 +1,98 @@
-<h1>Admin Dashboard</h1>
-<p>Welcome </p>
-<ul>
-  <li><%= link_to "Manage the menu", admin_fillings_path %></li>
+  <div class="row">
+    <div class="large-12 columns">
+      <img src="http://placehold.it/1600x600&text=Welcome, Admin!"><br><br>
+    </div>
+  </div>
 
-  <%= link_to "LOGOUT", logout_path, method: :delete %>
+
+
+      <div class="row">
+        <div class="large-12 columns show-for-small">
+
+          <img src="http://placehold.it/1200x700&text=Mobile Header">
+
+        </div>
+      </div><br>
+
+
+
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+
+            <div class="large-4 small-6 columns">
+
+              <h4 style="margin: auto 30; line-height: 60px;"><%= link_to "Top-Selling Products", items_path %></h4><hr>
+
+              <% @products.each do |product| %>
+
+                <div class="row">
+                  <div class="large-1 column">
+                    <img src="http://placehold.it/50x50&text=234234234">
+                  </div>
+
+                  <div class="large-9 columns">
+                    <div style="float: left">
+                      <%= image_tag "#{product.name.downcase}.jpg", :size => '55x55' %>
+                    </div>
+                    <div style="width:100px; margin:auto auto;">
+                      <h5 style="display:block;"><%= product.name %></h5>
+                    </div>
+                  </div>
+                </div><hr>
+
+              <% end %>
+
+                <div class="hide-for-small">
+                  <div class="row">
+                    <div class="large-1 column">
+                      <img src="http://placehold.it/50x50&text=[img]">
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            <div class="large-4 small-6 columns">
+              <img src="http://placehold.it/300x465&text=Image">
+            </div>
+
+
+
+
+
+
+            <div class="large-4 small-12 columns">
+
+              <h4>Blog</h4><hr>
+              <div class="panel">
+                <h5><a href="#">Post Title 1</a></h5>
+
+                <h6 class="subheader">
+                  Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
+                </h6>
+
+                <h6><a href="#">Read More »</a></h6>
+              </div>
+
+              <div class="panel hide-for-small">
+                <h5><a href="#">Post Title 2 »</a></h5>
+              </div>
+
+              <div class="panel hide-for-small">
+                <h5><a href="#">Post Title 3 »</a></h5>
+              </div>
+
+              <a href="#" class="right">Go To Blog »</a>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
