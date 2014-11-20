@@ -3,7 +3,7 @@ class Seed
     generate_users_and_roles
     generate_items
     generate_fillings
-    # generate_orders
+    generate_orders
     # generate_line_items
     # generate_line_item_fillings
   end
@@ -197,21 +197,21 @@ class Seed
     puts "Fillings generated!"
   end
 
+  def generate_orders
+    states = %W(ordered completed canceled)
+    10.times do |i|
+      user  = User.find(Random.new.rand(1..5))
+      order = Order.create!(user_id: user.id, state: "#{states.sample}")
+  #     add_line_items(order)
+    end
+    puts "Order's created!"
+  end
+
   # This is needed later:
 
-  # def generate_orders
-  #   states = %W(ordered completed canceled)
-  #   10.times do |i|
-  #     user  = User.find(Random.new.rand(1..5))
-  #     order = Order.create!(user_id: user.id, state: "#{states.sample}")
-  #     add_items(order)
-  #   end
-  #   puts "Order's created!"
-  # end
-  #
   # private
   #
-  # def add_items(order)
+  # def add_line_items(order)
   #   10.times do |i|
   #     filling = Filling.find(Random.new.rand(1..20))
   #     order.fillings << filling

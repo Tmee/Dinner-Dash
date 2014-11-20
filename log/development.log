@@ -75398,3 +75398,562 @@ ActionController::RoutingError (No route matches [GET] "/js/foundation/foundatio
   [1m[35m (12.1ms)[0m  SELECT version FROM "schema_migrations"
   [1m[36m (5.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141119184043')[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.4ms)[0m  DROP TABLE "fillings"
+  [1m[36m (12.3ms)[0m  [1mCREATE TABLE "fillings" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" integer DEFAULT 0, "created_at" timestamp, "updated_at" timestamp, "food_group" character varying(255), "image_file_name" character varying(255), "image_content_type" character varying(255), "image_file_size" integer, "image_updated_at" timestamp) [0m
+  [1m[35m (1.7ms)[0m  DROP TABLE "items"
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "name" character varying(255), "price" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.7ms)[0m  DROP TABLE "line_item_fillings"
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "line_item_fillings" ("id" serial primary key, "line_item_id" integer, "filling_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.6ms)[0m  DROP TABLE "line_items"
+  [1m[36m (6.2ms)[0m  [1mCREATE TABLE "line_items" ("id" serial primary key, "order_id" integer, "item_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.3ms)[0m  DROP TABLE "roles"
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "roles" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.7ms)[0m  DROP TABLE "user_roles"
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "user_roles" ("id" serial primary key, "user_id" integer, "role_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_user_roles_on_role_id" ON "user_roles" USING btree ("role_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_user_roles_on_user_id" ON "user_roles" USING btree ("user_id")[0m
+  [1m[35m (2.3ms)[0m  DROP TABLE "users"
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "email" character varying(255), "username" character varying(255), "password_digest" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+rachel@jumpstartlab.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:15:10.155760"], ["email", "demo+rachel@jumpstartlab.com"], ["first_name", "Rachel"], ["last_name", "Warbelow"], ["password_digest", "$2a$10$P/Al5W.Fv2CIIaP80iMEPuTFr33kNR8gm1bggY1kiFXWICqPnPmzW"], ["updated_at", "2014-11-20 16:15:10.155760"], ["username", "Rachel"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+jeff@jumpstartlab.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:15:10.233045"], ["email", "demo+jeff@jumpstartlab.com"], ["first_name", "Jeff"], ["last_name", ""], ["password_digest", "$2a$10$HOez9r7V0uC.DGVFflZGiOhg8GiYHv77ZcirBxLL5ClC2TRPB6qmm"], ["updated_at", "2014-11-20 16:15:10.233045"], ["username", "j3"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+jorge@jumpstartlab.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:15:10.307486"], ["email", "demo+jorge@jumpstartlab.com"], ["first_name", "Jorge"], ["last_name", "Tellez"], ["password_digest", "$2a$10$kdR96UkCO.DXl3ui5zoLVeQyZYt.pGNdd3ajCiAj.8uf59q8mnaTS"], ["updated_at", "2014-11-20 16:15:10.307486"], ["username", "novohispano"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+josh@jumpstartlab.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:15:10.381727"], ["email", "demo+josh@jumpstartlab.com"], ["first_name", "Josh"], ["last_name", "Cheek"], ["password_digest", "$2a$10$k3oVnFSVBv6i7O6hDBT1l.iNV2YtvpBOzQJSJlOIOMEJ.o70PcNy."], ["updated_at", "2014-11-20 16:15:10.381727"], ["username", "josh"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'Bruce_Wayne@WayneEnterprises.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:15:10.456624"], ["email", "Bruce_Wayne@WayneEnterprises.com"], ["first_name", "Bruce"], ["last_name", "Wayne"], ["password_digest", "$2a$10$wPZne3S7f4KtCTRhLwP/Au42WiPGaV.9KGAawnZrY5DqU0M1022Eu"], ["updated_at", "2014-11-20 16:15:10.456624"], ["username", "webmaster"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "roles" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.466937"], ["name", "admin"], ["updated_at", "2014-11-20 16:15:10.466937"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mRole Load (0.7ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.501517"], ["role_id", 1], ["updated_at", "2014-11-20 16:15:10.501517"], ["user_id", 4]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "roles" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-20 16:15:10.504451"], ["name", "webmaster"], ["updated_at", "2014-11-20 16:15:10.504451"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mRole Load (0.5ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:15:10.507966"], ["role_id", 2], ["updated_at", "2014-11-20 16:15:10.507966"], ["user_id", 5]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.509380"], ["role_id", 1], ["updated_at", "2014-11-20 16:15:10.509380"], ["user_id", 5]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.4ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Burrito' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.519374"], ["name", "Burrito"], ["price", 500], ["updated_at", "2014-11-20 16:15:10.519374"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Burrito Bowl' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.522574"], ["name", "Burrito Bowl"], ["price", 175], ["updated_at", "2014-11-20 16:15:10.522574"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Torta' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.524689"], ["name", "Torta"], ["price", 400], ["updated_at", "2014-11-20 16:15:10.524689"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Taco' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.526587"], ["name", "Taco"], ["price", 100], ["updated_at", "2014-11-20 16:15:10.526587"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Quesadilla' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.528513"], ["name", "Quesadilla"], ["price", 250], ["updated_at", "2014-11-20 16:15:10.528513"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Tamale' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.530416"], ["name", "Tamale"], ["price", 200], ["updated_at", "2014-11-20 16:15:10.530416"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Salad' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.532605"], ["name", "Salad"], ["price", 300], ["updated_at", "2014-11-20 16:15:10.532605"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.6ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Steak' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.546855"], ["description", "It's meat. From an animal."], ["food_group", "meat"], ["price", 100], ["title", "Steak"], ["updated_at", "2014-11-20 16:15:10.546855"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.4ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Chicken' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.551155"], ["description", "Made from home made chickens."], ["food_group", "meat"], ["price", 70], ["title", "Chicken"], ["updated_at", "2014-11-20 16:15:10.551155"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Barbacoa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.554220"], ["description", "We think it's from goats."], ["food_group", "meat"], ["price", 200], ["title", "Barbacoa"], ["updated_at", "2014-11-20 16:15:10.554220"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.556577"], ["description", "Pork."], ["food_group", "meat"], ["price", 150], ["title", "Carnitas"], ["updated_at", "2014-11-20 16:15:10.556577"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Sofritas' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.559175"], ["description", "It's toe and fu."], ["food_group", "veggie"], ["price", 150], ["title", "Sofritas"], ["updated_at", "2014-11-20 16:15:10.559175"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Fajita Vegetables' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.561991"], ["description", "It has some different peppers."], ["food_group", "veggies"], ["price", 100], ["title", "Fajita Vegetables"], ["updated_at", "2014-11-20 16:15:10.561991"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Black Beans' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.564487"], ["description", "They are black."], ["food_group", "veggies"], ["title", "Black Beans"], ["updated_at", "2014-11-20 16:15:10.564487"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Pinto Beans' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.566860"], ["description", "They are very pinto."], ["food_group", "veggies"], ["title", "Pinto Beans"], ["updated_at", "2014-11-20 16:15:10.566860"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (1.1ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'White Rice' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.573061"], ["description", "It's white and has cilantro."], ["food_group", "veggies"], ["title", "White Rice"], ["updated_at", "2014-11-20 16:15:10.573061"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Brown Rice' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.577348"], ["description", "It's brown."], ["food_group", "veggies"], ["title", "Brown Rice"], ["updated_at", "2014-11-20 16:15:10.577348"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Fresh Tomato Salsa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.579851"], ["description", "Diced tomatoes and other bits."], ["food_group", "salsas"], ["title", "Fresh Tomato Salsa"], ["updated_at", "2014-11-20 16:15:10.579851"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Roasted Chili-Corn Salsa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.582311"], ["description", "Sweet white corn."], ["food_group", "salsas"], ["title", "Roasted Chili-Corn Salsa"], ["updated_at", "2014-11-20 16:15:10.582311"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Tomatillo-Green Chili Salsa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.584573"], ["description", "Fire-roasted tomatillos? Yes please."], ["food_group", "salsas"], ["title", "Tomatillo-Green Chili Salsa"], ["updated_at", "2014-11-20 16:15:10.584573"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Tomatillo-Red Chili Salsa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.586816"], ["description", "It's like the other sauce but with tabasco. Hot hot hot."], ["food_group", "salsas"], ["title", "Tomatillo-Red Chili Salsa"], ["updated_at", "2014-11-20 16:15:10.586816"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Cheese' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.589241"], ["description", "Literally, the best ever."], ["food_group", "extras"], ["title", "Cheese"], ["updated_at", "2014-11-20 16:15:10.589241"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Guacamole' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.591851"], ["description", "It's no longer avocados. It's better now."], ["food_group", "extras"], ["title", "Guacamole"], ["updated_at", "2014-11-20 16:15:10.591851"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Sour Cream' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.594224"], ["description", "It's sour and cream."], ["food_group", "extras"], ["title", "Sour Cream"], ["updated_at", "2014-11-20 16:15:10.594224"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Queso' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.596558"], ["description", "It's some melted cheese."], ["food_group", "extras"], ["price", 50], ["title", "Queso"], ["updated_at", "2014-11-20 16:15:10.596558"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Queso Diablo' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.598778"], ["description", "It's some, spicy, melted cheese."], ["food_group", "extras"], ["price", 75], ["title", "Queso Diablo"], ["updated_at", "2014-11-20 16:15:10.598778"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Lettuce' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:15:10.601085"], ["description", "Just some romaine."], ["food_group", "extras"], ["title", "Lettuce"], ["updated_at", "2014-11-20 16:15:10.601085"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.8ms)[0m  DROP TABLE "fillings"
+  [1m[36m (6.8ms)[0m  [1mCREATE TABLE "fillings" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" integer DEFAULT 0, "created_at" timestamp, "updated_at" timestamp, "food_group" character varying(255), "image_file_name" character varying(255), "image_content_type" character varying(255), "image_file_size" integer, "image_updated_at" timestamp) [0m
+  [1m[35m (2.2ms)[0m  DROP TABLE "items"
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "name" character varying(255), "price" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.9ms)[0m  DROP TABLE "line_item_fillings"
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "line_item_fillings" ("id" serial primary key, "line_item_id" integer, "filling_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.2ms)[0m  DROP TABLE "line_items"
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "line_items" ("id" serial primary key, "order_id" integer, "item_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.6ms)[0m  DROP TABLE "roles"
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "roles" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.7ms)[0m  DROP TABLE "user_roles"
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "user_roles" ("id" serial primary key, "user_id" integer, "role_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.5ms)[0m  CREATE  INDEX  "index_user_roles_on_role_id" ON "user_roles" USING btree ("role_id")
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_user_roles_on_user_id" ON "user_roles" USING btree ("user_id")[0m
+  [1m[35m (3.2ms)[0m  DROP TABLE "users"
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "email" character varying(255), "username" character varying(255), "password_digest" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.8ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateOrders (20141120164028)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (11.8ms)[0m  [1mCREATE TABLE "orders" ("id" serial primary key, "user_id" integer, "state" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_orders_on_user_id" ON "orders"  ("user_id")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141120164028"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.9ms)[0m  DROP TABLE "fillings"
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "fillings" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" integer DEFAULT 0, "created_at" timestamp, "updated_at" timestamp, "food_group" character varying(255), "image_file_name" character varying(255), "image_content_type" character varying(255), "image_file_size" integer, "image_updated_at" timestamp) [0m
+  [1m[35m (1.9ms)[0m  DROP TABLE "items"
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "name" character varying(255), "price" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.6ms)[0m  DROP TABLE "line_item_fillings"
+  [1m[36m (7.8ms)[0m  [1mCREATE TABLE "line_item_fillings" ("id" serial primary key, "line_item_id" integer, "filling_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.1ms)[0m  DROP TABLE "line_items"
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "line_items" ("id" serial primary key, "order_id" integer, "item_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.4ms)[0m  DROP TABLE "orders"
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "orders" ("id" serial primary key, "user_id" integer, "state" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")
+  [1m[36m (2.1ms)[0m  [1mDROP TABLE "roles"[0m
+  [1m[35m (3.5ms)[0m  CREATE TABLE "roles" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.4ms)[0m  [1mDROP TABLE "user_roles"[0m
+  [1m[35m (4.4ms)[0m  CREATE TABLE "user_roles" ("id" serial primary key, "user_id" integer, "role_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.5ms)[0m  [1mCREATE  INDEX  "index_user_roles_on_role_id" ON "user_roles" USING btree ("role_id")[0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_user_roles_on_user_id" ON "user_roles" USING btree ("user_id")
+  [1m[36m (2.8ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (5.6ms)[0m  CREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "email" character varying(255), "username" character varying(255), "password_digest" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (1.0ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+rachel@jumpstartlab.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 16:45:00.250033"], ["email", "demo+rachel@jumpstartlab.com"], ["first_name", "Rachel"], ["last_name", "Warbelow"], ["password_digest", "$2a$10$6ek3RIfUb1kZFvfG4XAsCugyk8LIpKMqRUnOH4OxUpOG6D5sC6s0e"], ["updated_at", "2014-11-20 16:45:00.250033"], ["username", "Rachel"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+jeff@jumpstartlab.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 16:45:00.329829"], ["email", "demo+jeff@jumpstartlab.com"], ["first_name", "Jeff"], ["last_name", ""], ["password_digest", "$2a$10$neH10JJz6Yl9n9JDfC7qjuGb9LOlYXRdkAbD3oIBHKBLnTwgWdtYm"], ["updated_at", "2014-11-20 16:45:00.329829"], ["username", "j3"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+jorge@jumpstartlab.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 16:45:00.419127"], ["email", "demo+jorge@jumpstartlab.com"], ["first_name", "Jorge"], ["last_name", "Tellez"], ["password_digest", "$2a$10$t.Cld0DVA88RH4CnlWMTkuXVYi3mYMOFRTuUUIizExqHSGRQQ60He"], ["updated_at", "2014-11-20 16:45:00.419127"], ["username", "novohispano"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+josh@jumpstartlab.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 16:45:00.512121"], ["email", "demo+josh@jumpstartlab.com"], ["first_name", "Josh"], ["last_name", "Cheek"], ["password_digest", "$2a$10$8waugyKXRvkDGgtWQoK8N.vsiSQKRvPUekKbnO19Zplzb2TBaMlYy"], ["updated_at", "2014-11-20 16:45:00.512121"], ["username", "josh"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'Bruce_Wayne@WayneEnterprises.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 16:45:00.605221"], ["email", "Bruce_Wayne@WayneEnterprises.com"], ["first_name", "Bruce"], ["last_name", "Wayne"], ["password_digest", "$2a$10$e0GJRLAjDvr44.Z10R3QnOaPYLvnuCBEaq4QnLSAoy2TjL8Z/wLH2"], ["updated_at", "2014-11-20 16:45:00.605221"], ["username", "webmaster"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "roles" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.614201"], ["name", "admin"], ["updated_at", "2014-11-20 16:45:00.614201"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mRole Load (0.7ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.643467"], ["role_id", 1], ["updated_at", "2014-11-20 16:45:00.643467"], ["user_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "roles" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-20 16:45:00.646418"], ["name", "webmaster"], ["updated_at", "2014-11-20 16:45:00.646418"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:45:00.650153"], ["role_id", 2], ["updated_at", "2014-11-20 16:45:00.650153"], ["user_id", 5]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.651574"], ["role_id", 1], ["updated_at", "2014-11-20 16:45:00.651574"], ["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Burrito' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.661224"], ["name", "Burrito"], ["price", 500], ["updated_at", "2014-11-20 16:45:00.661224"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Burrito Bowl' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.664231"], ["name", "Burrito Bowl"], ["price", 175], ["updated_at", "2014-11-20 16:45:00.664231"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Torta' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.666615"], ["name", "Torta"], ["price", 400], ["updated_at", "2014-11-20 16:45:00.666615"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Taco' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.669005"], ["name", "Taco"], ["price", 100], ["updated_at", "2014-11-20 16:45:00.669005"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Quesadilla' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.671248"], ["name", "Quesadilla"], ["price", 250], ["updated_at", "2014-11-20 16:45:00.671248"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Tamale' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.673346"], ["name", "Tamale"], ["price", 200], ["updated_at", "2014-11-20 16:45:00.673346"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Salad' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.676099"], ["name", "Salad"], ["price", 300], ["updated_at", "2014-11-20 16:45:00.676099"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Steak' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.691594"], ["description", "It's meat. From an animal."], ["food_group", "meat"], ["price", 100], ["title", "Steak"], ["updated_at", "2014-11-20 16:45:00.691594"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Chicken' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.696139"], ["description", "Made from home made chickens."], ["food_group", "meat"], ["price", 70], ["title", "Chicken"], ["updated_at", "2014-11-20 16:45:00.696139"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Barbacoa' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.698843"], ["description", "We think it's from goats."], ["food_group", "meat"], ["price", 200], ["title", "Barbacoa"], ["updated_at", "2014-11-20 16:45:00.698843"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.701804"], ["description", "Pork."], ["food_group", "meat"], ["price", 150], ["title", "Carnitas"], ["updated_at", "2014-11-20 16:45:00.701804"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Sofritas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.704268"], ["description", "It's toe and fu."], ["food_group", "veggie"], ["price", 150], ["title", "Sofritas"], ["updated_at", "2014-11-20 16:45:00.704268"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Fajita Vegetables' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.713701"], ["description", "It has some different peppers."], ["food_group", "veggies"], ["price", 100], ["title", "Fajita Vegetables"], ["updated_at", "2014-11-20 16:45:00.713701"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Black Beans' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.719601"], ["description", "They are black."], ["food_group", "veggies"], ["title", "Black Beans"], ["updated_at", "2014-11-20 16:45:00.719601"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Pinto Beans' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.725753"], ["description", "They are very pinto."], ["food_group", "veggies"], ["title", "Pinto Beans"], ["updated_at", "2014-11-20 16:45:00.725753"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'White Rice' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.731161"], ["description", "It's white and has cilantro."], ["food_group", "veggies"], ["title", "White Rice"], ["updated_at", "2014-11-20 16:45:00.731161"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Brown Rice' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.738416"], ["description", "It's brown."], ["food_group", "veggies"], ["title", "Brown Rice"], ["updated_at", "2014-11-20 16:45:00.738416"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Fresh Tomato Salsa' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.741132"], ["description", "Diced tomatoes and other bits."], ["food_group", "salsas"], ["title", "Fresh Tomato Salsa"], ["updated_at", "2014-11-20 16:45:00.741132"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Roasted Chili-Corn Salsa' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.743507"], ["description", "Sweet white corn."], ["food_group", "salsas"], ["title", "Roasted Chili-Corn Salsa"], ["updated_at", "2014-11-20 16:45:00.743507"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Tomatillo-Green Chili Salsa' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.745755"], ["description", "Fire-roasted tomatillos? Yes please."], ["food_group", "salsas"], ["title", "Tomatillo-Green Chili Salsa"], ["updated_at", "2014-11-20 16:45:00.745755"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Tomatillo-Red Chili Salsa' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.747978"], ["description", "It's like the other sauce but with tabasco. Hot hot hot."], ["food_group", "salsas"], ["title", "Tomatillo-Red Chili Salsa"], ["updated_at", "2014-11-20 16:45:00.747978"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Cheese' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.750825"], ["description", "Literally, the best ever."], ["food_group", "extras"], ["title", "Cheese"], ["updated_at", "2014-11-20 16:45:00.750825"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Guacamole' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.753955"], ["description", "It's no longer avocados. It's better now."], ["food_group", "extras"], ["title", "Guacamole"], ["updated_at", "2014-11-20 16:45:00.753955"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Sour Cream' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.756298"], ["description", "It's sour and cream."], ["food_group", "extras"], ["title", "Sour Cream"], ["updated_at", "2014-11-20 16:45:00.756298"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Queso' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.759182"], ["description", "It's some melted cheese."], ["food_group", "extras"], ["price", 50], ["title", "Queso"], ["updated_at", "2014-11-20 16:45:00.759182"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Queso Diablo' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.762049"], ["description", "It's some, spicy, melted cheese."], ["food_group", "extras"], ["price", 75], ["title", "Queso Diablo"], ["updated_at", "2014-11-20 16:45:00.762049"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 16:45:00.764441"], ["description", "Just some romaine."], ["food_group", "extras"], ["title", "Lettuce"], ["updated_at", "2014-11-20 16:45:00.764441"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (11.9ms)[0m  DROP TABLE "fillings"
+  [1m[36m (8.4ms)[0m  [1mCREATE TABLE "fillings" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" integer DEFAULT 0, "created_at" timestamp, "updated_at" timestamp, "food_group" character varying(255), "image_file_name" character varying(255), "image_content_type" character varying(255), "image_file_size" integer, "image_updated_at" timestamp) [0m
+  [1m[35m (2.1ms)[0m  DROP TABLE "items"
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "name" character varying(255), "price" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.7ms)[0m  DROP TABLE "line_item_fillings"
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "line_item_fillings" ("id" serial primary key, "line_item_id" integer, "filling_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.7ms)[0m  DROP TABLE "line_items"
+  [1m[36m (8.5ms)[0m  [1mCREATE TABLE "line_items" ("id" serial primary key, "order_id" integer, "item_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.5ms)[0m  DROP TABLE "orders"
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "orders" ("id" serial primary key, "user_id" integer, "state" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")
+  [1m[36m (1.9ms)[0m  [1mDROP TABLE "roles"[0m
+  [1m[35m (4.3ms)[0m  CREATE TABLE "roles" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.0ms)[0m  [1mDROP TABLE "user_roles"[0m
+  [1m[35m (4.3ms)[0m  CREATE TABLE "user_roles" ("id" serial primary key, "user_id" integer, "role_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_user_roles_on_role_id" ON "user_roles" USING btree ("role_id")[0m
+  [1m[35m (1.5ms)[0m  CREATE  INDEX  "index_user_roles_on_user_id" ON "user_roles" USING btree ("user_id")
+  [1m[36m (3.1ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (9.8ms)[0m  CREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "email" character varying(255), "username" character varying(255), "password_digest" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.8ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.9ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+rachel@jumpstartlab.com' LIMIT 1
+  [1m[36mSQL (8.6ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 17:10:29.288324"], ["email", "demo+rachel@jumpstartlab.com"], ["first_name", "Rachel"], ["last_name", "Warbelow"], ["password_digest", "$2a$10$umeDxcM7uyCAg2G93ZOeAeJ4h8o1CY4ADrTTijsZiReZtVf04xho6"], ["updated_at", "2014-11-20 17:10:29.288324"], ["username", "Rachel"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+jeff@jumpstartlab.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 17:10:29.384629"], ["email", "demo+jeff@jumpstartlab.com"], ["first_name", "Jeff"], ["last_name", ""], ["password_digest", "$2a$10$vpju8asmFvQhoevad.6wZ.5X35FG2XHOj4v4c5fYKM0DNJHdWQRvm"], ["updated_at", "2014-11-20 17:10:29.384629"], ["username", "j3"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+jorge@jumpstartlab.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 17:10:29.472049"], ["email", "demo+jorge@jumpstartlab.com"], ["first_name", "Jorge"], ["last_name", "Tellez"], ["password_digest", "$2a$10$OaQC/f/hsjRVEEu5EeCcH.vnex/YsiF/06aivWFZ5qYviV799aTUy"], ["updated_at", "2014-11-20 17:10:29.472049"], ["username", "novohispano"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+josh@jumpstartlab.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 17:10:29.559723"], ["email", "demo+josh@jumpstartlab.com"], ["first_name", "Josh"], ["last_name", "Cheek"], ["password_digest", "$2a$10$0yoWsbyYmtpdCvjoOJJZdeGzqX02pxpilWQFRcbOKvPruanLMR3Fq"], ["updated_at", "2014-11-20 17:10:29.559723"], ["username", "josh"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'Bruce_Wayne@WayneEnterprises.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-20 17:10:29.642115"], ["email", "Bruce_Wayne@WayneEnterprises.com"], ["first_name", "Bruce"], ["last_name", "Wayne"], ["password_digest", "$2a$10$bs5kfcUnSBiZqo7TfgNiTO/LaWQoHyPqaBWRvXTgzfCkJRQ3c5J7m"], ["updated_at", "2014-11-20 17:10:29.642115"], ["username", "webmaster"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "roles" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.650563"], ["name", "admin"], ["updated_at", "2014-11-20 17:10:29.650563"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mRole Load (0.7ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.679609"], ["role_id", 1], ["updated_at", "2014-11-20 17:10:29.679609"], ["user_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "roles" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-20 17:10:29.682082"], ["name", "webmaster"], ["updated_at", "2014-11-20 17:10:29.682082"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 17:10:29.685479"], ["role_id", 2], ["updated_at", "2014-11-20 17:10:29.685479"], ["user_id", 5]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.686754"], ["role_id", 1], ["updated_at", "2014-11-20 17:10:29.686754"], ["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Burrito' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.695703"], ["name", "Burrito"], ["price", 500], ["updated_at", "2014-11-20 17:10:29.695703"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Burrito Bowl' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.698775"], ["name", "Burrito Bowl"], ["price", 175], ["updated_at", "2014-11-20 17:10:29.698775"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Torta' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.700947"], ["name", "Torta"], ["price", 400], ["updated_at", "2014-11-20 17:10:29.700947"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Taco' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.702876"], ["name", "Taco"], ["price", 100], ["updated_at", "2014-11-20 17:10:29.702876"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Quesadilla' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.705111"], ["name", "Quesadilla"], ["price", 250], ["updated_at", "2014-11-20 17:10:29.705111"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Tamale' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.707313"], ["name", "Tamale"], ["price", 200], ["updated_at", "2014-11-20 17:10:29.707313"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Salad' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.709905"], ["name", "Salad"], ["price", 300], ["updated_at", "2014-11-20 17:10:29.709905"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Steak' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.724185"], ["description", "It's meat. From an animal."], ["food_group", "meat"], ["price", 100], ["title", "Steak"], ["updated_at", "2014-11-20 17:10:29.724185"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Chicken' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.728837"], ["description", "Made from home made chickens."], ["food_group", "meat"], ["price", 70], ["title", "Chicken"], ["updated_at", "2014-11-20 17:10:29.728837"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Barbacoa' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.732697"], ["description", "We think it's from goats."], ["food_group", "meat"], ["price", 200], ["title", "Barbacoa"], ["updated_at", "2014-11-20 17:10:29.732697"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.736257"], ["description", "Pork."], ["food_group", "meat"], ["price", 150], ["title", "Carnitas"], ["updated_at", "2014-11-20 17:10:29.736257"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Sofritas' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.741995"], ["description", "It's toe and fu."], ["food_group", "veggie"], ["price", 150], ["title", "Sofritas"], ["updated_at", "2014-11-20 17:10:29.741995"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Fajita Vegetables' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.747689"], ["description", "It has some different peppers."], ["food_group", "veggies"], ["price", 100], ["title", "Fajita Vegetables"], ["updated_at", "2014-11-20 17:10:29.747689"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Black Beans' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.750911"], ["description", "They are black."], ["food_group", "veggies"], ["title", "Black Beans"], ["updated_at", "2014-11-20 17:10:29.750911"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Pinto Beans' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.753476"], ["description", "They are very pinto."], ["food_group", "veggies"], ["title", "Pinto Beans"], ["updated_at", "2014-11-20 17:10:29.753476"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'White Rice' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.756060"], ["description", "It's white and has cilantro."], ["food_group", "veggies"], ["title", "White Rice"], ["updated_at", "2014-11-20 17:10:29.756060"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Brown Rice' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.758944"], ["description", "It's brown."], ["food_group", "veggies"], ["title", "Brown Rice"], ["updated_at", "2014-11-20 17:10:29.758944"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Fresh Tomato Salsa' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.761805"], ["description", "Diced tomatoes and other bits."], ["food_group", "salsas"], ["title", "Fresh Tomato Salsa"], ["updated_at", "2014-11-20 17:10:29.761805"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Roasted Chili-Corn Salsa' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.764355"], ["description", "Sweet white corn."], ["food_group", "salsas"], ["title", "Roasted Chili-Corn Salsa"], ["updated_at", "2014-11-20 17:10:29.764355"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Tomatillo-Green Chili Salsa' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.767016"], ["description", "Fire-roasted tomatillos? Yes please."], ["food_group", "salsas"], ["title", "Tomatillo-Green Chili Salsa"], ["updated_at", "2014-11-20 17:10:29.767016"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Tomatillo-Red Chili Salsa' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.769727"], ["description", "It's like the other sauce but with tabasco. Hot hot hot."], ["food_group", "salsas"], ["title", "Tomatillo-Red Chili Salsa"], ["updated_at", "2014-11-20 17:10:29.769727"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Cheese' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.772068"], ["description", "Literally, the best ever."], ["food_group", "extras"], ["title", "Cheese"], ["updated_at", "2014-11-20 17:10:29.772068"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Guacamole' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.774675"], ["description", "It's no longer avocados. It's better now."], ["food_group", "extras"], ["title", "Guacamole"], ["updated_at", "2014-11-20 17:10:29.774675"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Sour Cream' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.777504"], ["description", "It's sour and cream."], ["food_group", "extras"], ["title", "Sour Cream"], ["updated_at", "2014-11-20 17:10:29.777504"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Queso' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.780239"], ["description", "It's some melted cheese."], ["food_group", "extras"], ["price", 50], ["title", "Queso"], ["updated_at", "2014-11-20 17:10:29.780239"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Queso Diablo' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.783202"], ["description", "It's some, spicy, melted cheese."], ["food_group", "extras"], ["price", 75], ["title", "Queso Diablo"], ["updated_at", "2014-11-20 17:10:29.783202"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.785801"], ["description", "Just some romaine."], ["food_group", "extras"], ["title", "Lettuce"], ["updated_at", "2014-11-20 17:10:29.785801"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.795344"], ["state", "canceled"], ["updated_at", "2014-11-20 17:10:29.795344"], ["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.798997"], ["state", "completed"], ["updated_at", "2014-11-20 17:10:29.798997"], ["user_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.801479"], ["state", "canceled"], ["updated_at", "2014-11-20 17:10:29.801479"], ["user_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.803869"], ["state", "ordered"], ["updated_at", "2014-11-20 17:10:29.803869"], ["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.806121"], ["state", "canceled"], ["updated_at", "2014-11-20 17:10:29.806121"], ["user_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.808934"], ["state", "completed"], ["updated_at", "2014-11-20 17:10:29.808934"], ["user_id", 3]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.811950"], ["state", "ordered"], ["updated_at", "2014-11-20 17:10:29.811950"], ["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.814065"], ["state", "completed"], ["updated_at", "2014-11-20 17:10:29.814065"], ["user_id", 3]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.816050"], ["state", "completed"], ["updated_at", "2014-11-20 17:10:29.816050"], ["user_id", 3]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "state", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 17:10:29.818046"], ["state", "completed"], ["updated_at", "2014-11-20 17:10:29.818046"], ["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
