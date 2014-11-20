@@ -191,7 +191,7 @@ class Seed
     Filling.create!(
       title:       "Lettuce",
       description: "Just some romaine.",
-      food_group:  gs"extras"
+      food_group:  "extras"
     )
 
     puts "Fillings generated!"

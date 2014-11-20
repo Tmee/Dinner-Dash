@@ -1,0 +1,447 @@
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "fillings" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" integer, "created_at" timestamp, "updated_at" timestamp, "food_group" character varying(255), "image_file_name" character varying(255), "image_content_type" character varying(255), "image_file_size" integer, "image_updated_at" timestamp) 
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "name" character varying(255), "price" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "line_item_fillings" ("id" serial primary key, "line_item_id" integer, "filling_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "line_items" ("id" serial primary key, "order_id" integer, "item_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "roles" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "user_roles" ("id" serial primary key, "user_id" integer, "role_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_user_roles_on_role_id" ON "user_roles" USING btree ("role_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_user_roles_on_user_id" ON "user_roles" USING btree ("user_id")[0m
+  [1m[35m (2.6ms)[0m  CREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "email" character varying(255), "username" character varying(255), "password_digest" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141119160447')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141118224454')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141118225313')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141118233851')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141118235906')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141119001444')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141119051741')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141119142941')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.529344"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.529344"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by FillingsController#index as HTML
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+  [1m[35mFilling Load (0.3ms)[0m  SELECT "fillings".* FROM "fillings"
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-19 21:42:41.545886"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.545886"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by FillingsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFilling Load (1.2ms)[0m  [1mSELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by FillingsController#new as HTML
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.560856"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.560856"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by FillingsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mFilling Load (0.2ms)[0m  SELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1  [["id", 3]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "fillings"[0m
+Processing by FillingsController#create as HTML
+  Parameters: {"filling"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.572088"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.572088"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/admin/fillings/4
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "fillings"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by FillingsController#create as HTML
+  Parameters: {"filling"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-19 21:42:41.578329"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.578329"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/admin/fillings/5
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by FillingsController#create as HTML
+  Parameters: {"filling"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-19 21:42:41.586104"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.586104"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/admin/fillings/6
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[36mFilling Load (0.4ms)[0m  [1mSELECT  "fillings".* FROM "fillings"   ORDER BY "fillings"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by FillingsController#create as HTML
+  Parameters: {"filling"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" IS NULL LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 287ms (Views: 1.1ms | ActiveRecord: 1.9ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by FillingsController#create as HTML
+  Parameters: {"filling"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.890431"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.890431"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by FillingsController#update as HTML
+  Parameters: {"filling"=>{"title"=>"NewTitle", "description"=>"NewDescription", "price"=>"3", "food_group"=>"NewGroup"}, "id"=>"7"}
+  [1m[35mFilling Load (0.2ms)[0m  SELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.9ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE ("fillings"."title" = 'NewTitle' AND "fillings"."id" != 7) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "fillings" SET "description" = $1, "food_group" = $2, "title" = $3, "updated_at" = $4 WHERE "fillings"."id" = 7[0m  [["description", "NewDescription"], ["food_group", "NewGroup"], ["title", "NewTitle"], ["updated_at", "2014-11-19 21:42:41.895982"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/admin/fillings/7
+Completed 302 Found in 6ms (ActiveRecord: 1.5ms)
+  [1m[36mFilling Load (0.2ms)[0m  [1mSELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.902498"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.902498"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by FillingsController#update as HTML
+  Parameters: {"filling"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"8"}
+  [1m[35mFilling Load (0.2ms)[0m  SELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE ("fillings"."title" = 'Carnitas' AND "fillings"."id" != 8) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/admin/fillings/8
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.909616"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.909616"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by FillingsController#update as HTML
+  Parameters: {"filling"=>{"title"=>"Carnitas", "description"=>"Hot and porky", "price"=>"3", "food_group"=>"Meat"}, "id"=>"9"}
+  [1m[35mFilling Load (0.2ms)[0m  SELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE ("fillings"."title" = 'Carnitas' AND "fillings"."id" != 9) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/admin/fillings/9
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.916770"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.916770"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by FillingsController#update as HTML
+  Parameters: {"filling"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"10"}
+  [1m[35mFilling Load (0.1ms)[0m  SELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE ("fillings"."title" IS NULL AND "fillings"."id" != 10) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.926385"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.926385"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by FillingsController#update as HTML
+  Parameters: {"filling"=>{"title"=>nil, "description"=>nil, "price"=>nil, "food_group"=>nil}, "id"=>"11"}
+  [1m[35mFilling Load (0.1ms)[0m  SELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE ("fillings"."title" IS NULL AND "fillings"."id" != 11) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.938438"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.938438"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "fillings"
+Processing by FillingsController#destroy as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mFilling Load (0.1ms)[0m  [1mSELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "fillings" WHERE "fillings"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/admin/fillings
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "fillings"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.945331"], ["description", "Hot and porky"], ["food_group", "Meat"], ["price", 3], ["title", "Carnitas"], ["updated_at", "2014-11-19 21:42:41.945331"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by FillingsController#destroy as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mFilling Load (0.1ms)[0m  SELECT  "fillings".* FROM "fillings"  WHERE "fillings"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "fillings" WHERE "fillings"."id" = $1  [["id", 13]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/admin/fillings
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.958277"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$erWg5ZWMh/2jdjVTXyLB1u/bnxAC8lZ.8NtDvIQXASMqa/qbxaUk6"], ["updated_at", "2014-11-19 21:42:41.958277"], ["username", "Jim"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#index as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-19 21:42:41.968597"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$e2X9efq1ZPgUZMR74x5ua.GhZ2qQ1627FQKmz9ndDte.m7AkX/ER."], ["updated_at", "2014-11-19 21:42:41.968597"], ["username", "Jim"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 18ms (Views: 1.2ms | ActiveRecord: 2.1ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by UsersController#new as HTML
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:41.997655"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$/fk9wbkzYm1cZdE7llcgme5pFix6hFfXI4ihV0sLk2VT6eBVamI3C"], ["updated_at", "2014-11-19 21:42:41.997655"], ["username", "Jim"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"Jim", "last_name"=>"Jones", "email"=>"jimmy@jones.com", "username"=>"Jim", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:42.011354"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$UV6PrCZaTKJKJHwmoQ2ZveEfENBqurgBC8yD8FUzY8tUHnhq7r2fG"], ["updated_at", "2014-11-19 21:42:42.011354"], ["username", "Jim"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/4
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"Jim", "last_name"=>"Jones", "email"=>"jimmy@jones.com", "username"=>"Jim", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-19 21:42:42.019314"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$uJWovwmMplQEkyKM08WUv.s9giUGyWwrLC/b5Y0EkZffwDgR.M1kS"], ["updated_at", "2014-11-19 21:42:42.019314"], ["username", "Jim"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/5
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"Jim", "last_name"=>"Jones", "email"=>"jimmy@jones.com", "username"=>"Jim", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-19 21:42:42.026422"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$nt3c47wBwHAucwGde4j9c.f6SHJuTK7UmIEM3hWY9eXAKkDSu2SVK"], ["updated_at", "2014-11-19 21:42:42.026422"], ["username", "Jim"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/6
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>nil, "last_name"=>nil, "email"=>nil, "username"=>nil, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>nil, "last_name"=>nil, "email"=>nil, "username"=>nil, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:42.047464"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$FhOEY8tyv0U5lEnTKT5pq.D2ome/9vD9zGh6qNpMN6OZZx1G3QSGO"], ["updated_at", "2014-11-19 21:42:42.047464"], ["username", "Jim"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"first_name"=>"NewName", "last_name"=>"Smith", "email"=>"NewMail", "username"=>"Newsername", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"7"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'NewMail' AND "users"."id" != 7) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "email" = $1, "first_name" = $2, "last_name" = $3, "password_digest" = $4, "updated_at" = $5, "username" = $6 WHERE "users"."id" = 7[0m  [["email", "NewMail"], ["first_name", "NewName"], ["last_name", "Smith"], ["password_digest", "$2a$04$j5Un/BjwnfSI.6MXbgywKucgDR6yBH6YUig.elrgh/yJ1YJL7JWwi"], ["updated_at", "2014-11-19 21:42:42.052834"], ["username", "Newsername"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/7
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:42.058696"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$YJvbuD6LfvJw6XgwaxEYu.5q7M/uv4ZQOMMTR8TQMpZjbBbTwXsmS"], ["updated_at", "2014-11-19 21:42:42.058696"], ["username", "Jim"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"first_name"=>"Jim", "last_name"=>"Jones", "email"=>"jimmy@jones.com", "username"=>"Jim", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jimmy@jones.com' AND "users"."id" != 8) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = 8[0m  [["password_digest", "$2a$04$JMQ5pMUbjTyPFYpcjM1XVuprum2d91e19SvwILWZbY3FTIRMzUyOC"], ["updated_at", "2014-11-19 21:42:42.064209"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/8
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-19 21:42:42.069626"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$7FyM81LZTbUwk/wGb.EiL.4QY9tXdM99RaK231yyiosrUUs0Twd/K"], ["updated_at", "2014-11-19 21:42:42.069626"], ["username", "Jim"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"first_name"=>"Jim", "last_name"=>"Jones", "email"=>"jimmy@jones.com", "username"=>"Jim", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"9"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'jimmy@jones.com' AND "users"."id" != 9) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = 9  [["password_digest", "$2a$04$nFOSjBH9bDrMQc3Df4gRLucWSffaqG8v3z5hFEgee4LkHhrBmTMRS"], ["updated_at", "2014-11-19 21:42:42.074684"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/9
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:42.079857"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$dxlO6up5iJNk5m4SiQPy5OIICV5qMUhycU8lbc6IT05JhqJ5n5t42"], ["updated_at", "2014-11-19 21:42:42.079857"], ["username", "Jim"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"first_name"=>nil, "last_name"=>nil, "email"=>nil, "username"=>nil, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"10"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" IS NULL AND "users"."id" != 10) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:42.092280"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$MRB3Bipj8FyRw8ABcIb8juhh8H0IHs.bmFPtBSD8jKQ/BUdQcKgRe"], ["updated_at", "2014-11-19 21:42:42.092280"], ["username", "Jim"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"first_name"=>nil, "last_name"=>nil, "email"=>nil, "username"=>nil, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"11"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" IS NULL AND "users"."id" != 11) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:42.103497"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$30aVabrujVbMmdijSvD4GuVv.U22TRJeWMDClrBqta7fFVmVc1.RW"], ["updated_at", "2014-11-19 21:42:42.103497"], ["username", "Jim"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-19 21:42:42.111883"], ["email", "jimmy@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$OwP6oczgo63Edm/Mi2NpmeJGoUfwS0APnFrj.Y5CwOCLqwrvUnY1m"], ["updated_at", "2014-11-19 21:42:42.111883"], ["username", "Jim"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 13]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users
+Completed 302 Found in 1ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" IS NULL LIMIT 1[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-19 21:42:42.132675"], ["description", "Crispy"], ["food_group", "Vegetables"], ["price", 1], ["title", "Lettuce"], ["updated_at", "2014-11-19 21:42:42.132675"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mFilling Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Lettuce' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jimmy@jones.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'test@jones.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2014-11-19 21:42:42.152102"], ["email", "test@jones.com"], ["first_name", "Jim"], ["last_name", "Jones"], ["password_digest", "$2a$04$L3qxU5aU4.lEiVBgJW1DFeGhV8AZTNfMHkkUgleR75z5upfKnglX."], ["updated_at", "2014-11-19 21:42:42.152102"], ["username", "Jim"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'test@jones.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'test@jones.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
