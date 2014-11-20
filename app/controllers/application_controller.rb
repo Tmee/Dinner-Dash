@@ -13,10 +13,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_admin
-    unless current_user && current_user.is_admin?
-      redirect_to root_path, notice: "Unauthorized"
-    end
-  end
-
 end
