@@ -4,10 +4,10 @@
 
 <div class="magellan-container" data-magellan-expedition="fixed" data-options="destination_threshold:65;throttle_delay:0;" style="">
   <dl class="sub-nav">
-    <dd data-magellan-arrival="burrito" class=""><a href="#burrito">Burrito</a></dd>
-    <dd data-magellan-arrival="taco" class=""><a href="#taco">Taco</a></dd>
-    <dd data-magellan-arrival="burrito_bowl" class=""><a href="#burrito_bowl">Burrito Bowl</a></dd>
-    <dd data-magellan-arrival="quesadilla" class=""><a href="#quesadilla">Quesadilla</a></dd>
+    <dd data-magellan-arrival="meats" class=""><a href="#meats">Meats</a></dd>
+    <dd data-magellan-arrival="veggies" class=""><a href="#veggies">Veggies</a></dd>
+    <dd data-magellan-arrival="salsas" class=""><a href="#salsas">Salsas</a></dd>
+    <dd data-magellan-arrival="extras" class=""><a href="#extras">Extras</a></dd>
   </dl>
 </div>
 <script src="js/vendor/jquery.js"></script>
@@ -20,8 +20,9 @@
 
 
 
-<h3 data-magellan-destination="burrito">Burrito</h3>
-<a name="burrito"></a>
+<h3 data-magellan-destination="meats">Meats</h3>
+<a name="meats"></a>
+
 
 <p> if fillings.food_group == 'meat' do |m| <p>
 <p> m.each do |f| </p>
@@ -44,6 +45,7 @@
 <p> f.name        </p>
 <p> f.description </p>
 
+
 <p> if fillings.food_group == 'extra' do |e| <p>
 <p> e.each do |f| </p>
 
@@ -61,6 +63,10 @@
 <h4> Meats </h4>
 <p> f.name        </p>
 <p> f.description </p>
+
+<h3 data-magellan-destination="veggies">Veggies</h3>
+<a name="veggies"></a>
+
 
 
 <p> if fillings.food_group == 'veggie' do |v| <p>
@@ -91,6 +97,10 @@
 
 <p> if fillings.food_group == 'meat' do |m| <p>
 <p> m.each do |f| </p>
+<h3 data-magellan-destination="salsas">Salsas</h3>
+<a name="salsas"></a>
+
+
 
 <h4> Meats </h4>
 <p> f.name        </p>
@@ -124,6 +134,9 @@
 
 <p> if fillings.food_group == 'meat' do |m| <p>
 <p> m.each do |f| </p>
+  <h3 data-magellan-destination="extras">Extras</h3>
+<a name="extras"></a>
+
 
 <h4> Meats </h4>
 <p> f.name        </p>
