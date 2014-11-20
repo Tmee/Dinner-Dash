@@ -4,12 +4,15 @@ class User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, through: :user_roles
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :username, length: {minimum: 2, maximum: 32,
     too_short: "must have at least %{count} letters",
     too_long: "must have at most %{count} letters"
   }
+
+  before_validation :assign_username
+  before_validation :check_last_name
 
   def is_admin?
     self.roles.any? { |role| role.name == "admin"}
@@ -17,5 +20,15 @@ class User < ActiveRecord::Base
 
   def is_webmaster?
     self.roles.any? { |role| role.name == "webmaster"}
-  end 
+  end
+
+  private
+
+  def assign_username
+    self.username ||= self.first_name
+  end
+
+  def check_last_name
+    self.last_name ||= ""
+  end
 end
