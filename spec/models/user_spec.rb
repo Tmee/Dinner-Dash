@@ -8,7 +8,7 @@ RSpec.describe User, :type => :model do
                 username: "JimJones",
                 password: "password",
                 password_confirmation: "password"
-               )
+    )
   end
 
   it "is valid" do
@@ -34,7 +34,7 @@ RSpec.describe User, :type => :model do
                         email: "test@jones.com",
                         password: "password",
                         password_confirmation: "password"
-                       )
+    )
     expect(user1.username).to eq("Jim")
     expect(user1).to be_valid
   end
@@ -54,14 +54,14 @@ RSpec.describe User, :type => :model do
                         username: "Jim",
                         password: "password",
                         password_confirmation: "password"
-                       )
+    )
     user2 = User.create(first_name: "Jim",
                         last_name: "Jones",
                         email: "test@jones.com",
                         username: "Jim",
                         password: "password",
                         password_confirmation: "password"
-                       )
+    )
 
     expect(user2).not_to be_valid
   end
