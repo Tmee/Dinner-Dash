@@ -2,39 +2,59 @@ require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
 
-  let(:valid_attributes) {
+  let(:admin_attributes) { { first_name: "Bruce",
+                             last_name:  "Wayne",
+                             email:      "Bruce_Wayne@WayneEnterprises.com",
+                             username:   "webmaster",
+                             password:   "password" }
+  }
+
+  let(:valid_attributes) do
     { first_name: "Jim",
       last_name: "Jones",
       email: "jimmy@jones.com",
       username: "Jim",
       password: "password",
       password_confirmation: "password" }
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     { first_name: nil,
       last_name: nil,
       email: nil,
       username: nil,
       password: nil,
       password_confirmation: nil}
+  end
+
+  let(:admin_user) {
+    User.new(admin_attributes).tap do |admin|
+      admin.roles = [Role.create(name: "webmaster"), Role.create(name: "admin")]
+      admin.save!
+    end
   }
 
-  let(:valid_session) { {} }
+  let(:user) do
+    User.create valid_attributes
+  end
+
+  # let(:valid_session) { {} }
+
+  before(:each) do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
+  end
 
   describe "GET index" do
     it "assigns all users as @users" do
-      user = User.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:users)).to eq([user])
+      get :index, {}
+      expect(assigns(:users)).to eq([admin_user])
     end
   end
 
   describe "GET show" do
     it "assigns the requested user as @user" do
-      user = User.create! valid_attributes
-      get :show, {:id => user.to_param}, valid_session
-      expect(assigns(:user)).to eq(user)
+      get :show, {:id => user.to_param}
+      expect(assigns(:user)).to eq(admin_user)
     end
   end
 
@@ -47,7 +67,6 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "GET edit" do
     it "assigns the requested user as @user" do
-      user = User.create! valid_attributes
       get :edit, {:id => user.to_param}, valid_session
       expect(assigns(:user)).to eq(user)
     end
@@ -99,7 +118,6 @@ RSpec.describe UsersController, :type => :controller do
       }
 
       it "updates the requested user" do
-        user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => new_attributes}, valid_session
         user.reload
         expect(user.first_name).to eq("NewName")
@@ -108,13 +126,11 @@ RSpec.describe UsersController, :type => :controller do
       end
 
       it "assigns the requested user as @user" do
-        user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
         expect(assigns(:user)).to eq(user)
       end
 
       it "redirects to the user" do
-        user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
         expect(response).to redirect_to(user)
       end
@@ -122,13 +138,11 @@ RSpec.describe UsersController, :type => :controller do
 
     describe "with invalid params" do
       it "assigns the user as @user" do
-        user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => invalid_attributes}, valid_session
         expect(assigns(:user)).to eq(user)
       end
 
       it "re-renders the 'edit' template" do
-        user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
@@ -137,14 +151,12 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "DELETE destroy" do
     it "destroys the requested user" do
-      user = User.create! valid_attributes
       expect {
         delete :destroy, {:id => user.to_param}, valid_session
       }.to change(User, :count).by(-1)
     end
 
     it "redirects to the users list" do
-      user = User.create! valid_attributes
       delete :destroy, {:id => user.to_param}, valid_session
       expect(response).to redirect_to(users_url)
     end
