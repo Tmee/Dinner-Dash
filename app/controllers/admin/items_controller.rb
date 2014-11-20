@@ -1,7 +1,7 @@
-class ItemsController < ApplicationController
+class Admin:ItemsController < Admin::BaseAdminController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   layout 'admin'
-  
+
     def index
       @items = Item.all
       @all_fillings = Filling.all 

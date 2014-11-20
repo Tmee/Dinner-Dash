@@ -11,6 +11,6 @@ class Item < ActiveRecord::Base
   end
 
   def image_name
-    "#{name.downcase.tr(' ', '_')}.jpg"
+    "menu/items/#{name.downcase.tr(' ', '_')}.jpg"
   end
 end
