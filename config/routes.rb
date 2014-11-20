@@ -2,13 +2,12 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :users
-  resources :admin, only: [:index]
+  get '/admin', to: 'admin/base_admin#index', as: :admin_index
+
   resources :home, only: [:index]
 
-  scope 'admin' do
-    resources :items, :fillings
-    get   '/menu',   to: "admin#menu"
+  namespace 'admin' do
+    resources :items, :fillings, :users
   end
 
   get '/login',     to: 'sessions#new'
