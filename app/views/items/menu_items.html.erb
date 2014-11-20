@@ -23,134 +23,46 @@
 <h3 data-magellan-destination="burrito">Burrito</h3>
 <a name="burrito"></a>
 
-<p> if fillings.food_group == 'meat' do |m| <p>
-<p> m.each do |f| </p>
-
 <h4> Meats </h4>
-<p> f.name        </p>
-<p> f.description </p>
 
-<p> if fillings.food_group == 'veggie' do |v| <p>
-<p> v.each do |f| </p>
+<% @meats.each do |m| %>
+
+
+<%= m.title %><br/><br/>
+<%= m.description %><br/><br/>
+
+<%end%>
+
 
 <h4> Veggies </h4>
-<p> f.name        </p>
-<p> f.description </p>
 
-<p> if fillings.food_group == 'salsa' do |s| <p>
-<p> s.each do |f| </p>
-
-<h4> Salsas </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-<p> if fillings.food_group == 'extra' do |e| <p>
-<p> e.each do |f| </p>
-
-<h4> Extras </h4>
-<p> f.name        </p>
-<p> f.description </p>
+<% @veggies.each do |m| %>
 
 
-<h3 data-magellan-destination="taco">Taco</h3>
-<a name="taco"></a>
+<%= m.title %><br/><br/>
+<%= m.description %><br/><br/>
 
-<p> if fillings.food_group == 'meat' do |m| <p>
-<p> m.each do |f| </p>
-
-<h4> Meats </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-
-<p> if fillings.food_group == 'veggie' do |v| <p>
-<p> v.each do |f| </p>
-
-<h4> Veggies </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-<p> if fillings.food_group == 'salsa' do |s| <p>
-<p> s.each do |f| </p>
+<%end%>
 
 <h4> Salsas </h4>
-<p> f.name        </p>
-<p> f.description </p>
 
-<p> if fillings.food_group == 'extra' do |e| <p>
-<p> e.each do |f| </p>
-
-<h4> Extras </h4>
-<p> f.name        </p>
-<p> f.description </p>
+<% @salsas.each do |m| %>
 
 
+<%= m.title %><br/><br/>
+<%= m.description %><br/><br/>
 
-<h3 data-magellan-destination="burrito_bowl">Burrito Bowl</h3>
-<a name="burrito_bowl"></a>
-
-<p> if fillings.food_group == 'meat' do |m| <p>
-<p> m.each do |f| </p>
-
-<h4> Meats </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-<p> if fillings.food_group == 'veggie' do |v| <p>
-<p> v.each do |f| </p>
-
-<h4> Veggies </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-<p> if fillings.food_group == 'salsa' do |s| <p>
-<p> s.each do |f| </p>
-
-<h4> Salsas </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-<p> if fillings.food_group == 'extra' do |e| <p>
-<p> e.each do |f| </p>
+<%end%>
 
 <h4> Extras </h4>
-<p> f.name        </p>
-<p> f.description </p>
+
+<% @extras.each do |m| %>
 
 
+<%= m.title %><br/><br/>
+<%= m.description %><br/><br/>
 
-<h3 data-magellan-destination="quesadilla">Quesadilla</h3>
-<a name="quesadilla"></a>
+<%end%>
 
-<p> if fillings.food_group == 'meat' do |m| <p>
-<p> m.each do |f| </p>
-
-<h4> Meats </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-<p> if fillings.food_group == 'veggie' do |v| <p>
-<p> v.each do |f| </p>
-
-<h4> Veggies </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-<p> if fillings.food_group == 'salsa' do |s| <p>
-<p> s.each do |f| </p>
-
-<h4> Salsas </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-<p> if fillings.food_group == 'extra' do |e| <p>
-<p> e.each do |f| </p>
-
-<h4> Extras </h4>
-<p> f.name        </p>
-<p> f.description </p>
-
-
-</div>
 
 </body>
