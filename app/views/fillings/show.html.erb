@@ -4,6 +4,8 @@
 
 <% if @filling.image.exists? %>
   <%= image_tag @filling.image.url %><br/>
+  <% else %>
+  <%= image_tag "steak.jpg" %>
 <% end %>
 
 <ul>

@@ -21,12 +21,12 @@ gem 'faker'
 gem 'paperclip'
 
 group :development, :test do
+  gem 'nokogiri'
   gem 'rspec-rails'
   gem 'better_errors'
   gem 'pry'
   gem 'capybara'
   gem 'selenium'
-  gem 'nokogiri'
   gem 'binding_of_caller'
 end
 
