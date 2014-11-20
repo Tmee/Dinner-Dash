@@ -19,22 +19,20 @@
     <%= f.label :price %><br>
     <%= f.number_field :price %>
   </div>
+
+  
+  <% for filling in Filling.all %>
+  <div>
+    <%= check_box_tag "item[filling_ids][]", filling.id, @item.fillings.include?(filling) %>
+    <%= filling.title %>
+  </div>
+  <% end %>
+  <div>
     <%= f.submit %>
   </div>
 <% end %>
 
 
-  <div> 
-   <%= form_for(@item_fillings) do |d| %>
-    <% @all_fillings.each do |filling| %>
-    <%= d.multi_select(:fillings) %>
-    <%= d.label(:fillings, "#{filling.title}") %>
-   <% end %>
-  </div>
-    <%= f.submit %>
-  </div>
-
- <% end %>
 
   </div>
 
