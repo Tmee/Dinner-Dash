@@ -1,4 +1,4 @@
-<%= form_for(@item, html: {multipart: true}) do |f| %>
+<%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -19,9 +19,22 @@
     <%= f.label :price %><br>
     <%= f.number_field :price %>
   </div>
-  <div>
-    This is where a some sort of ingredient form will go to indicate which ingredients belong to which categories.
-  <div>
     <%= f.submit %>
   </div>
 <% end %>
+
+
+  <div> 
+   <%= form_for(@item_fillings) do |d| %>
+    <% @all_fillings.each do |filling| %>
+    <%= d.multi_select(:fillings) %>
+    <%= d.label(:fillings, "#{filling.title}") %>
+   <% end %>
+  </div>
+    <%= f.submit %>
+  </div>
+
+ <% end %>
+
+  </div>
+
