@@ -13,13 +13,11 @@ class Seed
       first_name: "Rachel",
       last_name:  "Warbelow",
       email:      "demo+rachel@jumpstartlab.com",
-      username:   "temp",
       password:   "password"
     )
 
     User.create!(
       first_name: "Jeff",
-      last_name:  "temp",
       email:      "demo+jeff@jumpstartlab.com",
       username:   "j3",
       password:   "password"
