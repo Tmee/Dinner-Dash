@@ -1,6 +1,7 @@
 class FillingsController < ApplicationController
 
   before_action :set_filling, only: [:show, :edit, :update, :destroy]
+  layout 'admin'
 
   def index
     @fillings = Filling.all
