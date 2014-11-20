@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
     def update
       @all_fillings = Filling.all
       if @item.update_attributes(item_params)
+        @item.filling_ids = params[:item][:filling_ids]
         redirect_to item_path(@item), notice: "You have updated a product."
       else
         flash.now[:alert] = "The product was not updated. Please try again."
@@ -80,7 +81,7 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-      params.require(:item).permit(:name, :price, :filling_list)
+      params.require(:item).permit(:name, :price, :filling_ids)
     end
 
     def set_item
