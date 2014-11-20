@@ -3,7 +3,12 @@
 <h1><%= @item.name %></h1>
 
 <ul>
-  <li><%= @item.price%></li>
+  <li>Price: $<%= @item.price / 100 %></li>
+  <li>Available Fillings:</li>
+  <ul>
+    <% @filling_names.each do |filling|%>
+      <li><%= filling %></li>
+    <% end %>  
 <ul>
   <li><%= link_to 'Edit', edit_item_path(@item) %></li>
   <li><%= link_to 'Back', items_path %></li>

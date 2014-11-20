@@ -29,7 +29,7 @@ class FillingsController < ApplicationController
 
   def update
     if @filling.update_attributes(filling_params)
-      redirect_to filling_path(@filling), notice: "You have updated an filling."
+      redirect_to filling_path(@filling), notice: "You have updated a filling."
     else
       flash.now[:alert] = "The filling was not updated. Please try again."
       render :edit
@@ -48,6 +48,6 @@ class FillingsController < ApplicationController
     end
 
     def filling_params
-      params.require(:filling).permit(:title, :description, :price, :food_group)
+      params.require(:filling).permit(:title, :description, :price, :food_group, :image)
     end
 end

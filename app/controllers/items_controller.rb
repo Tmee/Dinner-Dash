@@ -3,16 +3,20 @@ class ItemsController < ApplicationController
 
     def index
       @items = Item.all
+      @all_fillings = Filling.all 
     end
 
     def show
+      @filling_names = @item.fillings.map {|filling| filling.title }
     end
 
     def new
       @item = Item.new
+      @all_fillings = Filling.all 
     end
 
     def edit
+      @all_fillings = Filling.all 
     end
 
     def create
@@ -27,12 +31,14 @@ class ItemsController < ApplicationController
     end
 
     def update
+      @all_fillings = Filling.all
       if @item.update_attributes(item_params)
         redirect_to item_path(@item), notice: "You have updated a product."
       else
         flash.now[:alert] = "The product was not updated. Please try again."
         render :edit
       end
+
     end
 
     def destroy
@@ -73,7 +79,7 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-      params.require(:item).permit(:name, :price)
+      params.require(:item).permit(:name, :price, :filling_list)
     end
 
     def set_item
