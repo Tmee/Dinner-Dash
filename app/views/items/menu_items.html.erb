@@ -1,6 +1,8 @@
 <body>
 
-<div class="large-9 medium-8 columns">
+
+<h1>~ Menu ~</h1>
+
 
 <div class="magellan-container" data-magellan-expedition="fixed" data-options="destination_threshold:65;throttle_delay:0;" style="">
   <dl class="sub-nav">
@@ -15,59 +17,133 @@
 <script src="js/foundation/foundation.magellan.js"></script>
 <hr>
 
+<p>Choose a vessel, then find any fillings you like to add to it!</p>
 
-<h1>Fillings</h1>
+<h2>Which will you choose?</h2>
+
+<h3><a href='#'>Burritos</a></h3>
+<h3><a href='#'>Tacos</a></h3>
+<h3><a href='#'>Burritos Bowls</a></h3>
+<h3><a href='#'>Quesadillas</a></h3><br/>
+
+<h2>Fillings</h2><br/>
 
 
 
 <h3 data-magellan-destination="meats">Meats</h3>
 <a name="meats"></a>
 
+  <div class="row">
+    <div class="large-5 columns">
+      <% @meats.each_with_index do |m, index| %>
+      <% if index <= 1  %>
+      <h4><%= m.title %></h4>
+      <p><%= m.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+      <%end%><%end%>
+    </div>
 
-<% @meats.each do |m| %>
-
-
-<%= m.title %><br/><br/>
-<%= m.description %><br/><br/>
-
-<%end%>
+    <div class="large-5 columns">
+       <% @meats.each_with_index do |m, index| %>
+       <% if index > 1  %>
+      <h4><%= m.title %></h4>
+      <p><%= m.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+       <%end%><%end%>
+    </div>
+  </div><br/>
 
 <h3 data-magellan-destination="veggies">Veggies</h3>
 <a name="veggies"></a>
 
+  <div class="row">
+    <div class="large-5 columns">
+      <% @veggies.each_with_index do |v, index| %>
+      <% if index <= 1  %>
+      <h4><%= v.title %></h4>
+      <p><%= v.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+      <%end%><%end%>
+    </div>
 
-<% @veggies.each do |m| %>
-
-
-<%= m.title %><br/><br/>
-<%= m.description %><br/><br/>
-
-<%end%>
+    <div class="large-5 columns">
+       <% @veggies.each_with_index do |v, index| %>
+       <% if index == 2 || index == 3   %>
+      <h4><%= v.title %></h4>
+      <p><%= v.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+       <%end%><%end%>
+    </div>
+     <div class="large-5 columns">
+       <% @veggies.each_with_index do |v, index| %>
+       <% if index == 4  %>
+      <h4><%= v.title %></h4>
+      <p><%= v.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+       <%end%><%end%>
+      </div>
+  </div><br/>
 
 <h3 data-magellan-destination="salsas">Salsas</h3>
 <a name="salsas"></a>
 
+ <div class="row">
+    <div class="large-5 columns">
+      <% @salsas.each_with_index do |s, index| %>
+      <% if index <= 1  %>
+      <h4><%= s.title %></h4>
+      <p><%= s.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+      <%end%><%end%>
+    </div>
 
-
-<% @salsas.each do |m| %>
-
-
-<%= m.title %><br/><br/>
-<%= m.description %><br/><br/>
-
-<%end%>
+    <div class="large-5 columns">
+       <% @salsas.each_with_index do |s, index| %>
+       <% if index == 2 || index == 3   %>
+      <h4><%= s.title %></h4>
+      <p><%= s.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+       <%end%><%end%>
+    </div>
+     <div class="large-5 columns">
+       <% @salsas.each_with_index do |s, index| %>
+       <% if index == 4  %>
+      <h4><%= s.title %></h4>
+      <p><%= s.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+       <%end%><%end%>
+      </div>
+  </div><br/>
 
 <h3 data-magellan-destination="extras">Extras</h3>
 <a name="extras"></a>
 
+ <div class="row">
+    <div class="large-5 columns">
+      <% @extras.each_with_index do |e, index| %>
+      <% if index <= 1  %>
+      <h4><%= e.title %></h4>
+      <p><%= e.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+      <%end%><%end%>
+    </div>
 
-<% @extras.each do |m| %>
-
-
-<%= m.title %><br/><br/>
-<%= m.description %><br/><br/>
-
-<%end%>
-
-
+    <div class="large-5 columns">
+       <% @extras.each_with_index do |e, index| %>
+       <% if index == 2 || index == 3   %>
+      <h4><%= e.title %></h4>
+      <p><%= e.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+       <%end%><%end%>
+    </div>
+     <div class="large-5 columns">
+       <% @extras.each_with_index do |e, index| %>
+       <% if index == 4  %>
+      <h4><%= e.title %></h4>
+      <p><%= e.description %></p>
+      <img src="http://placehold.it/400x300&text=[img]"/>
+       <%end%><%end%>
+      </div>
+  </div><br/>
+</div>
 </body>
