@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'users#home'
+  root 'home#index'
 
   resources :users
   resources :admin, only: [:index]
+  resources :home, only: [:index]
 
   scope 'admin' do
     resources :items, :fillings

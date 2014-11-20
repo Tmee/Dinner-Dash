@@ -1,4 +1,5 @@
 class FillingsController < ApplicationController
+
   before_action :set_filling, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -47,6 +48,6 @@ class FillingsController < ApplicationController
     end
 
     def filling_params
-      params.require(:filling).permit(:title, :description, :price, :food_group, :image)
+      params.require(:filling).permit(:title, :description, :price, :food_group)
     end
 end
