@@ -1,6 +1,4 @@
 
-
-=======
 <h1>Listing users</h1>
 
 <table>
@@ -11,7 +9,7 @@
       <th>Email</th>
       <th>Username</th>
       <th>User Group</th>
-      <th></th>
+      <th>Do Shit</th> 
     </tr>
   </thead>
 
@@ -22,7 +20,7 @@
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
         <td><%= user.username %></td>
-        <td></td>
+        <td><%= user.roles.map {|role| role.name }.join(" ") %></td>
         <td>
           <ul>
             <li><%= link_to 'Show', user %></li>
@@ -38,4 +36,3 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
->>>>>>> master

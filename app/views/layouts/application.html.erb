@@ -13,44 +13,66 @@
   <body>
 
     <div class="row">
-      <div class="large-9 columns">
+      <div class="large-12 columns">
         <h1><a href="/">Los Amigos Gordos</a></h1>
         <p>Custom Food, Made Fresh</p>
       </div>
 
+      <% if current_user %>
+      <div class="small-3 columns">
+        <%= link_to "Sign Out", logout_path, method: :delete %>
+      </div>
+      <% else %>
 
-      <form action="/login" method='POST' class="row-right"/>
-        <div class="row">
-          <div class="large-15 columns">
+        <%= form_tag login_path do %>
+
+          <div class="row-right">
+          <div class="large-12
+           columns">
             <div class="row collapse">
-              <div class="small-4 columns">
-                <input type="text" placeholder="Username" name="username"/>
+
+            <% if flash[:error] %>
+              <div class="small-3 columns">
+                <%= text_field_tag :username, nil, placeholder: "Username" %>
               </div>
               <div class="small-3 columns">
-                <input type="password" placeholder="Password" name="password"/>
+                <%= password_field_tag :password, nil, placeholder:  "Password" %>
               </div>
-              <div class="small-5 columns">
+
+              <div class="small-6 columns">
                 <ul class="stack-for-small button-group">
-                  <li><input type="submit" value="Log in" class="tiny button"></li></form>
+                  <li><input type='submit' class="tiny button" value="Log in"></li>
                   <li><a href="/register" class="tiny button">Sign Up!</a></li>
                 </ul>
               </div>
+              <div class="small-5 columns">
+                <small class="error">Invalid entry</small>
+              </div>
+            <% else %>
+              <div class="small-3 columns">
+                <%= text_field_tag :username, nil, placeholder: "Username" %>
+              </div>
+              <div class="small-3 columns">
+                <%= password_field_tag :password, nil, placeholder:  "Password" %>
+              </div>
+              <div class="small-6 columns">
+                <ul class="stack-for-small button-group">
+                  <li><input type='submit' class="tiny button" value="Log in"></li><%end%>
+                  <li><a href="/register" class="tiny button">Sign Up!</a></li>
+                </ul>
+              </div>
+            <% end %>
+
+          <% end %>
+
             </div>
           </div>
         </div><hr>
 
-
-
-
-
+        <p id="notice"><%= notice %></p>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
-
-
-
-
-
 
   </body>
 
@@ -59,11 +81,11 @@
       <hr/>
       <div class="row">
         <div class="large-6 columns">
-          <p>© Copyright no one at all. Go to town.</p>
+          <p>© Amigos Gordos Restaurant, 2014</p>
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
-            <li><a href="#">Link 1</a></li>
+            <li><%= link_to "Admin", admin_index_path %></li>
             <li><a href="#">Link 2</a></li>
             <li><a href="#">Link 3</a></li>
             <li><a href="#">Link 4</a></li>
@@ -73,6 +95,3 @@
     </div>
   </footer>
 </html>
-
-
-

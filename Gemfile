@@ -27,4 +27,6 @@ group :development, :test do
   gem 'pry'
   gem 'capybara'
   gem 'selenium'
+  gem 'nokogiri'
+  gem 'binding_of_caller'
 end
