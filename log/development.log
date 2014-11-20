@@ -75398,3 +75398,472 @@ ActionController::RoutingError (No route matches [GET] "/js/foundation/foundatio
   [1m[35m (12.1ms)[0m  SELECT version FROM "schema_migrations"
   [1m[36m (5.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141119184043')[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.1ms)[0m  DROP TABLE "fillings"
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "fillings" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" integer DEFAULT 0, "created_at" timestamp, "updated_at" timestamp, "food_group" character varying(255), "image_file_name" character varying(255), "image_content_type" character varying(255), "image_file_size" integer, "image_updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  DROP TABLE "items"
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "name" character varying(255), "price" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "line_item_fillings"
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "line_item_fillings" ("id" serial primary key, "line_item_id" integer, "filling_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.3ms)[0m  DROP TABLE "line_items"
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "line_items" ("id" serial primary key, "order_id" integer, "item_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.5ms)[0m  DROP TABLE "roles"
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "roles" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  DROP TABLE "user_roles"
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "user_roles" ("id" serial primary key, "user_id" integer, "role_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_user_roles_on_role_id" ON "user_roles" USING btree ("role_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX  "index_user_roles_on_user_id" ON "user_roles" USING btree ("user_id")[0m
+  [1m[35m (1.3ms)[0m  DROP TABLE "users"
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "email" character varying(255), "username" character varying(255), "password_digest" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.8ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+rachel@jumpstartlab.com' LIMIT 1[0m
+  [1m[35mSQL (13.0ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:14:38.569950"], ["email", "demo+rachel@jumpstartlab.com"], ["first_name", "Rachel"], ["last_name", "Warbelow"], ["password_digest", "$2a$10$lKTB3OgNom0HXFgiZJN0bO02gHsqi8fkckdTS3MvH8hz44KG6ucCi"], ["updated_at", "2014-11-20 16:14:38.569950"], ["username", "Rachel"]]
+  [1m[36m (5.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+jeff@jumpstartlab.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:14:38.666903"], ["email", "demo+jeff@jumpstartlab.com"], ["first_name", "Jeff"], ["last_name", ""], ["password_digest", "$2a$10$RQz4n/5WNHLCmuIlkTZN9.m5tVZzs10nKRO0yi3GU7xJMx6Gr8uZW"], ["updated_at", "2014-11-20 16:14:38.666903"], ["username", "j3"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+jorge@jumpstartlab.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:14:38.744131"], ["email", "demo+jorge@jumpstartlab.com"], ["first_name", "Jorge"], ["last_name", "Tellez"], ["password_digest", "$2a$10$tT5ezrrEIAc2o5VNMiOcuesXvN9u7lPVFbfHHnRNA8wmhYjbxhpqu"], ["updated_at", "2014-11-20 16:14:38.744131"], ["username", "novohispano"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'demo+josh@jumpstartlab.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:14:38.821688"], ["email", "demo+josh@jumpstartlab.com"], ["first_name", "Josh"], ["last_name", "Cheek"], ["password_digest", "$2a$10$kqCZFBV8RQyWbdgfUmxoSO/Bb7eJpH22UHESziJQRfHgq6G68UHla"], ["updated_at", "2014-11-20 16:14:38.821688"], ["username", "josh"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'Bruce_Wayne@WayneEnterprises.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", "2014-11-20 16:14:38.895561"], ["email", "Bruce_Wayne@WayneEnterprises.com"], ["first_name", "Bruce"], ["last_name", "Wayne"], ["password_digest", "$2a$10$UPKaBdtHfMKGYBTac2bDCuLB.WsUG9tQgDtbAzEXqv6U/u67952Yu"], ["updated_at", "2014-11-20 16:14:38.895561"], ["username", "webmaster"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.4ms)[0m  [1mINSERT INTO "roles" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:38.903672"], ["name", "admin"], ["updated_at", "2014-11-20 16:14:38.903672"]]
+  [1m[35m (6.1ms)[0m  COMMIT
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (18.4ms)[0m  [1mINSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:38.948822"], ["role_id", 1], ["updated_at", "2014-11-20 16:14:38.948822"], ["user_id", 4]]
+  [1m[35m (4.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "roles" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-20 16:14:38.974292"], ["name", "webmaster"], ["updated_at", "2014-11-20 16:14:38.974292"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mRole Load (0.5ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "user_roles" ON "roles"."id" = "user_roles"."role_id" WHERE "user_roles"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-20 16:14:38.978697"], ["role_id", 2], ["updated_at", "2014-11-20 16:14:38.978697"], ["user_id", 5]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "user_roles" ("created_at", "role_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:38.980030"], ["role_id", 1], ["updated_at", "2014-11-20 16:14:38.980030"], ["user_id", 5]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Burrito' LIMIT 1
+  [1m[36mSQL (6.3ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:38.988643"], ["name", "Burrito"], ["price", 500], ["updated_at", "2014-11-20 16:14:38.988643"]]
+  [1m[35m (5.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Burrito Bowl' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.003657"], ["name", "Burrito Bowl"], ["price", 175], ["updated_at", "2014-11-20 16:14:39.003657"]]
+  [1m[35m (5.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Torta' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.011358"], ["name", "Torta"], ["price", 400], ["updated_at", "2014-11-20 16:14:39.011358"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Taco' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.014083"], ["name", "Taco"], ["price", 100], ["updated_at", "2014-11-20 16:14:39.014083"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Quesadilla' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.016350"], ["name", "Quesadilla"], ["price", 250], ["updated_at", "2014-11-20 16:14:39.016350"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Tamale' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.019037"], ["name", "Tamale"], ["price", 200], ["updated_at", "2014-11-20 16:14:39.019037"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."name" = 'Salad' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "name", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.021796"], ["name", "Salad"], ["price", 300], ["updated_at", "2014-11-20 16:14:39.021796"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Steak' LIMIT 1
+  [1m[36mSQL (5.9ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.035099"], ["description", "It's meat. From an animal."], ["food_group", "meat"], ["price", 100], ["title", "Steak"], ["updated_at", "2014-11-20 16:14:39.035099"]]
+  [1m[35m (6.2ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.4ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Chicken' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.052006"], ["description", "Made from home made chickens."], ["food_group", "meat"], ["price", 70], ["title", "Chicken"], ["updated_at", "2014-11-20 16:14:39.052006"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Barbacoa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.054521"], ["description", "We think it's from goats."], ["food_group", "meat"], ["price", 200], ["title", "Barbacoa"], ["updated_at", "2014-11-20 16:14:39.054521"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Carnitas' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.056655"], ["description", "Pork."], ["food_group", "meat"], ["price", 150], ["title", "Carnitas"], ["updated_at", "2014-11-20 16:14:39.056655"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Sofritas' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.058742"], ["description", "It's toe and fu."], ["food_group", "veggie"], ["price", 150], ["title", "Sofritas"], ["updated_at", "2014-11-20 16:14:39.058742"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Fajita Vegetables' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.060863"], ["description", "It has some different peppers."], ["food_group", "veggies"], ["price", 100], ["title", "Fajita Vegetables"], ["updated_at", "2014-11-20 16:14:39.060863"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Black Beans' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.063170"], ["description", "They are black."], ["food_group", "veggies"], ["title", "Black Beans"], ["updated_at", "2014-11-20 16:14:39.063170"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Pinto Beans' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.065457"], ["description", "They are very pinto."], ["food_group", "veggies"], ["title", "Pinto Beans"], ["updated_at", "2014-11-20 16:14:39.065457"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'White Rice' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.067766"], ["description", "It's white and has cilantro."], ["food_group", "veggies"], ["title", "White Rice"], ["updated_at", "2014-11-20 16:14:39.067766"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Brown Rice' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.070164"], ["description", "It's brown."], ["food_group", "veggies"], ["title", "Brown Rice"], ["updated_at", "2014-11-20 16:14:39.070164"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Fresh Tomato Salsa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.072390"], ["description", "Diced tomatoes and other bits."], ["food_group", "salsas"], ["title", "Fresh Tomato Salsa"], ["updated_at", "2014-11-20 16:14:39.072390"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Roasted Chili-Corn Salsa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.074897"], ["description", "Sweet white corn."], ["food_group", "salsas"], ["title", "Roasted Chili-Corn Salsa"], ["updated_at", "2014-11-20 16:14:39.074897"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Tomatillo-Green Chili Salsa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.077625"], ["description", "Fire-roasted tomatillos? Yes please."], ["food_group", "salsas"], ["title", "Tomatillo-Green Chili Salsa"], ["updated_at", "2014-11-20 16:14:39.077625"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Tomatillo-Red Chili Salsa' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.080566"], ["description", "It's like the other sauce but with tabasco. Hot hot hot."], ["food_group", "salsas"], ["title", "Tomatillo-Red Chili Salsa"], ["updated_at", "2014-11-20 16:14:39.080566"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Cheese' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.083326"], ["description", "Literally, the best ever."], ["food_group", "extras"], ["title", "Cheese"], ["updated_at", "2014-11-20 16:14:39.083326"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Guacamole' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.086137"], ["description", "It's no longer avocados. It's better now."], ["food_group", "extras"], ["title", "Guacamole"], ["updated_at", "2014-11-20 16:14:39.086137"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.4ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Sour Cream' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.092161"], ["description", "It's sour and cream."], ["food_group", "extras"], ["title", "Sour Cream"], ["updated_at", "2014-11-20 16:14:39.092161"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.3ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Queso' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.096768"], ["description", "It's some melted cheese."], ["food_group", "extras"], ["price", 50], ["title", "Queso"], ["updated_at", "2014-11-20 16:14:39.096768"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Queso Diablo' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.099160"], ["description", "It's some, spicy, melted cheese."], ["food_group", "extras"], ["price", 75], ["title", "Queso Diablo"], ["updated_at", "2014-11-20 16:14:39.099160"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFilling Exists (0.2ms)[0m  SELECT  1 AS one FROM "fillings"  WHERE "fillings"."title" = 'Lettuce' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "fillings" ("created_at", "description", "food_group", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-20 16:14:39.101258"], ["description", "Just some romaine."], ["food_group", "extras"], ["title", "Lettuce"], ["updated_at", "2014-11-20 16:14:39.101258"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-20 09:23:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 5949ms (Views: 5929.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/admin.css?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.slider.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation/foundation.equalizer.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-11-20 09:23:54 -0700
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2014-11-20 09:23:55 -0700
+
+
+Started GET "/menu" for 127.0.0.1 at 2014-11-20 09:24:01 -0700
+Processing by ItemsController#menu_items as HTML
+  Rendered items/menu_items.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 382ms (Views: 381.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/js/vendor/jquery.js" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+ActionController::RoutingError (No route matches [GET] "/js/vendor/jquery.js"):
+  actionpack (4.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.7) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.7) lib/rails/engine.rb:514:in `call'
+  railties (4.1.7) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.4ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (50.4ms)
+
+
+Started GET "/js/foundation/foundation.js" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+ActionController::RoutingError (No route matches [GET] "/js/foundation/foundation.js"):
+  actionpack (4.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.7) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.7) lib/rails/engine.rb:514:in `call'
+  railties (4.1.7) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (26.1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/js/foundation/foundation.magellan.js" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+ActionController::RoutingError (No route matches [GET] "/js/foundation/foundation.magellan.js"):
+  actionpack (4.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.7) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.7) lib/rails/engine.rb:514:in `call'
+  railties (4.1.7) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Tim_Mee/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/Tim_Mee/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (24.1ms)
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.slider.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation/foundation.equalizer.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-20 09:24:02 -0700
