@@ -1,6 +1,8 @@
 ## Dinner Dash
-<h2> Turing School Module 2 </h2>
-<h3> Los Gordos Anigos</h3>
+<h2>Los Gordos Anigos</h2>
+<h3>Turing School Module 2</h3>
+<h4>Timothy Mee  ---  Sam Kuhlman  ---  Herbert  ---  Travis </h4>
+
 Hola! Welcome to the source repo for Los Amigos Gordos!
 
 Los Amigos Gordos is an imaginary restaurant created by
