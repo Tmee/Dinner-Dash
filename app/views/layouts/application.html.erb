@@ -22,64 +22,41 @@
       </div>
 
       <% if current_user %>
-      <div class="small-3 columns">
-        <%= link_to "Sign Out", logout_path, method: :delete %>
-      </div>
+        <div class="small-3 columns">
+          <%= link_to "Sign Out", logout_path, method: :delete %>
+        </div>
       <% else %>
-
         <%= form_tag login_path do %>
-
           <div class="row-right">
-          <div class="large-12
-           columns">
-            <div class="row collapse">
-
-            <% if flash[:error] %>
-              <div class="small-3 columns">
-                <%= text_field_tag :username, nil, placeholder: "Username" %>
-              </div>
-              <div class="small-3 columns">
-                <%= password_field_tag :password, nil, placeholder:  "Password" %>
-              </div>
-
-              <div class="small-6 columns">
-                <ul class="stack-for-small button-group">
-                  <li><input type='submit' class="tiny button" value="Log in"></li>
-                  <li><a href="/register" class="tiny button">Sign Up!</a></li>
-                </ul>
-              </div>
-              <div class="small-5 columns">
-                <small class="error">Invalid entry</small>
-              </div>
-            <% else %>
-              <div class="small-3 columns">
-                <%= text_field_tag :username, nil, placeholder: "Username" %>
-              </div>
-              <div class="small-3 columns">
-                <%= password_field_tag :password, nil, placeholder:  "Password" %>
-              </div>
-              <div class="small-6 columns">
-                <ul class="stack-for-small button-group">
-                  <li><input type='submit' class="tiny button" value="Log in"></li><%end%>
-                  <li><a href="/register" class="tiny button">Sign Up!</a></li>
-                </ul>
-              </div>
+            <div class="large-12 columns">
+              <div class="row collapse">
+                <form data-abide>
+                  <div class="small-3 columns">
+                    <input type="text" name="username" placeholder="Username" required>
+                  </div>
+                  <div class="small-3 columns">
+                    <input type="password" name="password" placeholder="Password"required>
+                  </div>
+                <div class="small-6 columns">
+                  <ul class="stack-for-small button-group">
+                    <li><input type='submit' class="tiny button" value="Log in"></li>
+                    <li><a href="/register" class="tiny button">Sign Up!</a></li>
+                  </ul>
+                </div>
+                </form>
+              <% end %>
             <% end %>
-
-          <% end %>
-
-            </div>
           </div>
-        </div><hr>
+        </div>
+      </div><hr>
 
-        <p id="notice"><%= notice %></p>
 
-        <%if flash[:alert]  %>
-          <div data-alert class="alert-box success radius">
-            This is a success alert with a radius.
-            <a href="#" class="close">&times;</a>
-          </div>
-        <%end%>
+    <%if flash[:alert]  %>
+      <div data-alert class="alert-box success radius">
+        You have logged out, Come back soon!
+        <a href="#" class="close">&times;</a>
+      </div>
+    <%end%>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
