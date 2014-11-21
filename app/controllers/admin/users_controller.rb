@@ -24,7 +24,8 @@ class Admin::UsersController < Admin::BaseAdminController
       redirect_to @user, notice: "User created. Please log in."
     else
       flash.now[:notice] = "User could not be created."
-      render :new    end
+      render :new
+    end
   end
 
   def update
