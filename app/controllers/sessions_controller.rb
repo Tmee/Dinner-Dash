@@ -4,6 +4,8 @@ class SessionsController < ApplicationController
     @user = User.new
   end
 
+
+
   def create
     user = User.find_by(username: params[:username])
 
@@ -12,8 +14,7 @@ class SessionsController < ApplicationController
       redirect_to :back, notice: "Welcome to Los Amigos Gordos, #{user.first_name}."
     else
       redirect_to root_path
-      flash[:error] = "fuck yourself"
-
+      flash[:error]
     end
   end
 
