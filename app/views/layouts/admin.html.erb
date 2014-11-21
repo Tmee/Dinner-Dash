@@ -63,6 +63,11 @@
   </nav>
 
   <body>
+    <% if current_user %>
+      <div class="small-3 columns">
+        <%= link_to "Sign Out", logout_path, method: :delete %>
+      </div>
+    <%end%>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
