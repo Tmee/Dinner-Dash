@@ -35,7 +35,7 @@ class Admin:ItemsController < Admin::BaseAdminController
       @all_fillings = Filling.all
       if @item.update_attributes(item_params)
         @item.filling_ids = params[:item][:filling_ids]
-        redirect_to item_path(@item), notice: "You have updated a product."
+        redirect_to admin_item_path(@item), notice: "You have updated a product."
       else
         flash.now[:alert] = "The product was not updated. Please try again."
         render :edit
@@ -45,7 +45,7 @@ class Admin:ItemsController < Admin::BaseAdminController
 
     def destroy
       @item.destroy
-      redirect_to items_path, notice: "The product was deleted."
+      redirect_to admin_items_path, notice: "The product was deleted."
     end
 
 ######################################

@@ -16,9 +16,9 @@
         <td><%= item.price %></td>
         <td>
           <ul>
-            <li><%= link_to 'Show', admin_item_path %></li>
+            <li><%= link_to 'Show', admin_item_path(item) %></li>
             <li><%= link_to 'Edit', edit_admin_item_path(item) %></li>
-            <li><%= link_to 'Destroy', admin_item_path, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to 'Destroy', admin_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
         </td>
       </tr>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'New Item', new_admin_item_path %>

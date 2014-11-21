@@ -29,7 +29,7 @@ class Admin::UsersController < Admin::BaseAdminController
 
   def update
     if @user.update_attributes(user_params)
-      redirect_to user_path(@user), notice: "You have updated a user."
+      redirect_to admin_user_path(@user), notice: "You have updated a user."
     else
       flash.now[:alert] = "The user was not updated. Please try again."
       render :edit
@@ -38,7 +38,7 @@ class Admin::UsersController < Admin::BaseAdminController
 
   def destroy
     @user.destroy
-    redirect_to users_path, notice: "The user was deleted."
+    redirect_to admin_users_path, notice: "The user was deleted."
   end
 
   private
