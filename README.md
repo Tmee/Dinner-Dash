@@ -1,5 +1,6 @@
-## Los Amigos Gordos
-
+## Dinner Dash
+## Turing School Module 2
+## Los Gordos Anigos
 Hola! Welcome to the source repo for Los Amigos Gordos!
 
 Los Amigos Gordos is an imaginary restaurant created by
