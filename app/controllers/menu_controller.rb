@@ -50,7 +50,7 @@ class MenuController < ApplicationController
 #### View all menu items methods  ####
 ######################################
 
-    def menu_items
+    def index
       @fillings = Filling.all
       @meats    = find_meat_items(@fillings)
       @veggies  = find_veggies_items(@fillings)
