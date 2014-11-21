@@ -1,4 +1,5 @@
 class Admin:ItemsController < Admin::BaseAdminController
+  
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   layout 'admin'
 
