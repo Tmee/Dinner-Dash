@@ -30,7 +30,7 @@ class Admin::FillingsController < Admin::BaseAdminController
 
   def update
     if @filling.update_attributes(filling_params)
-      redirect_to filling_path(@filling), notice: "You have updated a filling."
+      redirect_to admin_filling_path(@filling), notice: "You have updated a filling."
     else
       flash.now[:alert] = "The filling was not updated. Please try again."
       render :edit
@@ -39,7 +39,7 @@ class Admin::FillingsController < Admin::BaseAdminController
 
   def destroy
     @filling.destroy
-    redirect_to fillings_path, notice: "The filling was deleted."
+    redirect_to admin_fillings_path, notice: "The filling was deleted."
   end
 
   private
