@@ -1,5 +1,5 @@
 ## Dinner Dash
-<h2>Los Gordos Anigos</h2>
+<h2>Los Gordos Amigos</h2>
 <h3>Turing School Module 2</h3>
 <h4>Timothy Mee  ---  Sam Kuhlmann  ---  Herbert Joseph ---  Travis Yoder</h4>
 
