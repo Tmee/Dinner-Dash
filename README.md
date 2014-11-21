@@ -1,7 +1,7 @@
 ## Dinner Dash
 <h2>Los Gordos Anigos</h2>
 <h3>Turing School Module 2</h3>
-<h4>Timothy Mee  ---  Sam Kuhlman  ---  Herbert  ---  Travis </h4>
+<h4>Timothy Mee  ---  Sam Kuhlmann  ---  Herbert Joseph ---  Travis Yoder</h4>
 
 Hola! Welcome to the source repo for Los Amigos Gordos!
 
