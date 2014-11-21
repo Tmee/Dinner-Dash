@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to :back, notice: "Welcome to Los Amigos Gordos, #{user.first_name}."
-    else
+     else
       flash[:error] = true
       redirect_to root_path
     end

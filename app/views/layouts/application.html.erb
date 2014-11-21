@@ -22,9 +22,13 @@
       </div>
 
       <% if current_user %>
+        <div class="small-7 columns">
+        <h4 id="notice"><%= notice %></h4>
+        </div>
         <div class="small-3 columns">
           <%= link_to "Sign Out", logout_path, method: :delete %>
         </div>
+
       <% else %>
         <%= form_tag login_path do %>
           <div class="row-right">
