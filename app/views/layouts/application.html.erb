@@ -74,6 +74,13 @@
 
         <p id="notice"><%= notice %></p>
 
+        <%if flash[:alert]  %>
+          <div data-alert class="alert-box success radius">
+            This is a success alert with a radius.
+            <a href="#" class="close">&times;</a>
+          </div>
+        <%end%>
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
 
