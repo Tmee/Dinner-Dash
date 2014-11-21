@@ -27,6 +27,7 @@
     <%= f.label :food_group %><br>
     <%= f.text_field :food_group %>
   </div>
+  <div>
     <% if @filling.image.exists? %>
       <%= image_tag @filling.image.url %><br/>
     <% end %>
