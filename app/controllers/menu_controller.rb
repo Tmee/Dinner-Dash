@@ -9,9 +9,6 @@ class MenuController < ApplicationController
       @all_fillings = Filling.all
     end
 
-
-
-
     def destroy
       @item.destroy
       redirect_to items_path, notice: "The product was deleted."

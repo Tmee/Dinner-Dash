@@ -4,8 +4,6 @@ class SessionsController < ApplicationController
     @user = User.new
   end
 
-
-
   def create
     user = User.find_by(username: params[:username])
 
@@ -23,7 +21,6 @@ class SessionsController < ApplicationController
     flash[:alert] = true
     redirect_to root_path
   end
-
 
   private
 
