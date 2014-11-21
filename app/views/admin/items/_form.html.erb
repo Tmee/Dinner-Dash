@@ -19,6 +19,13 @@
     <%= f.label :price %><br>
     <%= f.number_field :price %>
   </div>
+  <div>
+    <% if @item.image.exists? %>
+      <%= image_tag @item.image.url %><br/>
+    <% end %>
+    <%= f.label :image, "Attach an Image" %><br />
+    <%= f.file_field :image %>
+  </div>
 
   
   <% for filling in Filling.all %>

@@ -22,9 +22,9 @@
         <td><%= filling.food_group %></td>
         <td>
           <ul>
-            <li><%= link_to 'Show', filling %></li>
-            <li><%= link_to 'Edit', edit_filling_path(filling) %></li>
-            <li><%= link_to 'Destroy', filling, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to 'Show', admin_filling %></li>
+            <li><%= link_to 'Edit', edit_admin_filling_path(filling) %></li>
+            <li><%= link_to 'Destroy', admin_filling, method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
         </td>
       </tr>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Filling', new_filling_path %>
+<%= link_to 'New Filling', new_admin_filling_path %>

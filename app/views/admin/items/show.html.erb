@@ -2,6 +2,12 @@
 
 <h1><%= @item.name %></h1>
 
+<% if @item.image.exists? %>
+  <%= image_tag @item.image.url %><br/>
+  <% else %>
+  <%= image_tag "steak.jpg" %>
+<% end %>
+
 <ul>
   <li>Price: $<%= @item.price / 100 %></li>
   <li>Available Fillings:</li>
