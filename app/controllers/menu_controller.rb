@@ -1,10 +1,5 @@
 class MenuController < ApplicationController
 
-    def index
-      @items = Item.all
-      @all_fillings = Filling.all
-    end
-
     def show
       @filling_names = @item.fillings.map {|filling| filling.title }
     end
@@ -14,32 +9,8 @@ class MenuController < ApplicationController
       @all_fillings = Filling.all
     end
 
-    def edit
-      @all_fillings = Filling.all
-    end
 
-    def create
-      @item = Item.new(item_params)
 
-      if @item.save
-        redirect_to @item, notice: "Item created. Please log in."
-      else
-        flash.now[:notice] = "Item could not be created."
-        render :new
-      end
-    end
-
-    def update
-      @all_fillings = Filling.all
-      if @item.update_attributes(item_params)
-        @item.filling_ids = params[:item][:filling_ids]
-        redirect_to item_path(@item), notice: "You have updated a product."
-      else
-        flash.now[:alert] = "The product was not updated. Please try again."
-        render :edit
-      end
-
-    end
 
     def destroy
       @item.destroy
@@ -51,6 +22,7 @@ class MenuController < ApplicationController
 ######################################
 
     def index
+      @items    = Item.all
       @fillings = Filling.all
       @meats    = find_meat_items(@fillings)
       @veggies  = find_veggies_items(@fillings)
