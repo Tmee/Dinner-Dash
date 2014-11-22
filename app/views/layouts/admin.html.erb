@@ -14,7 +14,11 @@
       </li>
       <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
     </ul>
-
+    <% if current_user %>
+      <div class="small-3 columns">
+        <%= link_to "Sign Out", logout_path, method: :delete %>
+      </div>
+    <%end%>
     <section class="top-bar-section">
 
       <ul class="right">
@@ -63,11 +67,7 @@
   </nav>
 
   <body>
-    <% if current_user %>
-      <div class="small-3 columns">
-        <%= link_to "Sign Out", logout_path, method: :delete %>
-      </div>
-    <%end%>
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
