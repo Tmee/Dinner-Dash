@@ -21,7 +21,7 @@ gem 'paperclip'
 
 
 group :development, :test do
-  gem 'simplecov'
+  gem 'simplecov', :require => false, :group => :test
   gem 'nokogiri'
   gem 'rspec-rails'
   gem 'better_errors'
