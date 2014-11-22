@@ -4,6 +4,7 @@ class Seed
     generate_items
     generate_fillings
     generate_orders
+    generate_item_fillings
     # generate_line_items
     # generate_line_item_fillings
   end
@@ -170,6 +171,15 @@ class Seed
     )
 
     puts "Fillings generated!"
+  end
+
+  def generate_item_fillings
+    10.times do |i|
+      item = Item.find(Random.new.rand(1..7))
+      filling = Filling.find(Random.new.rand(1..20))
+      item.fillings << filling
+      puts "#{i}: Added filling #{filling.title} to item #{item.name}."
+    end
   end
 
   def generate_orders
