@@ -51,8 +51,13 @@ RSpec.describe Filling, :type => :model do
     expect(filling2).not_to be_valid
   end
 
-  xit 'is associated with a category' do
-    expect(category).to respond_to(:filling)
+  it 'is associated with a item' do
+    expect(filling).to respond_to(:items)
   end
+
+   it 'is associated with a line item' do
+    expect(filling).to respond_to(:line_items)
+  end
+
 
 end

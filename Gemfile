@@ -20,6 +20,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'paperclip'
 
+
 group :development, :test do
   gem 'nokogiri'
   gem 'rspec-rails'
