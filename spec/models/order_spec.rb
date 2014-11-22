@@ -25,4 +25,8 @@ RSpec.describe Order, :type => :model do
     expect(order).to_not be_valid
   end
 
+  it "is associated with a user" do
+    expect(order).to respond_to(:user)
+  end
+
 end

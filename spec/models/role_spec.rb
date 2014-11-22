@@ -17,4 +17,8 @@ RSpec.describe Role, :type => :model do
     expect(role).to be_valid
   end
 
+  it "is associated with a user" do
+    expect(role).to respond_to(:users)
+  end
+
 end
