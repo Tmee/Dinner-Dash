@@ -17,10 +17,10 @@ gem 'pg'
 gem 'compass-rails'
 gem 'foundation-rails', '~> 5.4.5.0'
 gem 'bcrypt', '~> 3.1.7'
-gem 'faker'
 gem 'paperclip'
 
 group :development, :test do
+  gem 'simplecov'
   gem 'nokogiri'
   gem 'rspec-rails'
   gem 'better_errors'
