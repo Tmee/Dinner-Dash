@@ -1,0 +1,23 @@
+<body>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h1><%= @filling.title %> Details</h1>
+    <p><% if @filling.image.exists? %>
+        <%= image_tag @filling.image.url %>
+        <% end %></p>
+      <ul>
+        <li>Description: <%= @filling.description%></li>
+        <li>Price: <%= @filling.price%></li>
+        <li>Food Group: <%= @filling.food_group%></li>
+        <li>Available in the following menu items:</li>
+        <ul>
+          <% @filling.items.each do |item| %>
+            <li><%= item.name %></li>
+          <% end %>
+        </ul>
+      </ul>
+  </div>
+</div>
+
+</body>
