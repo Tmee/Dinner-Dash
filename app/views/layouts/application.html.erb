@@ -8,7 +8,6 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <h3 data-magellan-destination="top"></h3>
@@ -25,7 +24,7 @@
 
       <% if current_user %>
         <div class="small-7 columns">
-        <h4 id="notice"><%= notice %></h4>
+          <h4 id="notice"><%= notice %></h4>
         </div>
         <div class="small-3 columns">
           <%= link_to "Sign Out", logout_path, method: :delete %>
