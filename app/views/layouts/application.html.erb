@@ -1,6 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1>
+          <a><%= link_to "Home", root_path %></a>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
+    <ul class="title-area">
+      <% if current_user %>
+        <li class="name">
+          <h1><a><%= link_to "Sign out", logout_path, method: :delete%></a></h1>
+        </li>
+      <%end%>
+    </ul>
+     <ul class="title-area">
+      <%if current_user && current_user.is_admin? %>
+       <li class="name">
+          <h1><a><%= link_to "Admin Index", admin_index_path %></a></h1>
+        </li>
+      <%end%>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class="divider"></li>
+        <li><a><%= link_to "View Cart", admin_items_path %></a></li>
+        <li class="divider"></li>
+          <li class="has-dropdown">
+            <a>Account</a>
+            <ul class="dropdown">
+              <li><label>Section Name</label></li>
+              <li class="has-dropdown">
+                <a href="#" class="">Has Dropdown, Level 1</a>
+                <ul class="dropdown">
+                  <li><a href="#">Account</a></li>
+                  <li><a href="#">Dropdown Options</a></li>
+                  <li><a href="#">Level 2</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown Option</a></li>
+              <li><a href="#">Dropdown Option</a></li>
+          <li class="divider"></li>
+        </ul>
+        </li>
+        <li class="divider"></li>
+        <li class="has-dropdown">
+          <a><%= link_to "Menu", menu_path %></a>
+          <ul class="dropdown">
+            <li><a href="#">Burritos</a></li>
+            <li><a href="#">Tacos</a></li>
+            <li><a href="#">Tortas</a></li>
+            <li><a href="#">Saldas</a></li>
+            <li><a href="#">Quesadillas</a></li>
+            <li><a href="#">Burrito Bowls</a></li>
+            <li class="divider"></li>
+            <li><a href="/menu">View Menu →</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
     <%= favicon_link_tag 'favicon.ico' %>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,16 +84,7 @@
         <h1><a href="/">Los Amigos Gordos</a></h1>
         <p>Custom Food, Made Fresh</p>
       </div>
-
-      <% if current_user %>
-        <div class="small-7 columns">
-          <h4 id="notice"><%= notice %></h4>
-        </div>
-        <div class="small-3 columns">
-          <%= link_to "Sign Out", logout_path, method: :delete %>
-        </div>
-
-      <% else %>
+      <%if !current_user.present? %>
         <%= form_tag login_path do %>
           <div class="row-right">
             <div class="large-12 columns">
@@ -50,7 +104,7 @@
                 </div>
                 </form>
               <% end %>
-            <% end %>
+            <%end%>
           </div>
         </div>
       </div><hr>
@@ -81,15 +135,9 @@
         <div class="large-6 columns">
           <p>© Amigos Gordos Restaurant, 2014</p>
         </div>
-        <div class="large-6 columns">
-          <ul class="inline-list right">
-            <li><%= link_to "Admin", admin_index_path %></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
-          </ul>
-        </div>
       </div>
     </div>
   </footer>
 </html>
+
+!current_user.is_admin?
