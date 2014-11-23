@@ -1,5 +1,5 @@
 ## Dinner Dash
-<h2>Los Gordos Amigos</h2>
+<h2>Los Amigos Gordos</h2>
 <h3>Turing School Module 2</h3>
 <h4>Timothy Mee  ---  Sam Kuhlmann  ---  Herbert Joseph ---  Travis Yoder</h4>
 
@@ -18,10 +18,10 @@ tacos, tortas and tamales.
 Order anytime online at 
 -----------------------
  
-  [New York Times][nyt]..
+  [Los Amigos Gordos][nyt]..
 
 
-[nyt]: http://nytimes.com
+[nyt]: https://amigosgordos.herokuapp.com/
     
 We hope you enjoy the imaginary foods at Los Amigos 
 Gordos.
