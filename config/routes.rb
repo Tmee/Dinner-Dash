@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
+  root 'users#index'
 
   get '/admin', to: 'admin/base_admin#index', as: :admin_index
 
-  resources :home, only: [:index]
+  resources :users
 
   namespace :admin do
     resources :items, :fillings, :users
@@ -14,9 +14,14 @@ Rails.application.routes.draw do
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/menu',         to: 'menu#index'
-  resources :menu, only: [:show]
-  get '/register',     to: 'users#new'
 
-  get '/menu_item_builder/*', to: 'menu#menu_item_builder'
+  get '/menu', to: 'menu#index'
+  resources :menu, only: [:show]
+
+
+  get '/register',  to: 'users#register'
+  post '/register', to: 'users#create'
+
+
+  get '/menu_item_builder/*', to: 'menu#build_item'
 end

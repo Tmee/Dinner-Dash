@@ -1,0 +1,58 @@
+
+
+
+<h3>Registration</h3>
+
+<div class="row">
+  <div class="large-12 columns">
+    <% if current_user %>
+      <div class="small-7 columns">
+        <h4 id="notice"><%= notice %></h4>
+      </div>
+      <div class="small-3 columns">
+        <%= link_to "Sign Out", logout_path, method: :delete %>
+      </div>
+
+    <%else%>
+
+    <%= form_for User.new, :html => {:'data-abide' => true} do |f| %>
+        <div class="name-field">
+          <%= label_tag :first_name, "First Name <small>(required)</small>".html_safe %>
+          <%= f.text_field :first_name, :required => true, :pattern => '[a-zA-Z]+' %>
+          <small class="error">Please provide a first name.</small>
+        </div>
+
+        <div class="name-field">
+          <%= label_tag :last_name, "Last Name <small>(required)</small>".html_safe %>
+          <%= f.text_field :last_name, :required => true, :pattern => '[a-zA-Z]+' %>
+          <small class="error">Please provide a last name.</small>
+        </div>
+
+        <div class="username">
+          <%= label_tag :username, "Username <small>(required)</small>".html_safe %>
+          <%= f.text_field :username, :required => true, :pattern => '[a-zA-Z]+' %>
+        </div>
+
+        <div class="email-field">
+           <%= label_tag :email, "Email <small>(required)</small>".html_safe %>
+          <%= f.text_field :email, :required => true, :pattern => 'email' %>
+          <small class="error">An email address is required.</small>
+        </div>
+
+        <div class="password-field">
+           <%= label_tag :password, "Password <small>(required)</small>".html_safe %>
+          <%= f.text_field :password, :required => true, :pattern => '[a-zA-Z]+' %>
+          <small class="error">Please provide a password.</small>
+        </div>
+
+        <div class="password-confirmation-field">
+           <%= label_tag :password_confirmation, "Confirm Password <small>(required)</small>".html_safe %>
+          <%= f.text_field :password_confirmation, :required => true, :pattern => '[a-zA-Z]+' %>
+          <small class="error">The passwords do not match.</small>
+        </div>
+
+        <button type="submit">Submit</button>
+      <%end%>
+    <%end%>
+  </div>
+</div>
