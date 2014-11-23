@@ -3,8 +3,8 @@ class Seed
     generate_users_and_roles
     generate_items
     generate_fillings
+    generate_item_fillings
     generate_orders
-    # generate_item_fillings
   end
 
  def generate_users_and_roles
@@ -219,15 +219,15 @@ class Seed
     puts "Fillings generated!"
   end
 
-  # def generate_item_fillings
-  #   Item.all.each do |item|
-  #     10.times do |i|
-  #       filling = Filling.find(Random.new.rand(1..20))
-  #       item.fillings << filling
-  #     end
-  #     puts "#{i + 1}: Added filling #{filling.title} to item #{item.name}."
-  #   end
-  # end
+  def generate_item_fillings
+    Item.all.each do |item|
+      10.times do |i|
+        filling = Filling.find(Random.new.rand(1..20))
+        item.fillings << filling
+      end
+    end
+    puts "Item fillings created!"
+  end
 
   def generate_orders
     states = %W(ordered completed canceled)
@@ -242,13 +242,12 @@ class Seed
     puts "Line item fillings created!"
     puts "Line item's created!"
     puts "Order's created!"
-    require 'pry' ; binding.pry
   end
 
   private
 
   def add_line_items(order_id)
-    10.times do |i|
+    5.times do |i|
       item = Item.all.sample
       line_item = LineItem.create!(order_id: order_id, item_id: item.id)
       add_line_item_fillings(line_item.id)
@@ -256,7 +255,7 @@ class Seed
   end
 
   def add_line_item_fillings(line_item_id)
-    10.times do |i|
+    5.times do |i|
       filling = Filling.all.sample
       LineItemFilling.create!(line_item_id: line_item_id, filling_id: filling.id)
     end
