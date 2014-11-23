@@ -20,51 +20,44 @@
 
 
 
-      <form data-abide>
-    <%= form_for User.new do |f| %>
+    <%= form_for User.new, :html => {:'data-abide' => true} do |f| %>
         <div class="name-field">
-          <label>First Name <small>(required)</small>
-            <input type="text" name="first_name" required pattern="[a-zA-Z]+">
-          </label>
+          <%= label_tag :first_name, "First Name <small>(required)</small>".html_safe %>
+          <%= f.text_field :first_name, :required => true, :pattern => '[a-zA-Z]+' %>
           <small class="error">Please provide a first name.</small>
         </div>
 
         <div class="name-field">
-          <label>Last Name <small>(required)</small>
-            <input type="text" name="last_name" required pattern="[a-zA-Z]+">
-          </label>
+          <%= label_tag :last_name, "Last Name <small>(required)</small>".html_safe %>
+          <%= f.text_field :last_name, :required => true, :pattern => '[a-zA-Z]+' %>
           <small class="error">Please provide a last name.</small>
         </div>
 
         <div class="username">
-          <label>Username
-            <input type="text" name="username" required pattern="[a-zA-Z]+">
-          </label>
+          <%= label_tag :username, "Username <small>(required)</small>".html_safe %>
+          <%= f.text_field :username, :required => true, :pattern => '[a-zA-Z]+' %>
         </div>
 
         <div class="email-field">
-          <label>Email <small>(required)</small>
-            <input type="email" name="email" required>
-          </label>
+           <%= label_tag :email, "Email <small>(required)</small>".html_safe %>
+          <%= f.text_field :email, :required => true, :pattern => 'email' %>
           <small class="error">An email address is required.</small>
         </div>
 
         <div class="password-field">
-          <label>Password <small>(required)</small>
-            <input type="text" name="password" required>
-          </label>
+           <%= label_tag :password, "Password <small>(required)</small>".html_safe %>
+          <%= f.text_field :password, :required => true, :pattern => '[a-zA-Z]+' %>
           <small class="error">Please provide a password.</small>
         </div>
 
         <div class="password-confirmation-field">
-          <label>Confirm Password <small>(required)</small>
-            <input type="text" name="password_confirmation" data-equalto="password" required>
-          </label>
+           <%= label_tag :password_confirmation, "Confirm Password <small>(required)</small>".html_safe %>
+          <%= f.text_field :password_confirmation, :required => true, :pattern => '[a-zA-Z]+' %>
           <small class="error">The passwords do not match.</small>
         </div>
 
         <button type="submit">Submit</button>
-      </form><%end%>
+      <%end%>
     <%end%>
   </div>
 </div>

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: "User created. Please log in."
+      redirect_to root_path, notice: "User created. Please log in."
     else
       flash.now[:notice] = "User could not be created."
       render :new
