@@ -16,9 +16,9 @@ Los Amigos Gordos specializes in burritos, burrito bowl,
 tacos, tortas and tamales.
 
 Order anytime online at : 
-  
-    <a href:"amigosgordos.herokuapp.com">Los Amigos Gordos</a>
-
+ 
+    a link](amigosgordos.herokuapp.com)
+    
 We hope you enjoy the imaginary foods at Los Amigos 
 Gordos.
 
