@@ -1,4 +1,4 @@
 tmp/*
 log/*
 .DS_STORE
-
+coverage
