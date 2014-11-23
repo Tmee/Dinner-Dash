@@ -3,8 +3,6 @@
 
 <h3>Registration</h3>
 
-
-
 <div class="row">
   <div class="large-12 columns">
     <% if current_user %>
@@ -15,10 +13,7 @@
         <%= link_to "Sign Out", logout_path, method: :delete %>
       </div>
 
-
     <%else%>
-
-
 
     <%= form_for User.new, :html => {:'data-abide' => true} do |f| %>
         <div class="name-field">
