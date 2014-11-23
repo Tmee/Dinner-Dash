@@ -4,9 +4,7 @@ class Seed
     generate_items
     generate_fillings
     generate_orders
-    generate_item_fillings
-    # generate_line_items
-    # generate_line_item_fillings
+    # generate_item_fillings
   end
 
  def generate_users_and_roles
@@ -51,13 +49,41 @@ class Seed
   end
 
   def generate_items
-    Item.create!(name: "Burrito",      price: 500)
-    Item.create!(name: "Burrito Bowl", price: 175)
-    Item.create!(name: "Torta",        price: 400)
-    Item.create!(name: "Taco",         price: 100)
-    Item.create!(name: "Quesadilla",   price: 250)
-    Item.create!(name: "Tamale",       price: 200)
-    Item.create!(name: "Salad",        price: 300)
+    Item.create!(name:        "Burrito",
+                 price:       500,
+                 image:       File.new("#{Rails.root}/app/assets/images/menu/items/burrito.jpg")
+    )
+
+    Item.create!(name:        "Burrito Bowl",
+                 price:       175,
+                 image:       File.new("#{Rails.root}/app/assets/images/menu/items/burrito_bowl.jpg")
+    )
+
+    Item.create!(name:        "Torta",
+                 price:       400,
+                 image:       File.new("#{Rails.root}/app/assets/images/menu/items/torta.jpg")
+    )
+
+    Item.create!(name:        "Taco",
+                 price:       100,
+                 image:       File.new("#{Rails.root}/app/assets/images/menu/items/taco.jpg")
+    )
+
+    Item.create!(name:        "Quesadilla",
+                 price:       250,
+                 image:       File.new("#{Rails.root}/app/assets/images/menu/items/quesadilla.jpg")
+    )
+
+    Item.create!(name:        "Tamale",
+                 price:       200,
+                 image:       File.new("#{Rails.root}/app/assets/images/menu/items/tamale.jpg")
+    )
+
+    Item.create!(name:        "Salad",
+                 price:       300,
+                 image:       File.new("#{Rails.root}/app/assets/images/menu/items/salad.jpg")
+    )
+
     puts "Items generated!"
   end
 
@@ -65,144 +91,176 @@ class Seed
     Filling.create!(title:       "Steak",
                     description: "It's meat. From an animal.",
                     price:       100,
-                    food_group:  "meat"
+                    food_group:  "meat",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/steak.jpg")
     )
 
     Filling.create!(title:       "Chicken",
                     description: "Made from home made chickens.",
                     price:       70,
-                    food_group:  "meat"
+                    food_group:  "meat",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/chicken.jpg")
     )
 
     Filling.create!(title:       "Barbacoa",
                     description: "We think it's from goats.",
                     price:       200,
-                    food_group:  "meat"
+                    food_group:  "meat",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/barbacoa.jpg")
     )
 
     Filling.create!(title:       "Carnitas",
                     description: "Pork.",
                     price:       150,
-                    food_group:  "meat"
+                    food_group:  "meat",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/carnitas.jpg")
     )
 
     Filling.create!(title:       "Sofritas",
                     description: "It's toe and fu.",
                     price:       150,
-                    food_group:  "veggie"
+                    food_group:  "veggies",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/sofritas.jpg")
     )
 
     Filling.create!(title:       "Fajita Vegetables",
                     description: "It has some different peppers.",
                     price:       100,
-                    food_group:  "veggies"
+                    food_group:  "veggies",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/fajitas.jpg")
     )
 
     Filling.create!(title:       "Black Beans",
                     description: "They are black.",
-                    food_group:  "veggies"
+                    food_group:  "veggies",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/black_beans.jpg")
     )
 
     Filling.create!(title:       "Pinto Beans",
                     description: "They are very pinto.",
-                    food_group:  "veggies"
+                    food_group:  "veggies",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/pinto_beans.jpg")
     )
 
     Filling.create!(title:       "White Rice",
                     description: "It's white and has cilantro.",
-                    food_group:  "veggies"
+                    food_group:  "veggies",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/white_rice.jpg")
     )
 
     Filling.create!(title:       "Brown Rice",
                     description: "It's brown.",
-                    food_group:  "veggies"
+                    food_group:  "veggies",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/brown_rice.jpg")
     )
 
     Filling.create!(title:       "Fresh Tomato Salsa",
                     description: "Diced tomatoes and other bits.",
-                    food_group:  "salsas"
+                    food_group:  "salsas",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/fresh_tomato.jpg")
     )
 
     Filling.create!(title:       "Roasted Chili-Corn Salsa",
                     description: "Sweet white corn.",
-                    food_group:  "salsas"
+                    food_group:  "salsas",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/roasted_chili_corn.jpg")
     )
 
     Filling.create!(title:       "Tomatillo-Green Chili Salsa",
                     description: "Fire-roasted tomatillos? Yes please.",
-                    food_group:  "salsas"
+                    food_group:  "salsas",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/tomatillo_green.jpg")
     )
 
     Filling.create!(title:       "Tomatillo-Red Chili Salsa",
                     description: "It's like the other sauce but with tabasco. Hot hot hot.",
-                    food_group:  "salsas"
+                    food_group:  "salsas",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/tomatillo_red.jpg")
     )
 
     Filling.create!(title:       "Cheese",
                     description: "Literally, the best ever.",
-                    food_group:  "extras"
+                    food_group:  "extras",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/cheese.jpg")
     )
 
     Filling.create!(title:       "Guacamole",
                     description: "It's no longer avocados. It's better now.",
-                    food_group:  "extras"
+                    food_group:  "extras",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/guacamole.jpg")
     )
 
     Filling.create!(title:       "Sour Cream",
                     description: "It's sour and cream.",
-                    food_group:  "extras"
+                    food_group:  "extras",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/sour_cream.jpg")
     )
 
     Filling.create!(title:       "Queso",
                     description: "It's some melted cheese.",
                     price:       "50",
-                    food_group:  "extras"
+                    food_group:  "extras",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/queso.jpg")
     )
 
     Filling.create!(title:       "Queso Diablo",
                     description: "It's some, spicy, melted cheese.",
                     price:       "75",
-                    food_group:  "extras"
+                    food_group:  "extras",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/queso.jpg")
     )
 
     Filling.create!(title:       "Lettuce",
                     description: "Just some romaine.",
-                    food_group:  "extras"
+                    food_group:  "extras",
+                    image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/lettuce.jpg")
     )
 
     puts "Fillings generated!"
   end
 
-  def generate_item_fillings
-    10.times do |i|
-      item = Item.find(Random.new.rand(1..7))
-      filling = Filling.find(Random.new.rand(1..20))
-      item.fillings << filling
-      puts "#{i}: Added filling #{filling.title} to item #{item.name}."
-    end
-  end
+  # def generate_item_fillings
+  #   Item.all.each do |item|
+  #     10.times do |i|
+  #       filling = Filling.find(Random.new.rand(1..20))
+  #       item.fillings << filling
+  #     end
+  #     puts "#{i + 1}: Added filling #{filling.title} to item #{item.name}."
+  #   end
+  # end
 
   def generate_orders
     states = %W(ordered completed canceled)
-    10.times do |i|
-      user  = User.find(Random.new.rand(1..5))
-      order = Order.create!(user_id: user.id, state: "#{states.sample}")
-  #     add_line_items(order)
+
+    User.all.each do |user|
+      5.times do |i|
+        order = Order.create!(user_id: user.id, state: "#{states.sample}")
+        add_line_items(order.id)
+      end
     end
+
+    puts "Line item fillings created!"
+    puts "Line item's created!"
     puts "Order's created!"
+    require 'pry' ; binding.pry
   end
 
-  # This is needed later:
+  private
 
-  # private
-  #
-  # def add_line_items(order)
-  #   10.times do |i|
-  #     filling = Filling.find(Random.new.rand(1..20))
-  #     order.fillings << filling
-  #     puts "#{i}: Added filling #{filling.title} to order #{order.id}."
-  #   end
-  # end
+  def add_line_items(order_id)
+    10.times do |i|
+      item = Item.all.sample
+      line_item = LineItem.create!(order_id: order_id, item_id: item.id)
+      add_line_item_fillings(line_item.id)
+    end
+  end
+
+  def add_line_item_fillings(line_item_id)
+    10.times do |i|
+      filling = Filling.all.sample
+      LineItemFilling.create!(line_item_id: line_item_id, filling_id: filling.id)
+    end
+  end
 end
 
 Seed.new
