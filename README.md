@@ -17,7 +17,7 @@ tacos, tortas and tamales.
 
 Order anytime online at : 
  
-    [a link](amigosgordos.herokuapp.com)
+    * [Los Gordos Amigos](https://amigosgordos.herokuapp.com/)
     
 We hope you enjoy the imaginary foods at Los Amigos 
 Gordos.
