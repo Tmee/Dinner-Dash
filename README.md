@@ -15,13 +15,11 @@ help of the Burrito Artists™ at Los Amigos Gordos.
 Los Amigos Gordos specializes in burritos, burrito bowl,
 tacos, tortas and tamales.
 
-<h5>Order anytime online at</h5> 
-    -----------------------
- 
-  * [Los Amigos Gordos][nyt]
+<h5>Order anytime online at:</h5> 
+  * [Los Amigos Gordos][lag]
 
 
-[nyt]: https://amigosgordos.herokuapp.com/
+[lag]: https://amigosgordos.herokuapp.com/
     
 We hope you enjoy the imaginary foods at Los Amigos 
 Gordos.
