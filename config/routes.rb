@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/menu',      to: 'menu#index'
-  get '/register',  to: 'users#new'
+  get '/menu',         to: 'menu#index'
+  resources :menu, only: [:show]
+  get '/register',     to: 'users#new'
 
   get '/menu_item_builder/*', to: 'menu#menu_item_builder'
 end

@@ -1,7 +1,7 @@
 class MenuController < ApplicationController
 
     def show
-      @filling_names = @item.fillings.map {|filling| filling.title }
+      @filling = Filling.find(params[:id])
     end
 
     def new
