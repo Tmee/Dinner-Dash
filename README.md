@@ -18,7 +18,10 @@ tacos, tortas and tamales.
 Order anytime online at 
 -----------------------
  
-    * [Los Gordos Amigos](https://amigosgordos.herokuapp.com/)
+  [New York Times][nyt]..
+
+
+[nyt]: http://nytimes.com
     
 We hope you enjoy the imaginary foods at Los Amigos 
 Gordos.
