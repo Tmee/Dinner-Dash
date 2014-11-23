@@ -1,11 +1,11 @@
 class Admin:ItemsController < Admin::BaseAdminController
-  
+
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   layout 'admin'
 
     def index
       @items = Item.all
-      @all_fillings = Filling.all 
+      @all_fillings = Filling.all
     end
 
     def show
@@ -14,11 +14,11 @@ class Admin:ItemsController < Admin::BaseAdminController
 
     def new
       @item = Item.new
-      @all_fillings = Filling.all 
+      @all_fillings = Filling.all
     end
 
     def edit
-      @all_fillings = Filling.all 
+      @all_fillings = Filling.all
     end
 
     def create
