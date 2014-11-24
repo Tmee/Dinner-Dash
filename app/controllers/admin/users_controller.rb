@@ -1,6 +1,7 @@
 class Admin::UsersController < Admin::BaseAdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  # before_action :require_webmaster
+  before_action :require_webmaster
+  layout 'admin'
 
   def index
     @users = User.all
@@ -8,13 +9,16 @@ class Admin::UsersController < Admin::BaseAdminController
 
   def show
     get_roles
+    @roles = Role.all
   end
 
   def new
+    @roles = Role.all
     @user = User.new
   end
 
   def edit
+    @roles = Role.all
   end
 
   def create
@@ -30,6 +34,7 @@ class Admin::UsersController < Admin::BaseAdminController
 
   def update
     if @user.update_attributes(user_params)
+      @user.role_ids = params[:user][:role_ids]
       redirect_to admin_user_path(@user), notice: "You have updated a user."
     else
       flash.now[:alert] = "The user was not updated. Please try again."
@@ -45,7 +50,7 @@ class Admin::UsersController < Admin::BaseAdminController
   private
 
   def user_params
-    params.require(:user).permit(:first_name,:last_name,:email, :username, :password, :password_confirmation)
+    params.require(:user).permit(:first_name,:last_name,:email, :username, :password, :password_confirmation, :role_ids)
   end
 
   def get_roles
