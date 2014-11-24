@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :set_items
 
   def new
     @user = User.new
