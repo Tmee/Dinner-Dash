@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'home#index'
 
   get '/admin', to: 'admin/base_admin#index', as: :admin_index
 
