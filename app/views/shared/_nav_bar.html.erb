@@ -11,30 +11,13 @@
     <section class="top-bar-section">
       <ul class="right">
         <li class="divider"></li>
-        <li><a>
-          <form data-abide>
-          <div class="small-3 columns">
-            <input type="text" name="username" placeholder="Username" required>
-          </div>
-          <div class="small-3 columns">
-            <input type="password" name="password" placeholder="Password"required>
-          </div>
-          <div class="small-6 columns">
-            <ul class="stack-for-small button-group">
-              <li><input type='submit' class="tiny button" value="Log in"></li>
-              <li><a href="/register" class="tiny button">Sign Up!</a></li>
-            </ul>
-          </div>
-        </form>
-        </a></li>
-        <li class="divider"></li>
         <li class="has-dropdown">
           <a><%= link_to "Our Food", menu_path %></a>
           <ul class="dropdown">
-            <!-- <% @items.each do |item| %> -->
-              <!-- <li><a href="#"><%= link_to "Build a #{item.name}", root_path %></a></li> -->
-              <!-- <li class="divider"></li> -->
-            <!-- <% end %> -->
+            <% items.each do |item| %>
+              <li><a><%= link_to "Build a #{item.name}", root_path %></a></li>
+              <li class="divider"></li>
+            <% end %>
             <li><a><%= link_to "Browse Menu →", menu_path %></a></li>
           </ul>
         </li>
@@ -44,23 +27,42 @@
         <li class="has-dropdown">
           <a>Account</a>
           <ul class="dropdown">
+              <% if !current_user %>
+            <li><label>Got an account?</label></li>
             <li class="has-dropdown">
-              <a href="#" class="">Has Dropdown, Level 1</a>
-              <ul class="dropdown">
-                <li><a href="#">Account</a></li>
-                <li><a href="#">Dropdown Options</a></li>
-                <li><a href="#">Level 2</a></li>
-              </ul>
+              <li>
+                <form data-abide>
+                  <div>
+                    <input type="text" name="username" placeholder="Username" required>
+                  </div>
+              </li>
+              <li>
+                  <div>
+                    <input type="password" name="password" placeholder="Password"required>
+                  </div>
+              </li>
+              <li>
+                  <div class="small-6 columns">
+                    <ul>
+                      <li><input type='submit' value="Log in"></li>
+                    </ul>
+                  </div>
+                </form>
+              </li>
             </li>
-            <li>
-              <a>
-                <%if current_user && current_user.is_admin? %>
-                <li><a><%= link_to "Admin Dashboard", admin_index_path %></a></li>
-                <%end%>
-              </a>
-            </li>
-            <li><label>Need an account?</label></li>
-            <li><a href="#">Sign up</a></li>
+            <% end %>
+            <% if current_user %>
+              <li class="divider"></li>
+              <li><a><%= link_to "My Past Orders", root_path %></a></li>
+            <% end %>
+            <% if current_user && current_user.is_admin? %>
+              <li class="divider"></li>
+              <li><a><%= link_to "Admin Dashboard", admin_index_path %></a></li>
+            <% end %>
+            <% if !current_user %>
+              <li><label>Need an account?</label></li>
+              <li><a href="#">Sign up</a></li>
+            <% end %>
           </ul>
         </li>
         <li class="divider"></li>
