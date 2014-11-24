@@ -27,7 +27,8 @@
         <li class="has-dropdown">
           <a>Account</a>
           <ul class="dropdown">
-              <% if !current_user %>
+              <% if !current_user.present? %>
+              <%= form_tag login_path do %>
             <li><label>Got an account?</label></li>
             <li class="has-dropdown">
               <li>
@@ -50,6 +51,7 @@
                 </form>
               </li>
             </li>
+            <% end %>
             <% end %>
             <% if current_user %>
               <li class="divider"></li>
