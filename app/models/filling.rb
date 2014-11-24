@@ -6,6 +6,8 @@ class Filling < ActiveRecord::Base
   has_many  :line_items, through: :line_item_fillings
   has_many  :item_fillings
   has_many :items, through: :item_fillings
-  has_attached_file :image
+  has_attached_file :image, :styles => { :medium => "300x300#", 
+                                         :thumb => "100x100#"},       
+                    :default_url => 'onion.jpg'
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 end
