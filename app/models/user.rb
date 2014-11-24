@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     too_short: "must have at least %{count} letters",
     too_long: "must have at most %{count} letters"
   }
+  validates :password, confirmation: true
   before_validation :assign_username
   before_validation :check_last_name
 

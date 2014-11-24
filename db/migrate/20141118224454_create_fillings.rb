@@ -5,6 +5,9 @@ class CreateFillings < ActiveRecord::Migration
       t.string  :description
       t.string  :photo
       t.integer :price
+      t.string  :type
+
+      t.timestamps
     end
   end
 end
