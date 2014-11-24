@@ -51,36 +51,43 @@ class Seed
   def generate_items
     Item.create!(name:        "Burrito",
                  price:       500,
+                 description: "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/burrito.jpg")
     )
 
     Item.create!(name:        "Burrito Bowl",
                  price:       175,
+                 description: "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/burrito_bowl.jpg")
     )
 
     Item.create!(name:        "Torta",
                  price:       400,
+                 description: "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/torta.jpg")
     )
 
     Item.create!(name:        "Taco",
                  price:       100,
+                 description: "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/taco.jpg")
     )
 
     Item.create!(name:        "Quesadilla",
                  price:       250,
+                 description: "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/quesadilla.jpg")
     )
 
     Item.create!(name:        "Tamale",
                  price:       200,
+                 description: "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/tamale.jpg")
     )
 
     Item.create!(name:        "Salad",
                  price:       300,
+                 description: "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/salad.jpg")
     )
 
