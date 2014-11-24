@@ -1,81 +1,146 @@
-<body>
+<!DOCTYPE html>
+<%= stylesheet_link_tag "homepage" %>
+<%= stylesheet_link_tag    "application" %>
+<%= javascript_include_tag "vendor/modernizr" %>
+<%= javascript_include_tag "hermano_box" %>
+<%= csrf_meta_tags %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
-  <div class="row">
-    <div class="large-12 columns">
-      <img src="https://unsplash.imgix.net/31/RpgvvtYAQeqAIs1knERU_vegetables.jpg?q=75&fm=jpg&s=59f3df66ad2515cd56b5c095ef33ba65"><hr>
-    </div>
-  </div><br/>
+<html lang="en">
 
-  <div class="row">
-    <div class="large-12 columns text-center">
-        <h2><a href="/menu">View All Menu Items</a></h2>
-        <h3>Or</h3>
-        <h3>Choose your weapon.</h3><br/>
+<head>
+  <div class="contain-to-grid sticky">
+    <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+      <ul class="title-area">
+        <li class="name" style="float:left;">
+          <h1>
+            <a><%= link_to "Home", root_path %></a>
+          </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a><%= link_to "View Cart", admin_items_path %></a></li>
+          <li class="divider"></li>
+          <li class="has-dropdown">
+            <a><%= link_to "Menu", menu_path %></a>
+            <ul class="dropdown">
+              <li><a href="#">Burritos</a></li>
+              <li><a href="#">Tacos</a></li>
+              <li><a href="#">Tortas</a></li>
+              <li><a href="#">Saldas</a></li>
+              <li><a href="#">Quesadillas</a></li>
+              <li><a href="#">Burrito Bowls</a></li>
+              <li class="divider"></li>
+              <li><a href="/menu">View Menu →</a></li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+          <li class="has-dropdown">
+            <a>Account</a>
+            <ul class="dropdown">
+              <li class="has-dropdown">
+                <a href="#" class="">Has Dropdown, Level 1</a>
+                <ul class="dropdown">
+                  <li><a href="#">Account</a></li>
+                  <li><a href="#">Dropdown Options</a></li>
+                  <li><a href="#">Level 2</a></li>
+                </ul>
+              </li>
+              <li>
+                <a>
+                  <%if current_user && current_user.is_admin? %>
+                    <li><a><%= link_to "Admin Dashboard", admin_index_path %></a></li>
+                  <%end%>
+                </a>
+              </li>
+              <li><label>Need an account?</label></li>
+              <li><a href="#">Sign up</a></li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+          <% if current_user %>
+            <li><a><%= link_to "Sign out", logout_path, method: :delete%></a></h4></li>
+          <%end%>
+          <li class="divider"></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+</head>
+
+<body class="pattern_bg">
+  <div class="content_box">
+    <div class="wrapper wrapper--main">
+      <section class="container">
+
+        <div class="row" id="hermano-says">
+          <div class="large-12 columns" id="move-up">
+              <div class="jorge_the_bird"><%= image_tag "el_gordo_hermano.png", size: "300x350" %></div>
+              <div class="bubble"><div><h1 class="hermano-says"></h1><br><h2><%= @hermano_said %></hr></div></div>
+            <hr/>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
+
+      <section id="site-content">
+        <div class="row">
+          <div class="large-4 columns" id="container">
+            <div class="button_holder">
+              <div class="image1"><a class="circle-link"><span class="text">View Menu</span></a></div>
+            </div>
+            <h4>This is a content section.</h4>
+            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+          </div>
+
+          <div class="large-4 columns" id="container">
+            <div class="button_holder">
+              <div class="image1"><a class="circle-link"><span class="text">View Menu</span></a></div>
+            </div>
+            <h4>This is a content section.</h4>
+            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+          </div>
+
+          <br>
+
+          <div class="large-4 columns" id="container" style="margin: 0 20px;">
+            <div class="button_holder">
+              <div class="image1"><a class="circle-link"><span class="text">View Menu</span></a></div>
+            </div>
+            <h4>This is a content section.</h4>
+            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+          </div>
+
+        </div>
+
 
         <div class="row">
+          <div class="large-12 columns">
 
-          <div class="large-3 small-6 columns food_button">
-            <div class='round-button round-button-circle'>
-            <a href="/menu_item_builder/burrito" class="round-button">Burritos!!</a>
+            <div class="panel">
+              <h4>Get in touch!</h4>
+
+              <div class="row">
+                <div class="large-9 columns">
+                  <p>We'd love to hear from you, you attractive person you.</p>
+                </div>
+                <div class="large-3 columns">
+                  <a href="#" class="radius button right">Contact Us</a>
+                </div>
+              </div>
             </div>
+
           </div>
-
-          <div class="large-3 small-6 columns food_button">
-            <div class='round-button round-button-circle'>
-            <a href="/menu_item_builder/taco" class="round-button">Tacos!!</a>
-            </div>
-          </div>
-
-          <div class="large-3 small-6 columns food_button">
-            <div class='round-button round-button-circle'>
-            <a href="/menu_item_builder/bowl" class="round-button">Bowls!!</a>
-            </div>
-          </div>
-
-          <div class="large-3 small-6 columns food_button">
-            <div class='round-button round-button-circle'>
-            <a href="/menu_item_builder/quesadilla" class="round-button">Quesadillas!!</a>
-            </div>
-          </div>
-
-        </div><br/><br/>
-
-
-  <div class="row">
-    <div class="large-4 columns">
-      <img src="https://ununsplash.imgix.net/reserve/zU6fwmDaSVWZdCXcZfot_IMG_3838.JPG?q=75&fm=jpg&s=d29d60fdb60dc13678a6c7a53babcde4">
-    </div>
-    <div class="large-8 columns">
-      <h4>This is a content section.</h4>
-      <div class="row">
-        <div class="large-6 columns">
-          <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
         </div>
-        <div class="large-6 columns">
-          <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
-        </div>
-      </div>
-    </div>
+      </section>
   </div>
-
-
-
-
-  <div class="row">
-    <div class="large-8 columns">
-      <h4>This is a content section.</h4>
-
-      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-
-      <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
-
-    </div>
-    <div class="large-4 columns">
-      <img src="https://ununsplash.imgix.net/33/IR8nDBZETv6aM6HdJ7RD_IMG_5784.jpg?q=75&fm=jpg&s=44ab6e9b035388e48e8f2932376af7e8">
-    </div>
   </div>
-
-
 </body>
+
+<footer class="wrapper wrapper--footer"><h1>This is a Footer</h1></footer>
+</html>
