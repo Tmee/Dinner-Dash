@@ -1,81 +1,55 @@
 <!DOCTYPE html>
+<%= stylesheet_link_tag "homepage" %>
+<%= stylesheet_link_tag    "application" %>
+<%= javascript_include_tag "vendor/modernizr" %>
+<%= javascript_include_tag "hermano_box" %>
+<%= csrf_meta_tags %>
+<%= javascript_include_tag "application" %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
 <html lang="en">
-  <head>
-    <%= render "shared/nav_bar", :items => @items %>
-  </head>
 
-    <%= favicon_link_tag 'favicon.ico' %>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Los Amigos Gordos</title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <h3 data-magellan-destination="top"></h3>
-    <a name="top"></a>
-  </head>
+<head>
+  <%= render "shared/nav_bar", :items => @items %>
+  <%if flash[:error] %>
+  <div data-alert class="alert-box warning">
+    Invalid Username or Password,
+    Please Log in or Sign up.
+    <a href="#" class="close">&times;</a>
+  </div>
+  <%end%>
+  <%if flash[:alert] %>
+  <div data-alert class="alert-box success radius">
+    You have logged out, Come back soon!
+    <a href="#" class="close">&times;</a>
+  </div>
+  <%end%>
+</head>
 
-  <body>
+<body class="pattern_bg">
+<% if current_page?(root_path) %>
+  <div class="content_box">
+    <div class="wrapper wrapper--main">
+      <section class="container">
 
-    <div class="row">
-      <div class="large-12 columns">
-        <h1><a href="/">Los Amigos Gordos</a></h1>
-        <p>Custom Food, Made Fresh</p>
-      </div>
-      <%if !current_user.present? %>
-        <%= form_tag login_path do %>
-          <div class="row-right">
-            <div class="large-12 columns">
-              <div class="row collapse">
-                <form data-abide>
-                  <div class="small-3 columns">
-                    <input type="text" name="username" placeholder="Username" required>
-                  </div>
-                  <div class="small-3 columns">
-                    <input type="password" name="password" placeholder="Password"required>
-                  </div>
-                <div class="small-6 columns">
-                  <ul class="stack-for-small button-group">
-                    <li><input type='submit' class="tiny button" value="Log in"></li>
-                    <li><a href="/register" class="tiny button">Sign Up!</a></li>
-                  </ul>
-                </div>
-                </form>
-              <% end %>
-            <%end%>
+        <div class="row" id="hermano-says">
+          <div class="large-12 columns" id="move-up">
+            <div class="jorge_the_bird"><%= image_tag "el_gordo_hermano.png", size: "300x350" %></div>
+            <div class="bubble"><div><h1 class="hermano-says"></h1><br><h2><%= @hermano_said %></hr></div></div>
+              <hr/>
+            </div>
           </div>
-        </div>
-      </div><hr>
-
-    <%if flash[:error] %>
-      <div data-alert class="alert-box warning round">
-        Invalid Username or Password,
-        Please Log in or Sign up.
-        <a href="#" class="close">&times;</a>
-      </div>
-    <%end%>
-    <%if flash[:alert] %>
-      <div data-alert class="alert-box success radius">
-        You have logged out, Come back soon!
-        <a href="#" class="close">&times;</a>
-      </div>
-    <%end%>
-
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-
-  </body>
-
-  <footer class="row">
-    <div class="large-12 columns">
-      <hr/>
-      <div class="row">
-        <div class="large-6 columns">
-          <p>© Amigos Gordos Restaurant, 2014</p>
-        </div>
+        </section>
       </div>
     </div>
-  </footer>
+<% end %>
+
+    <section id="site-content">
+      <%= yield %>
+    </section>
+  </div>
+</body>
+
+<footer class="wrapper wrapper--footer"><h1>This is a Footer</h1></footer>
 </html>
