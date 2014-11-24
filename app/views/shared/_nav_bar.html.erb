@@ -1,0 +1,74 @@
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+    <ul class="title-area">
+      <li class="name" style="float:left;">
+        <h1>
+          <a><%= link_to "Los Amigos Gordos", root_path %></a>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class="divider"></li>
+        <li><a>
+          <form data-abide>
+          <div class="small-3 columns">
+            <input type="text" name="username" placeholder="Username" required>
+          </div>
+          <div class="small-3 columns">
+            <input type="password" name="password" placeholder="Password"required>
+          </div>
+          <div class="small-6 columns">
+            <ul class="stack-for-small button-group">
+              <li><input type='submit' class="tiny button" value="Log in"></li>
+              <li><a href="/register" class="tiny button">Sign Up!</a></li>
+            </ul>
+          </div>
+        </form>
+        </a></li>
+        <li class="divider"></li>
+        <li class="has-dropdown">
+          <a><%= link_to "Our Food", menu_path %></a>
+          <ul class="dropdown">
+            <!-- <% @items.each do |item| %> -->
+              <!-- <li><a href="#"><%= link_to "Build a #{item.name}", root_path %></a></li> -->
+              <!-- <li class="divider"></li> -->
+            <!-- <% end %> -->
+            <li><a><%= link_to "Browse Menu →", menu_path %></a></li>
+          </ul>
+        </li>
+        <li class="divider"></li>
+        <li><a><%= link_to "View Cart", admin_items_path %></a></li>
+        <li class="divider"></li>
+        <li class="has-dropdown">
+          <a>Account</a>
+          <ul class="dropdown">
+            <li class="has-dropdown">
+              <a href="#" class="">Has Dropdown, Level 1</a>
+              <ul class="dropdown">
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Dropdown Options</a></li>
+                <li><a href="#">Level 2</a></li>
+              </ul>
+            </li>
+            <li>
+              <a>
+                <%if current_user && current_user.is_admin? %>
+                <li><a><%= link_to "Admin Dashboard", admin_index_path %></a></li>
+                <%end%>
+              </a>
+            </li>
+            <li><label>Need an account?</label></li>
+            <li><a href="#">Sign up</a></li>
+          </ul>
+        </li>
+        <li class="divider"></li>
+        <% if current_user %>
+        <li><a><%= link_to "Sign out", logout_path, method: :delete%></a></h4></li>
+        <%end%>
+        <li class="divider"></li>
+      </ul>
+    </section>
+  </nav>
+</div>
