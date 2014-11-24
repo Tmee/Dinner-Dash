@@ -25,6 +25,14 @@
     <a href="#" class="close">&times;</a>
   </div>
   <%end%>
+  <%if flash[:notice] %>
+  <div data-alert class="alert-box warning">
+    Unauthorized!
+    <a href="#" class="close">&times;</a>
+  </div>
+  <%end%>
+
+
 </head>
 
 <body class="pattern_bg">
