@@ -21,7 +21,7 @@ class Admin::FillingsController < Admin::BaseAdminController
     @filling = Filling.new(filling_params)
 
     if @filling.save
-      redirect_to @filling, notice: 'Filling was successfully created.'
+      redirect_to admin_filling_path(@filling), notice: 'Filling was successfully created.'
     else
       flash.now[:alert] = "The filling was not created. Please try again."
       render :new
