@@ -1,7 +1,12 @@
 <%= stylesheet_link_tag    "responsive-tables" %>
 <%= javascript_include_tag "responsive-tables" %>
-<h1>Available Ingredients</h1>
+<div class="row">
+  <br>
+  <div class="large-6 columns"><h1>Available Ingredients</h1></div>
+  <div class="large-6 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button" %></div>
+</div>
 
+  
 <table class="responsive">
   <thead>
     <tr>
@@ -9,7 +14,7 @@
       <th>Description</th>
       <th>Price</th>
       <th>Food Group</th>
-      <th></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -22,9 +27,7 @@
         <td><%= filling.food_group %></td>
         <td>
           <ul>
-            <li><%= link_to 'Show', admin_filling_path(filling) %></li>
-            <li><%= link_to 'Edit', edit_admin_filling_path(filling) %></li>
-            <li><%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to 'Show', admin_filling_path(filling) %> | <%= link_to 'Edit', edit_admin_filling_path(filling) %> | <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
         </td>
       </tr>
@@ -32,6 +35,5 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Filling', new_admin_filling_path %>
+

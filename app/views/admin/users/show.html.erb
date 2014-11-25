@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<div class="row">
+  <br>
+  <div class="large-6 columns"><h1><%= @user.first_name %> <%= @user.last_name %></h1></div>
+  <div class="large-6 columns"><%= link_to 'Edit this User', edit_admin_user_path(@user) %> | <%= link_to 'Back to all Users', admin_user_path %></div>
+</div>
 
 <ul>
   <li><%= @user.email%></li>
   <li><%= @user.username%></li>
-  <li></li>
-
-  <p><%= @user_roles.each {|role| role } %>
-
-<ul>
-  <li><%= link_to 'Edit', edit_admin_user_path(@user) %></li>
-  <li><%= link_to 'Back', admin_user_path %></li>
-</ul>
+  <li>User roles:</li>
+  <ul>
+    <li><%= @user_roles %></li>
+  <ul>

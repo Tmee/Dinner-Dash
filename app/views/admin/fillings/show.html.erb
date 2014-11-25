@@ -1,19 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <br>
+  <div class="large-6 columns"><h1><%= @filling.title %></h1></div>
+  <div class="large-6 columns"><%= link_to 'Edit this Filling', edit_admin_filling_path(@filling) %> | <%= link_to 'Back to all Fillings', admin_fillings_path %></div>
+</div>
 
-<h1><%= @filling.title %></h1>
-
-<% if @filling.image.exists? %>
-  <%= image_tag @filling.image.url %><br/>
-  <% else %>
-  <%= image_tag "steak.jpg" %>
-<% end %>
-
-<ul>
-  <li><%= @filling.description%></li>
-  <li><%= @filling.price%></li>
-  <li><%= @filling.food_group%></li>
-
-<ul>
-  <li><%= link_to 'Edit', edit_admin_filling_path(@filling) %></li>
-  <li><%= link_to 'Back', admin_fillings_path %></li>
-</ul>
+<div class="row">
+  <div class="small-9 columns">
+    <ul>
+      <li><%= @filling.description%></li>
+      <li><%= @filling.price%></li>
+      <li><%= @filling.food_group%></li>
+    </ul>
+    <% if @filling.image.exists? %>
+      <%= image_tag @filling.image.url :medium %><br/>
+    <% else %>
+      <%= image_tag "steak.jpg" %>
+    <% end %></br>
+  </div>
+</div>

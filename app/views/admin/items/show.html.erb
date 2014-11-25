@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <br>
+  <div class="large-6 columns"><h1><%= @item.name %></h1></div>
+  <div class="large-6 columns"><%= link_to 'Edit this Item', edit_admin_item_path(@item) %> | <%= link_to 'Back to all Items', admin_items_path %></div>
+</div>
 
-<h1><%= @item.name %></h1>
+<div class="row">
+  <div class="small-9 columns">
 
 <% if @item.image.exists? %>
-  <%= image_tag @item.image.url %><br/>
+  <%= image_tag @item.image.url :medium %><br/>
   <% else %>
   <%= image_tag "steak.jpg" %>
 <% end %>
@@ -15,7 +20,7 @@
     <% @filling_names.each do |filling|%>
       <li><%= filling %></li>
     <% end %>  
-<ul>
-  <li><%= link_to 'Edit', edit_admin_item_path(@item) %></li>
-  <li><%= link_to 'Back', admin_items_path %></li>
-</ul>
+
+  </div>
+</div>
+
