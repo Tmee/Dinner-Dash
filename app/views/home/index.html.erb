@@ -3,12 +3,17 @@
 <div class="row" id="homepage-holder">
   <div class="large-4 columns" id="container">
     <div class="button_holder">
-      <div class="image1"><a class="circle-link"><span class="text"><%= link_to "Build #{item.name}", root_path %></span></a>$<%= item.price / 100 %>
+      <div class="troublesome_image">
+        <div class="image1">
+          <%= link_to root_path, class: "circle-link"  do %>
+            <span class="text"><%= "Build A #{item.name}" %><br>$<%= item.price / 100 %></span>
+          <% end %>
+        </div>
       </div>
     </div>
     <div>
-      <p><%= item.description %></p>
+      <%= item.description %>
     </div>
   </div>
   <% end %>
-</div>
+  </div>

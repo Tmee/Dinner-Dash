@@ -67,6 +67,7 @@ div #container {
   height: 50%;
   text-align: center;
   margin: 20px;
+  margin-bottom: 2%;
   display: block;
   box-shadow: 0px 6px 1px 3px rgba(187, 187, 187, 0.75);
   -moz-box-shadow: 0px 6px 1px 3px rgba(187, 187, 187, 0.75);
@@ -183,8 +184,8 @@ a:hover {
 
 .text {
   position: relative;
-  top: 100px;
-  left: 5px;
+  top: 40%;
+  left: 1%;
 }
 
 #oppress-the-button {
