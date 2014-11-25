@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-12 columns text-center">
-    <h1>~ Menu ~</h1><br/>
+    <h1>~ Build your meal ~</h1><br/>
     <h2>Which will you choose?</h2>
   </div>
 </div><br/>
@@ -8,9 +8,12 @@
 <div class="row">
   <ul class="small-block-grid-4">
     <% @items.each do |item| %>
-      <li>
-        <h4><%= item.name %></h4>
-      </li>
+        <li>
+          <a class='th'>
+            <h4><%= item.name %></h4>
+            <%= image_tag(item.image, class: 'th') %>
+          </a>
+        </li>
     <%end%>
   </ul>
 </div>
@@ -48,7 +51,8 @@
     <%= image_tag m.image.url(:medium) %>
     <p class="text-left"><p><%= m.description %></p></p>
     <p class="text-left"><p><%= link_to 'Show', controller: "menu", action: "show", id: m %></p></p>
-  </div><%end%>
+  </div>
+  <%end%>
 </div>
 
 <div class="row">
@@ -60,13 +64,11 @@
 
 <div class="row">
   <% @veggies.each do |m| %>
-    <div class="medium-4 large-4 columns text-center">
-      <h5><%= m.title %></h5>
-      <%= image_tag m.image.url(:medium) %>
-      <p class="text-left"><p><%= m.description %></p></p>
-      <p class="text-left"><p><%= link_to 'More Info.', controller: "menu", action: "show", id: m %></p></p>
-    </div><%end%>
-  </div>
+  <div class="medium-4 large-4 columns text-center">
+    <img src="http://placehold.it/300x250&text=[things]">
+    <p class="text-left"><p><%= m.description %></p></p>
+  </div><%end%>
+</div>
 
 <div class="row">
   <div class="large-12 columns">
@@ -77,13 +79,11 @@
 
 <div class="row">
   <% @salsas.each do |m| %>
-    <div class="medium-4 large-4 columns text-center">
-      <h5><%= m.title %></h5>
-      <%= image_tag m.image.url(:medium) %>
-      <p class="text-left"><p><%= m.description %></p></p>
-      <p class="text-left"><p><%= link_to 'More Info.', controller: "menu", action: "show", id: m %></p></p>
-    </div><%end%>
-  </div>
+  <div class="medium-4 large-4 columns text-center">
+    <img src="http://placehold.it/300x250&text=[things]">
+    <p class="text-left"><p><%= m.description %></p></p>
+  </div><%end%>
+</div>
 
 <div class="row">
   <div class="large-12 columns">
@@ -94,10 +94,8 @@
 
 <div class="row">
   <% @extras.each do |m| %>
-    <div class="medium-4 large-4 columns text-center">
-      <h5><%= m.title %></h5>
-      <%= image_tag m.image.url(:medium) %>
-      <p class="text-left"><p><%= m.description %></p></p>
-      <p class="text-left"><p><%= link_to 'More Info.', controller: "menu", action: "show", id: m %></p></p>
-    </div><%end%>
-  </div>
+  <div class="medium-4 large-4 columns text-center">
+    <img src="http://placehold.it/300x250&text=[things]">
+    <p class="text-left"><p><%= m.description %></p></p>
+  </div><%end%>
+</div>
