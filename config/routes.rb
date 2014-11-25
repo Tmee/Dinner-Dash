@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   get '/register',  to: 'users#register'
   post '/register', to: 'users#create'
 
-
+  get '/code', to: 'application#code'
   get '/menu_item_builder/*', to: 'menu#build_item'
 end

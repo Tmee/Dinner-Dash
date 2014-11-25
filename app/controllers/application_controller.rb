@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def code
+    redirect_to "https://github.com/Tmee/Dinner-Dash"
+  end
+
   protected
 
   def set_items
