@@ -10,18 +10,17 @@ Rails.application.routes.draw do
     resources :items, :fillings, :users
   end
 
-  get '/login',     to: 'sessions#new'
-  post '/login',    to: 'sessions#create'
+  get    '/login',  to: 'sessions#new'
+  post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
 
   get '/menu', to: 'menu#index'
   resources :menu, only: [:show]
 
 
-  get '/register',  to: 'users#register'
+  get  '/register', to: 'users#register'
   post '/register', to: 'users#create'
 
 
-  get '/menu_item_builder/*', to: 'menu#build_item'
+  get  '/build', to: 'line_items#new'
 end
