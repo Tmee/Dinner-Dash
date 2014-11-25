@@ -1,5 +1,5 @@
 .pattern_bg {
-  width: 100%;
+  width: auto;;
   height: 100%;
   background: image_url("restaurant_icons.png");
   text-align: center;
@@ -9,13 +9,27 @@
 }
 
 div .content_box {
-  width: 100%;
+  width: auto;;
   height: 100%;
   color: white;
 }
 
-#move-up {
-  margin-bottom: -20px;
+#chatbox {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  width: auto;
+  display: block;
+  float:right;
+}
+
+
+#iamgodhere_foundation {
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 60%;
+  height: 30%;
+  z-index: -9999;
 }
 
 canvas {
@@ -31,16 +45,21 @@ div .jorge_the_bird {
 div #hermano-says {
   background-color: transparent;
   text-align: center;
-  width: 100%;
+  width: auto;;
   background-size: auto;
   background-position: center;
 }
 
 #site-content {
-  background: url(http://subtlepatterns.com/patterns/green_gobbler.png);
+  background: url(http://subtlepatterns.com/patterns/subtle_stripes.png);
   background-size: auto;
   background-position: center;
-  width: 100%;
+  width: auto;
+}
+
+#homepage-holder {
+  width: auto;
+  margin: 0 auto;
 }
 
 div #container {
@@ -79,7 +98,7 @@ div #container {
   content: '';
   position: absolute;
   border-style: solid;
-  border-width: 17px 65px 17px 0;
+  border-width: 51px 65px 17px 0;
   border-color: transparent #2ecc71;
   display: block;
   width: 0;
@@ -94,7 +113,7 @@ div #container {
   content: '';
   position: absolute;
   border-style: solid;
-  border-width: 26px 74px 26px 0;
+  border-width: 67px 112px 16px 1px;
   border-color: transparent #2ecc71;
   display: block;
   width: 0;
@@ -117,12 +136,19 @@ h1 {
 }
 h2 {
   color: #584B4F;
-  font-size: 20px;
+  font-size: 30px;
   text-align: center;
+  margin-top: -10px;
+  z-index: 5;
 }
 .hermano-says:before {
   content:'Hermano Says...';
   font-family: 'Indie Flower';
+}
+
+hr {
+  border-width: 14px 0px 0px;
+  width: auto;;
 }
 
 .button-holder {
@@ -160,6 +186,13 @@ a:hover {
 
 .text {
   position: relative;
-  top: 100px;
-  left: 5px;
+  top: 40%;
+  left: 1%;
+}
+
+#oppress-the-button {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 30%;
 }
