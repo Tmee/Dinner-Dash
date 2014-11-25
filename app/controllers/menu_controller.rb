@@ -15,14 +15,6 @@ class MenuController < ApplicationController
     redirect_to items_path, notice: "The product was deleted."
   end
 
-  def build_item
-    @items    = Item.all
-    @meats    = find_food_group('meat')
-    @veggies  = find_food_group('veggies')
-    @extras   = find_food_group('extras')
-    @salsas   = find_food_group('salsas')
-  end
-
   def index
     @items    = Item.all
     @meats    = find_food_group('meat')
