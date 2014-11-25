@@ -1,41 +1,25 @@
 <!DOCTYPE html>
+<%= stylesheet_link_tag "homepage" %>
 <%= stylesheet_link_tag    "application" %>
 <%= javascript_include_tag "vendor/modernizr" %>
 <%= csrf_meta_tags %>
 
+<html lang="en">
+
+<head>
   <%= render "shared/admin_nav_bar" %>
+  <%= render "shared/flash" %>
+</head>
 
   <body>
-
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
 
-<footer class="row">
-  <div class="large-12 columns"><hr>
-      <div class="row">
-
-        <div class="large-6 columns">
-            <p>© Amigos Gordos Restaurant, 2014</p>
-        </div>
-
-        <div class="large-6 small-12 columns">
-            <ul class="inline-list right">
-              <li><a href="#">Link 1</a></li>
-              <li><a href="#">Link 2</a></li>
-              <li><a href="#">Link 3</a></li>
-              <li><a href="#">Link 4</a></li>
-            </ul>
-        </div>
-
-      </div>
-  </div>
+<footer class="wrapper wrapper--footer">
+  <h1>This is a Footer</h1>
 </footer>
-
-
-
-</div>
-</div>
+</html>
 
 <script>
 document.write('<script src=js/vendor/' +
