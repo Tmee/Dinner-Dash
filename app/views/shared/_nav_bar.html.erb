@@ -14,7 +14,7 @@
         <li class="has-dropdown">
           <a><%= link_to "Our Food", menu_path %></a>
           <ul class="dropdown">
-            <% items.each do |item| %>
+            <% @items.each do |item| %>
               <li><a><%= link_to "Build a #{item.name}", root_path %></a></li>
               <li class="divider"></li>
             <% end %>
