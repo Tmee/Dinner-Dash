@@ -1,7 +1,12 @@
+<%= stylesheet_link_tag    "responsive-tables" %>
+<%= javascript_include_tag "responsive-tables" %> 
+<div class="row">
+  <br>
+  <div class="large-6 columns"><h1>All Users</h1></div>
+  <div class="large-6 columns"><%= link_to 'Create New User', new_admin_user_path, class: "button" %></div>
+</div>
 
-<h1>Listing users</h1>
-
-<table>
+<table class="responsive">
   <thead>
     <tr>
       <th>First Name</th>
@@ -33,6 +38,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User', new_admin_user_path %>

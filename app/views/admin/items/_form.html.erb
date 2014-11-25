@@ -1,4 +1,7 @@
 <%= form_for([:admin, @item]) do |f| %>
+
+<div class="row">
+  <div class="small-9 columns">
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -11,35 +14,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+  <div>
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :price %><br>
+  <div>
+    <%= f.label :price %>
     <%= f.number_field :price %>
   </div>
   <div>
     <% if @item.image.exists? %>
-      <%= image_tag @item.image.url %><br/>
+      <%= image_tag @item.image.url :medium %><br/>
     <% end %>
     <%= f.label :image, "Attach an Image" %><br />
     <%= f.file_field :image %>
   </div>
 
-  
   <% for filling in Filling.all %>
-  <div>
-    <%= check_box_tag "item[filling_ids][]", filling.id, @item.fillings.include?(filling) %>
-    <%= filling.title %>
-  </div>
+
+      <%= check_box_tag "item[filling_ids][]", filling.id, @item.fillings.include?(filling) %>
+      <%= filling.title %>
+ 
   <% end %>
+ 
   <div>
-    <%= f.submit %>
+    <%= f.submit class: "button" %>
   </div>
 <% end %>
-
-
-
-  </div>
+</div>
+</div>
 

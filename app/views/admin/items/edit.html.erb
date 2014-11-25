@@ -1,8 +1,7 @@
-<h1>Editing <%= "#{@item.name}" %></h1>
+<div class="row">
+  <br>
+  <div class="large-6 columns"><h1>Editing <%= "#{@item.name}" %></h1></div>
+  <div class="large-6 columns"><%= link_to 'View Item', admin_item_path(@item) %> | <%= link_to 'Back to all Items', admin_items_path %></div>
+</div>
 
 <%= render 'form' %>
-
-<ul>
-  <li><%= link_to 'Show', admin_item_path(@item) %></li>
-  <li><%= link_to 'Back', admin_items_path %></li>
-</ul>

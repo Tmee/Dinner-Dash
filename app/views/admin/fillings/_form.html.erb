@@ -1,4 +1,7 @@
 <%= form_for([:admin, @filling], html: {multipart: true}) do |f| %>
+  
+<div class="row">
+  <div class="small-9 columns">
   <% if @filling.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@filling.errors.count, "error") %> prohibited this filling from being saved:</h2>
@@ -11,30 +14,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
+  <div>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
+  <div>
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :price %><br>
+  <div>
+    <%= f.label :price %>
     <%= f.number_field :price %>
   </div>
-  <div class="field">
-    <%= f.label :food_group %><br>
+  <div>
+    <%= f.label :food_group %>
     <%= f.text_field :food_group %>
   </div>
   <div>
     <% if @filling.image.exists? %>
-      <%= image_tag @filling.image.url %><br/>
+      <%= image_tag @filling.image.url :medium %><br/>
     <% end %>
-    <%= f.label :image, "Attach an Image" %><br />
+    <%= f.label :image, "Attach an Image" %>
     <%= f.file_field :image %>
   </div>
   <div>
-    <%= f.submit %>
+    <%= f.submit class: "button" %>
   </div>
 <% end %>
+</div>
+</div>
