@@ -1,0 +1,102 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+/* line 13, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+body {
+  background: #262626;
+  font-family: Arial, sans-serif;
+}
+
+/* line 18, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  font-size: 27px;
+  color: #444444;
+  font-weight: 700;
+}
+/* line 25, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+h1 span {
+  font-weight: 400;
+}
+
+/* line 30, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.container {
+  width: 735px;
+  margin: 50px auto;
+  background: whitesmoke;
+  padding: 25px;
+}
+
+/* line 37, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button {
+  border: 0 none;
+  border-radius: 2px 2px 2px 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  margin-bottom: 0;
+  margin-top: 10px;
+  padding: 7px 10px;
+  text-transform: none;
+  transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  width: 16.795%;
+  /* auto */
+  text-align: center;
+  /* DELETE WHEN WIDTH AUTO */
+}
+/* line 56, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.red {
+  background: none repeat scroll 0 0 #e0645c;
+  color: white;
+}
+/* line 59, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.red:hover {
+  background: none repeat scroll 0 0 #999999;
+  color: white;
+}
+/* line 64, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.dark {
+  background: none repeat scroll 0 0 #444444;
+  color: white;
+}
+/* line 67, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.dark:hover {
+  background: none repeat scroll 0 0 #2db6cf;
+  color: white;
+}
+/* line 72, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.light {
+  background: none repeat scroll 0 0 #999999;
+  color: white;
+}
+/* line 75, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.light:hover {
+  background: none repeat scroll 0 0 #444444;
+  color: white;
+}
+/* line 80, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.green {
+  background: none repeat scroll 0 0 #46b98a;
+  color: white;
+}
+/* line 83, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.green:hover {
+  background: none repeat scroll 0 0 #444444;
+  color: white;
+}
+/* line 88, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.blue {
+  background: none repeat scroll 0 0 #2db6cf;
+  color: white;
+}
+/* line 91, /Users/Tim_Mee/Turing/projects/Dinner-Dash/vendor/assets/stylesheets/busborgbuttons.css.scss */
+.button.blue:hover {
+  background: none repeat scroll 0 0 #444444;
+  color: white;
+}
