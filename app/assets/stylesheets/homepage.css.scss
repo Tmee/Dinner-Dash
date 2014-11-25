@@ -97,7 +97,7 @@ div #container {
   content: '';
   position: absolute;
   border-style: solid;
-  border-width: 17px 65px 17px 0;
+  border-width: 51px 65px 17px 0;
   border-color: transparent #2ecc71;
   display: block;
   width: 0;
@@ -112,7 +112,7 @@ div #container {
   content: '';
   position: absolute;
   border-style: solid;
-  border-width: 26px 74px 26px 0;
+  border-width: 67px 112px 16px 1px;
   border-color: transparent #2ecc71;
   display: block;
   width: 0;
@@ -135,8 +135,10 @@ h1 {
 }
 h2 {
   color: #584B4F;
-  font-size: 20px;
+  font-size: 30px;
   text-align: center;
+  margin-top: -10px;
+  z-index: 5;
 }
 .hermano-says:before {
   content:'Hermano Says...';
