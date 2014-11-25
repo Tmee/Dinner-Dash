@@ -23,6 +23,11 @@ class MenuController < ApplicationController
     @salsas   = find_food_group('salsas')
   end
 
+  def build_temp
+    @item = Item.find(params[:id])
+    @cart = Cart.new
+  end
+
   private
 
   def find_food_group(food_group)
