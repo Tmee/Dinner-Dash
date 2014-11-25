@@ -3,12 +3,10 @@
 
   <div class="large-12 columns">
     <% if current_user %>
-
       <h3>Whoops!</h3>
       <p>Looks like you are already logged in.</p>
       <h5>Not <%=current_user.first_name%>?</h5>
-
-      <p>Please <%= link_to "Sign Out", logout_path, redirect_to '/register',method: :delete %> to log in or register as a new user </p>
+      <p>Please <%= link_to "Sign Out", logout_path, method: :delete %> to log in or register as a new user </p>
       <br/>
 
     <%else%>
