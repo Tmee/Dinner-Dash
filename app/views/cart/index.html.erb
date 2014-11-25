@@ -1,23 +1,27 @@
-<div class="row">
-  <br>
-  <div class="large-6 columns"><h1>Your Cart</h1></div>
-  <div class="large-6 columns">This can be a link to sign in to complete the order</div>
-</div>
+<%if !@cart%>
 
-<div class="row">
-  <div class="small-9 columns">
+<p>figure shit out</p>
 
-  <% @cart_items.each_pair do |key, value| %>
-    <ul><h2><%= key.name %></h2>
-      <%= image_tag key.image.url :thumb %>
-      <li>With the following fillings:</li>
-        <% value.each do |filling| %>
-          <li><%= filling.title %></li>
-        <% end %>
+<%else%>
 
-    </ul>
-  <% end %>
-
+  <div class="row">
+    <br>
+    <div class="large-6 columns"><h1>Your Cart</h1></div>
+    <div class="large-6 columns">This can be a link to sign in to complete the order</div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="small-9 columns">
+      <% @cart_items.each_pair do |key, value| %>
+      <ul><h2><%= key.name %></h2>
+        <%= image_tag key.image.url :thumb %>
+        <li>With the following fillings:</li>
+        <% value.each do |filling| %>
+        <li><%= filling.title %></li>
+          <% end %>
+      </ul>
+    <% end %>
+    </div>
+  </div>
+<%end%>
 
