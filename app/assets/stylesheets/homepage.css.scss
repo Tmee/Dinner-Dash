@@ -1,5 +1,5 @@
 .pattern_bg {
-  width: 100%;
+  width: auto;;
   height: 100%;
   background: image_url("restaurant_icons.png");
   text-align: center;
@@ -9,13 +9,27 @@
 }
 
 div .content_box {
-  width: 100%;
+  width: auto;;
   height: 100%;
   color: white;
 }
 
-#move-up {
-  margin-bottom: -20px;
+#chatbox {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  width: auto;
+  display: block;
+  float:right;
+}
+
+
+#iamgodhere_foundation {
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 60%;
+  height: 30%;
+  z-index: -9999;
 }
 
 canvas {
@@ -31,16 +45,16 @@ div .jorge_the_bird {
 div #hermano-says {
   background-color: transparent;
   text-align: center;
-  width: 100%;
+  width: auto;;
   background-size: auto;
   background-position: center;
 }
 
 #site-content {
-  background: url(http://subtlepatterns.com/patterns/green_gobbler.png);
+  background: url(http://subtlepatterns.com/patterns/subtle_stripes.png);
   background-size: auto;
   background-position: center;
-  width: 100%;
+  width: auto;;
 }
 div #container {
   background-color: whitesmoke;
@@ -124,6 +138,11 @@ h2 {
   font-family: 'Indie Flower';
 }
 
+hr {
+  border-width: 14px 0px 0px;
+  width: auto;;
+}
+
 .button-holder {
   width: 50%;
   margin: 0 auto;
@@ -161,4 +180,11 @@ a:hover {
   position: relative;
   top: 100px;
   left: 5px;
+}
+
+#oppress-the-button {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 30%;
 }

@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag "homepage" %>
 <%= stylesheet_link_tag    "application" %>
 <%= javascript_include_tag "vendor/modernizr" %>
+<%= stylesheet_link_tag "vendor/busborgbuttons" %>
 <%= javascript_include_tag "hermano_box" %>
 <%= csrf_meta_tags %>
 <%= javascript_include_tag "application" %>
@@ -22,10 +23,9 @@
       <section class="container">
 
         <div class="row" id="hermano-says">
-          <div class="large-12 columns" id="move-up">
+          <div class="large-12 columns" id="chatbox">
             <div class="jorge_the_bird"><%= image_tag "el_gordo_hermano.png", size: "300x350" %></div>
             <div class="bubble"><div><h1 class="hermano-says"></h1><br><h2><%= @hermano_said %></hr></div></div>
-              <hr/>
             </div>
           </div>
         </section>
@@ -34,6 +34,7 @@
 <% end %>
 
   <section id="site-content">
+    <hr/>
     <%= yield %>
   </section>
   </div>
