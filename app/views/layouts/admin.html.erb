@@ -1,12 +1,17 @@
 <!DOCTYPE html>
+<%= stylesheet_link_tag "homepage" %>
 <%= stylesheet_link_tag    "application" %>
 <%= javascript_include_tag "vendor/modernizr" %>
 <%= csrf_meta_tags %>
 
+<html lang="en">
+
+<head>
   <%= render "shared/admin_nav_bar" %>
+  <%= render "shared/flash" %>
+</head>
 
   <body>
-
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
