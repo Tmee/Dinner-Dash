@@ -5,6 +5,7 @@ class CartController < ApplicationController
     @cart = session[:cart]
     @cart_items ||= []
     get_cart_items
+    get_total_price
   end
 
   def get_cart_items
@@ -17,9 +18,20 @@ class CartController < ApplicationController
         cart_line_items[:id] = line_item["id"]
         @cart_items << cart_line_items
       end
+      get_line_item_price
     else
       redirect_to root_path, notice: "Your cart is empty.  Please fill it up and give us money!"
     end
+  end
+
+  def get_line_item_price
+    @cart_items.each do |line_item| 
+      line_item[:price] = line_item[:fillings].map(&:price).reduce(line_item[:item].price, &:+) * line_item[:quantity].to_i
+    end
+  end
+
+  def get_total_price
+    @total_price = @cart_items.map { |line_item| line_item[:price] }.reduce(&:+)
   end
 
   def cart_has_items
@@ -51,8 +63,4 @@ class CartController < ApplicationController
     redirect_to cart_index_path, notice: "Item quantity has been updated."
   end
 
-  # def destroy
-  #   session[:cart].delete_if { |line_item| line_item["id"] == params[:id] }
-  #   redirect_to cart_index_path, notice: "Item quantity has been updated."
-  # end
 end
