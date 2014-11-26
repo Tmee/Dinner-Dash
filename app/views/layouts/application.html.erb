@@ -11,35 +11,26 @@
 <html lang="en">
 
 <head>
-  <%= render "shared/nav_bar", :items => @items %>
-  <%= render "shared/flash" %>
+  <%= render partial: "shared/nav_bar", locals: { :items => @items } %>
+  <%= render partial: "shared/flash" %>
 </head>
 
 <body class="pattern_bg">
-<% if current_page?(root_path) %>
   <div class="content_box">
     <div class="wrapper wrapper--main">
-      <section class="container">
-
-        <div class="row" id="hermano-says">
-          <div class="large-12 columns" id="chatbox">
-            <div class="jorge_the_bird"><%= image_tag "el_gordo_hermano.png", size: "300x350" %></div>
-            <div class="bubble"><div><h1 class="hermano-says"></h1><br><h2><%= @hermano_said %></hr></div></div>
-            </div>
-          </div>
-        </section>
-      </div>
     </div>
-<% end %>
+  </div>
+
 
   <section id="site-content">
     <hr/>
     <%= yield %>
   </section>
-  </div>
 </body>
 
-<footer class="wrapper wrapper--footer">
-  <h1>This is a Footer</h1>
+<footer class="fixed_footer">
+  <% if current_page?(root_path) %>
+    <%= render partial: "shared/hermano" %>
+  <% end %>
 </footer>
 </html>

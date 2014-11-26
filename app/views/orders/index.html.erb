@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag    "responsive-tables" %>
+<%= javascript_include_tag "responsive-tables" %>
+<div class="row">
+  <div id="h1-box"><h1> Your Past Orders</h1><hr id="h1-box"></div>
+
+
+
+  <table class="responsive" id="get-aligned">
+    <thead>
+      <tr>
+        <th>Order #</th>
+        <th>Items</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.items %></td>
+        <td><%= order.created_at %></td>
+        <td><%= order.state.capitalize %></td>
+        <td><%= link_to "View Order", order_path(order) %></li></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
