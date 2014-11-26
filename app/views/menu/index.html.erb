@@ -5,15 +5,22 @@
   </div>
 </div><br/>
 
-<div class="row">
-  <ul class="small-block-grid-4">
-    <% @items.each do |item| %>
-      <li>
-        <h4><%= item.name %></h4>
-      </li>
-    <%end%>
-  </ul>
-</div>
+<% @items.each do |item| %>
+  <div class="show-block">
+    <li>
+      <figure>
+        <h1><%= item.name %></h1>
+        <%= image_tag item.image %>
+        <figcaption class="description transition">
+          <p>
+            <%= item.description %>
+          </p>
+        </figcaption>
+      </figure>
+    </li>
+  </div>
+<%end%>
+
 
 <div class="row">
   <hr><div class="magellan-container" data-magellan-expedition="fixed" data-options="destination_threshold:65;throttle_delay:0;" style="">
