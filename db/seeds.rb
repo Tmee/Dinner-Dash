@@ -1,3 +1,9 @@
+require 'benchmark'
+
+time = Benchmark.realtime do
+
+
+
 class Seed
   def initialize
     generate_users_and_roles
@@ -98,28 +104,28 @@ class Seed
     Filling.create!(title:       "Steak",
                     description: "It's meat. From an animal.",
                     price:       100,
-                    food_group:  "meat",
+                    food_group:  "meats",
                     image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/steak.jpg")
     )
 
     Filling.create!(title:       "Chicken",
                     description: "Made from home made chickens.",
                     price:       70,
-                    food_group:  "meat",
+                    food_group:  "meats",
                     image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/chicken.jpg")
     )
 
     Filling.create!(title:       "Barbacoa",
                     description: "We think it's from goats.",
                     price:       200,
-                    food_group:  "meat",
+                    food_group:  "meats",
                     image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/barbacoa.jpg")
     )
 
     Filling.create!(title:       "Carnitas",
                     description: "Pork.",
                     price:       150,
-                    food_group:  "meat",
+                    food_group:  "meats",
                     image:       File.new("#{Rails.root}/app/assets/images/menu/fillings/carnitas.jpg")
     )
 
@@ -270,3 +276,9 @@ class Seed
 end
 
 Seed.new
+
+
+
+end
+
+puts "Time taken: #{time} seconds."

@@ -17,7 +17,7 @@ class MenuController < ApplicationController
 
   def index
     @items    = Item.all
-    @meats    = find_food_group('meat')
+    @meats    = find_food_group('meats')
     @veggies  = find_food_group('veggies')
     @extras   = find_food_group('extras')
     @salsas   = find_food_group('salsas')

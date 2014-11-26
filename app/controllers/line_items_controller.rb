@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
 
   def new
     @items    = Item.all
-    @meats    = find_food_group('meat')
+    @meats    = find_food_group('meats')
     @veggies  = find_food_group('veggies')
     @extras   = find_food_group('extras')
     @salsas   = find_food_group('salsas')
@@ -13,5 +13,5 @@ class LineItemsController < ApplicationController
   def find_food_group(food_group)
     Filling.where(food_group: food_group)
   end
-  
+
 end
