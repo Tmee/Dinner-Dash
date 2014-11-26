@@ -1,55 +1,47 @@
 <div class="row">
-  <div class="large-6 columns">
+  <div class="large-9 columns">
     <h1>Your Cart</h1>
   </div>
-
-    <% if !current_user.present? %>
-        <div class="large-6 columns">
-          Please Log In to complete your order
-        </div>
-      </div><hr/>
-    <%end%>
-
-<div class="panel">
-    <div class="row">
-      <div class="small-9 columns">
-        <% @cart_items.each do |line_item| %>
-        <ul><h2><%= line_item[:item].name %><%= line_item[:item].price  %></h2>
-
-
-  <%= form_tag "/cart" do %>
-         <select name="quantity" id="quantity"  style='width: 50px;' value="<%= line_item[:quantity] %>">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-            <input type="hidden" name="@cart" />
-            <input type="hidden" name="id", value="<%= line_item[:id] %>" />
-          <button type="submit" >Update Quantity</button>
-          <h2><%=@quantity%></h2>
-          <%end%>
-
-          <%= image_tag line_item[:item].image.url :thumb %>
-          <li>With the following fillings:</li>
-          <% line_item[:fillings].each do |filling| %>
-          <li><%= filling.title %></li>
-          <li><%= filling.price %></li>
-
-          <%= line_item[:quantity] %>
-            <% end %>
-
-        </ul>
-      <% end %>
-      </div>
-    </div>
+  <% if !current_user.present? %>
+  <div class="large-3 columns">
+    Please Log In to complete your order
+  <%end%>
   </div>
-</div>
+
+  <div class="row">
+    <div class="large-9 columns">
+    <table>  
+      <thead>
+        <tr>
+          <th></th>
+          <th>Item</th>
+          <th>Fillings</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |line_item| %>
+          <tr>
+            <td><%= image_tag line_item[:item].image.url :thumb %></td>
+            <td><h3><%= line_item[:item].name %></h3></td>
+            <td><% line_item[:fillings].each do |filling| %>
+                  <%= filling.title %>: $<%= filling.price / 100 %> (extra),
+                <% end %> </td>
+            <td><%= form_tag "/cart" do %>
+               <input type="number" name="quantity" id="quantity" min="1" max="30" value="<%= line_item[:quantity] %>"/>
+               <input type="hidden" name="id", value="<%= line_item[:id] %>" />
+               <button type= "submit" class="tiny button" >Update</button>
+             <% end %>
+            </td> 
+            <td>$ <%= line_item[:item].price / 100 %></td>
+            <td><%= link_to "Remove Item", cart_path(:id => line_item[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+

@@ -26,7 +26,6 @@ class CartController < ApplicationController
     @cart.nil? == false
   end
 
-
   def update_quantity
     session[:cart].each do |line_item|
       if line_item["id"] == params[:id]
@@ -47,6 +46,13 @@ class CartController < ApplicationController
     redirect_to cart_index_path, notice: "Cart created. Please log in."
   end
 
-  def update
+  def remove_item
+    session[:cart].delete_if { |line_item| line_item["id"] == params[:id] }
+    redirect_to cart_index_path, notice: "Item quantity has been updated."
   end
+
+  # def destroy
+  #   session[:cart].delete_if { |line_item| line_item["id"] == params[:id] }
+  #   redirect_to cart_index_path, notice: "Item quantity has been updated."
+  # end
 end

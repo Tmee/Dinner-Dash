@@ -26,11 +26,12 @@ Rails.application.routes.draw do
   get '/menu_item_builder/*', to: 'menu#build_item'
 
   get  '/build', to: 'line_items#new'
-
   get '/build_temp/:id', to: 'menu#build_temp'
-  post '/build_temp', to: 'cart#create'
 
+  post '/build_temp', to: 'cart#create'
   post  '/cart', to: 'cart#update_quantity'
+  delete '/cart', to: 'cart#remove_item' 
 
   resources :cart, only: [:index]
+  
 end
