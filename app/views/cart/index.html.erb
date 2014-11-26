@@ -1,13 +1,57 @@
-<p>figure shit out</p>
-  <div class="row">
-    <br>
-    <div class="large-6 columns"><h1>Your Cart</h1></div>
-    <div class="large-6 columns">This can be a link to sign in to complete the order</div>
+<div class="row">
+  <div class="large-6 columns">
+    <h1>Your Cart</h1>
   </div>
 
-  <div class="row">
-    <div class="small-9 columns">
-      <%= @cart_items %>
+    <% if !current_user.present? %>
+        <div class="large-6 columns">
+          Please Log In to complete your order
+        </div>
+      </div><hr/>
+    <%end%>
+
+
+
+
+
+<div class="panel">
+    <div class="row">
+      <div class="small-9 columns">
+        <% @cart_items.each do |line_item| %>
+        <ul><h2><%= line_item[:item].name %><%= line_item[:item].price  %></h2>
+
+
+  <%= form_tag "/cart" do %>
+         <select name="quantity" id="quantity"  style='width: 50px;' value="<%=session[:cart][:quantity] %>">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <input type="hidden" name="@cart" />
+          <button type="submit" >Update Quantity</button>
+          <h2><%=@quantity%></h2>
+          <%end%>
+
+          <%= image_tag line_item[:item].image.url :thumb %>
+          <li>With the following fillings:</li>
+          <% line_item[:fillings].each do |filling| %>
+          <li><%= filling.title %></li>
+          <li><%= filling.price %></li>
+
+            <% end %>
+
+        </ul>
+      <% end %>
+      </div>
     </div>
   </div>
-
+</div>

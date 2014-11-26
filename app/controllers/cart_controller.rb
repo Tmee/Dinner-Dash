@@ -27,9 +27,15 @@ class CartController < ApplicationController
     @cart.nil? == false
   end
 
+  def update_quantity
+
+    redirect_to cart_index_path, notice: "Item quantity has been updated."
+  end
+
 
   def create
     session[:cart] ||= []
+<<<<<<< HEAD
     line_item = {"item_id" => params["item_id"], 
                  "filling_ids" => params["item"]["filling_ids"], 
                  "quantity" => params["quantity"],
@@ -37,7 +43,6 @@ class CartController < ApplicationController
                 }
     session[:cart] << line_item
     redirect_to cart_index_path, notice: "Cart created. Please log in."
-
     # session[:cart] ||= {}
     # session[:cart][params[:item_id]] = params[:item][:filling_ids]
     # redirect_to cart_index_path, notice: "User created. Please log in."
