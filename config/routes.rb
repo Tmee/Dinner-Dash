@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin/base_admin#index', as: :admin_index
 
   resources :users
+  resources :orders, only: [:index, :new, :show, :create]
 
   namespace :admin do
     resources :items, :fillings, :users

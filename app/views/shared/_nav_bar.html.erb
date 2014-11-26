@@ -51,7 +51,7 @@
             <% end %>
             <% if current_user %>
               <li class="divider"></li>
-              <li><a><%= link_to "My Past Orders", root_path %></a></li>
+              <li><a><%= link_to "My Past Orders", orders_path %></a></li>
             <% end %>
             <% if current_user && current_user.is_admin? %>
               <li class="divider"></li>
