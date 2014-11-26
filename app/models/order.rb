@@ -4,4 +4,8 @@ class Order < ActiveRecord::Base
 
   validates :user_id, presence: :true
   validates :state, presence: :true
+
+  def items
+    line_items.map { |line_item| line_item.item.name.capitalize }.join(", ")
+  end
 end

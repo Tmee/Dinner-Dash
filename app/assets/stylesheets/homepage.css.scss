@@ -8,6 +8,12 @@
   font-family: helvetica;
 }
 
+#get-aligned {
+  margin: auto 1.5em;
+  display: inline-block;
+  width: auto;
+}
+
 div .content_box {
   width: auto;;
   height: 100%;
@@ -229,3 +235,12 @@ input[type="text"], input[type="password"] {
     font-size: 1em;
     font-weight: 300;
   }
+#h1-box{
+  position: relative;
+  background: url(http://subtlepatterns.com/patterns/photography.png);
+  margin-bottom: 8vh;
+ hr {
+  position: initial;
+  bottom: 0;
+  }
+}
