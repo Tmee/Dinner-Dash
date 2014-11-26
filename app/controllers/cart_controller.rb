@@ -26,7 +26,6 @@ class CartController < ApplicationController
     @cart.nil? == false
   end
 
-
   def update_quantity
     session[:cart].each do |line_item|
       if line_item["id"] == params[:id]
