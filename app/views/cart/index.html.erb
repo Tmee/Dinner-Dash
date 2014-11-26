@@ -10,10 +10,6 @@
       </div><hr/>
     <%end%>
 
-
-
-
-
 <div class="panel">
     <div class="row">
       <div class="small-9 columns">
@@ -22,7 +18,7 @@
 
 
   <%= form_tag "/cart" do %>
-         <select name="quantity" id="quantity"  style='width: 50px;' value="<%=session[:cart][:quantity] %>">
+         <select name="quantity" id="quantity"  style='width: 50px;' value="<%= line_item[:quantity] %>">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -37,6 +33,7 @@
               <option value="12">12</option>
             </select>
             <input type="hidden" name="@cart" />
+            <input type="hidden" name="id", value="<%= line_item[:id] %>" />
           <button type="submit" >Update Quantity</button>
           <h2><%=@quantity%></h2>
           <%end%>
@@ -47,6 +44,7 @@
           <li><%= filling.title %></li>
           <li><%= filling.price %></li>
 
+          <%= line_item[:quantity] %>
             <% end %>
 
         </ul>
