@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141128215655) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "retired",            default: false
   end
 
   create_table "item_fillings", force: true do |t|
