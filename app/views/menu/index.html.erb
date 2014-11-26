@@ -1,9 +1,30 @@
 <div class="row">
+  <h1>~ Menu ~</h1>
+</div>
+
+<div class="row">
+  <hr><div class="magellan-container" data-magellan-expedition="fixed" data-options="destination_threshold:65;throttle_delay:0;" style="">
+    <dl class="sub-nav">
+      <dd data-magellan-arrival="Entrées" class=""><a href="#Entrées">Entrées</a></dd>
+      <dd data-magellan-arrival="meats" class=""><a href="#meats">Meats</a></dd>
+      <dd data-magellan-arrival="veggies" class=""><a href="#veggies">Veggies</a></dd>
+      <dd data-magellan-arrival="salsas" class=""><a href="#salsas">Salsas</a></dd>
+      <dd data-magellan-arrival="extras" class=""><a href="#extras">Extras</a></dd>
+    </dl>
+  </div>
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.magellan.js"></script><hr>
+</div>
+
+<div class="row">
   <div class="large-12 columns text-center">
-    <h1>~ Menu ~</h1><br/>
+    <h1 data-magellan-destination="Entrées">Entrées</h1><br/>
+    <a name="Entrées"></a>
     <h2>Which will you choose?</h2>
   </div>
 </div><br/>
+
 
 <% @items.each do |item| %>
   <div class="show-block">
@@ -23,27 +44,12 @@
 
 
 <div class="row">
-  <hr><div class="magellan-container" data-magellan-expedition="fixed" data-options="destination_threshold:65;throttle_delay:0;" style="">
-    <dl class="sub-nav">
-      <dd data-magellan-arrival="top" class=""><a href="#top">Top</a></dd>
-      <dd data-magellan-arrival="meats" class=""><a href="#meats">Meats</a></dd>
-      <dd data-magellan-arrival="veggies" class=""><a href="#veggies">Veggies</a></dd>
-      <dd data-magellan-arrival="salsas" class=""><a href="#salsas">Salsas</a></dd>
-      <dd data-magellan-arrival="extras" class=""><a href="#extras">Extras</a></dd>
-    </dl>
-  </div>
-  <script src="js/vendor/jquery.js"></script>
-  <script src="js/foundation/foundation.js"></script>
-  <script src="js/foundation/foundation.magellan.js"></script><hr>
-</div>
-
-<div class="row">
-  <h2>Fillings</h2><br/>
+  <h1>~ Fillings ~</h1><br/>
 </div>
 
 <div class="row">
   <div class="large-12 columns">
-    <h3 data-magellan-destination="meats">Meats</h3>
+    <h2 data-magellan-destination="meats">Meats</h2>
     <a name="meats"></a>
   </div>
 </div>
@@ -60,7 +66,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <h3 data-magellan-destination="veggies">Veggies</h3>
+    <h2 data-magellan-destination="veggies">Veggies</h2>
     <a name="veggies"></a>
   </div>
 </div>
@@ -77,7 +83,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <h3 data-magellan-destination="salsas">Salsas</h3>
+    <h2 data-magellan-destination="salsas">Salsas</h2>
     <a name="salsas"></a>
   </div>
 </div>
@@ -94,7 +100,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <h3 data-magellan-destination="extras">Extras</h3>
+    <h2 data-magellan-destination="extras">Extras</h2>
     <a name="extras"></a>
   </div>
 </div>
