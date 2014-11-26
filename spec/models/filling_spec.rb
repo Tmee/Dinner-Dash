@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Filling, :type => :model do
-  let(:filling) do 
-    Filling.new(title: "Carnitas", 
-             description: "Hot and porky", 
-             price: 3, 
-             food_group: "Meat"
+  let(:filling) do
+    Filling.new(title: "Carnitas",
+             description: "Hot and porky",
+             price: 3,
+             food_group: "meats"
              )
   end
 
-  it "is valid" do 
+  it "is valid" do
     expect(filling).to be_valid
   end
 
-  it 'is invalid without a title' do 
+  it 'is invalid without a title' do
     filling.title = nil
     expect(filling).not_to be_valid
 
@@ -21,7 +21,7 @@ RSpec.describe Filling, :type => :model do
     expect(filling).not_to be_valid
   end
 
-  it 'is invalid without a description' do 
+  it 'is invalid without a description' do
     filling.description = nil
     expect(filling).not_to be_valid
 
@@ -29,17 +29,17 @@ RSpec.describe Filling, :type => :model do
     expect(filling).not_to be_valid
   end
 
-  it 'is invalid without a price' do 
+  it 'is invalid without a price' do
     filling.price = nil
     expect(filling).not_to be_valid
   end
 
-  it 'is invalid without a food group' do 
+  it 'is invalid without a food group' do
     filling.food_group = nil
     expect(filling).not_to be_valid
   end
 
-  it 'must have a price that is a decimal greater than zero' do 
+  it 'must have a price that is a decimal greater than zero' do
     filling.price = -2
     expect(filling).not_to be_valid
   end
