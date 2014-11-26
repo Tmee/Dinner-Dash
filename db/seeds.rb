@@ -87,7 +87,7 @@ class Seed
 
     Item.create!(name:        "Salad",
                  price:       300,
-                 description: "Sometimes thought as real food. It's a bowl of leaves.",
+                 description: "Sometimes thought as real food. It's a bowl of leaves, with some meat sometimes.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/salad.jpg")
     )
 
