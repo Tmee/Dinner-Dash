@@ -57,7 +57,7 @@ class Seed
 
     Item.create!(name:        "Burrito Bowl",
                  price:       175,
-                 description: "It's like a burrito, but the fillings are in a plastic bowl. It's not as portable.",
+                 description: "It's like a burrito, but the fillings are in a bowl. It's not as portable.",
                  image:       File.new("#{Rails.root}/app/assets/images/menu/items/burrito_bowl.jpg")
     )
 
