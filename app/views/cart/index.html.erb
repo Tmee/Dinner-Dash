@@ -1,27 +1,55 @@
-<%if !@cart%>
-
-<p>figure shit out</p>
-
-<%else%>
-
-  <div class="row">
-    <br>
-    <div class="large-6 columns"><h1>Your Cart</h1></div>
-    <div class="large-6 columns">This can be a link to sign in to complete the order</div>
+<div class="row">
+  <div class="large-6 columns">
+    <h1>Your Cart</h1>
   </div>
 
-  <div class="row">
-    <div class="small-9 columns">
-      <% @cart_items.each_pair do |key, value| %>
-      <ul><h2><%= key.name %></h2>
-        <%= image_tag key.image.url :thumb %>
-        <li>With the following fillings:</li>
-        <% value.each do |filling| %>
-        <li><%= filling.title %></li>
-          <% end %>
-      </ul>
-    <% end %>
+    <% if !current_user.present? %>
+        <div class="large-6 columns">
+          Please Log In to complete your order
+        </div>
+      </div><hr/>
+    <%end%>
+
+<div class="panel">
+    <div class="row">
+      <div class="small-9 columns">
+        <% @cart_items.each do |line_item| %>
+        <ul><h2><%= line_item[:item].name %><%= line_item[:item].price  %></h2>
+
+
+  <%= form_tag "/cart" do %>
+         <select name="quantity" id="quantity"  style='width: 50px;' value="<%= line_item[:quantity] %>">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <input type="hidden" name="@cart" />
+            <input type="hidden" name="id", value="<%= line_item[:id] %>" />
+          <button type="submit" >Update Quantity</button>
+          <h2><%=@quantity%></h2>
+          <%end%>
+
+          <%= image_tag line_item[:item].image.url :thumb %>
+          <li>With the following fillings:</li>
+          <% line_item[:fillings].each do |filling| %>
+          <li><%= filling.title %></li>
+          <li><%= filling.price %></li>
+
+          <%= line_item[:quantity] %>
+            <% end %>
+
+        </ul>
+      <% end %>
+      </div>
     </div>
   </div>
-<%end%>
-
+</div>

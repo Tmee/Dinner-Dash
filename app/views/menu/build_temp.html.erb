@@ -6,6 +6,8 @@
       <%= label_tag("item[filling_ids][]", filling.title) %>
   <% end %>
   <input name="item_id" type="hidden" value="<%= @item.id %>" />
+  <input name="quantity" type="hidden" value="1" />
+  <input name="id" type="hidden" value="<%= Random.rand(1000000) %>" />
   <div>
     <%= submit_tag "Submit" %>
   </div>

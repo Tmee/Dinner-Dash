@@ -28,5 +28,8 @@ Rails.application.routes.draw do
 
   get '/build_temp/:id', to: 'menu#build_temp'
   post '/build_temp', to: 'cart#create'
+
+  post  '/cart', to: 'cart#update_quantity'
+
   resources :cart, only: [:index]
 end
