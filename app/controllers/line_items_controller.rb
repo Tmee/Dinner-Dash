@@ -13,5 +13,5 @@ class LineItemsController < ApplicationController
   def find_food_group(food_group)
     Filling.where(food_group: food_group)
   end
-  
+
 end
