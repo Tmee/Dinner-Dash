@@ -1,9 +1,3 @@
-require 'benchmark'
-
-time = Benchmark.realtime do
-
-
-
 class Seed
   def initialize
     generate_users_and_roles
@@ -276,9 +270,3 @@ class Seed
 end
 
 Seed.new
-
-
-
-end
-
-puts "Time taken: #{time} seconds."
