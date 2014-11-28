@@ -2,8 +2,6 @@ require 'benchmark'
 
 time = Benchmark.realtime do
 
-
-
 class Seed
   def initialize
     generate_users_and_roles
