@@ -5,8 +5,14 @@
   <% if !current_user.present? %>
   <div class="large-3 columns">
     Please Log In to complete your order
-  <%end%>
   </div>
+  <% else %>
+  <div class="large-3 columns">
+    <%= form_tag '/orders' do |f| %>
+      <%= submit_tag "Place my Order" %>
+    <% end %>
+  </div>
+  <%end%>
 </div>
 
   <div class="row">
