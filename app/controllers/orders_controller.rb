@@ -18,8 +18,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.create(user_id: session[:user_id])
     session[:cart].each do |line_item|
-      item = @order.line_items.create(item_id: line_item[:item_id], quantity: line_item[:quantity])
-      item.filling_ids = line_item[:filling_ids]
+      item = @order.line_items.create(item_id: line_item["item_id"], quantity: line_item["quantity"])
+      item.filling_ids = line_item["filling_ids"]
     end
 
     if @order.save!
