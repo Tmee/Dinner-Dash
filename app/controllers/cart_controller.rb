@@ -1,27 +1,27 @@
 class CartController < ApplicationController
 
   def index
-    @items = Item.all
-    @cart = session[:cart]
-    @cart_items ||= []
-    get_cart_items
-    get_total_price
-  end
-
-  def get_cart_items
     if cart_has_items
-      @cart.each do |line_item|
-        cart_line_items = Hash.new
-        cart_line_items[:item] = Item.find(line_item["item_id"])
-        cart_line_items[:fillings] = line_item["filling_ids"].map { |filling_id| Filling.find(filling_id) }
-        cart_line_items[:quantity] = line_item["quantity"]
-        cart_line_items[:id] = line_item["id"]
-        @cart_items << cart_line_items
-      end
-      get_line_item_price
+      @items = Item.all
+      @cart = session[:cart]
+      @cart_items ||= []
+      get_cart_items
+      get_total_price
     else
       redirect_to root_path, notice: "Your cart is empty.  Please fill it up and give us money!"
     end
+  end
+
+  def get_cart_items
+    @cart.each do |line_item|
+      cart_line_items = Hash.new
+      cart_line_items[:item] = Item.find(line_item["item_id"])
+      cart_line_items[:fillings] = line_item["filling_ids"].map { |filling_id| Filling.find(filling_id) }
+      cart_line_items[:quantity] = line_item["quantity"]
+      cart_line_items[:id] = line_item["id"]
+      @cart_items << cart_line_items
+    end
+    get_line_item_price
   end
 
   def get_line_item_price
@@ -35,7 +35,7 @@ class CartController < ApplicationController
   end
 
   def cart_has_items
-    @cart != []
+    session[:cart] != nil && session[:cart] != []
   end
 
   def update_quantity
