@@ -5,12 +5,15 @@
 </div>
 
 <div class="row">
-  <div class="small-9 columns">
+  <div class="small-3 columns">
     <ul>
       <li><%= @filling.description%></li>
       <li><%= @filling.price%></li>
       <li><%= @filling.food_group%></li>
     </ul>
+  </div>
+  <div class="small-8 columns">
+
     <% if @filling.image.exists? %>
       <%= image_tag @filling.image.url :medium %><br/>
     <% else %>
