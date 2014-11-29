@@ -2,11 +2,11 @@
 <%= javascript_include_tag "responsive-tables" %>
 <div class="row">
   <br>
-  <div class="large-6 columns"><h1>Available Ingredients</h1></div>
-  <div class="large-6 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button" %></div>
+  <div class="large-7 columns"><h1>Available Ingredients</h1></div>
+  <div class="large-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 34px" %></div>
 </div>
 
-  
+
 <table class="responsive">
   <thead>
     <tr>
@@ -15,6 +15,7 @@
       <th>Price</th>
       <th>Food Group</th>
       <th>Actions</th>
+      <th>Retired?</th>
     </tr>
   </thead>
 
@@ -27,13 +28,18 @@
         <td><%= filling.food_group %></td>
         <td>
           <ul>
-            <li><%= link_to 'Show', admin_filling_path(filling) %> | <%= link_to 'Edit', edit_admin_filling_path(filling) %> | <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to 'Show', admin_filling_path(filling) %> |
+                <%= link_to 'Edit', edit_admin_filling_path(filling) %> |
+                <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
+        </td>
+        <td>
+          <div class="switch">
+            <input id="exampleCheckboxSwitch" type="checkbox">
+            <label for="exampleCheckboxSwitch"></label>
+          </div>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-
-
