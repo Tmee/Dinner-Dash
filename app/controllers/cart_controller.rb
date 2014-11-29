@@ -35,7 +35,7 @@ class CartController < ApplicationController
   end
 
   def cart_has_items
-    @cart.nil? == false
+    @cart != []
   end
 
   def update_quantity
