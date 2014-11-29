@@ -27,10 +27,10 @@
         <td><%= filling.price %></td>
         <td><%= filling.food_group %></td>
         <td>
-          <ul>
-            <li><%= link_to 'Show', admin_filling_path(filling) %> |
-                <%= link_to 'Edit', edit_admin_filling_path(filling) %> |
-                <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <ul class="center-filling-links">
+            <%= link_to 'Show', admin_filling_path(filling) %> |
+            <%= link_to 'Edit', edit_admin_filling_path(filling) %> |
+            <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %>
           </ul>
         </td>
         <td>
