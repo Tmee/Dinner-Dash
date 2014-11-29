@@ -16,13 +16,17 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.create(user_id: session[:user_id])
+    session[:cart].each do |line_item|
+      item = @order.line_items.create(item_id: line_item["item_id"], quantity: line_item["quantity"])
+      item.filling_ids = line_item["filling_ids"]
+    end
 
     if @order.save!
       redirect_to order_path(@order), notice: "Deliciousness is imminent!"
     else
       flash.now[:error] = "Order could not be placed. Error!"
-      render :new
+      redirect_to cart_path
     end
   end
 
