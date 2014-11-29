@@ -28,16 +28,17 @@
         <div>
           <%= f.label :food_group %>
           <%= f.text_field :food_group %>
+        </div>
         <div>
           <%= f.submit class: "button" %>
         </div>
       </div>
+    <div class="small-5 columns">
+      <% if @filling.image.exists? %>
+        <%= image_tag @filling.image.url :medium %><br/>
+      <% end %>
+      <%= f.label :image, "Attach an Image" %>
+      <%= f.file_field :image %>
     </div>
-  <div class="small-5 columns">
-    <% if @filling.image.exists? %>
-      <%= image_tag @filling.image.url :medium %><br/>
-    <% end %>
-    <%= f.label :image, "Attach an Image" %>
-    <%= f.file_field :image %>
   </div>
 <% end %>
