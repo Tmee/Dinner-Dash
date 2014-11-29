@@ -1,9 +1,11 @@
 <div class="row">
   <br>
-  <div class="large-6 columns"><h1>Editing <%= "#{@filling.title}" %></h1></div>
-  <div class="large-6 columns"><%= link_to 'View Filling', admin_filling_path(@filling) %> | <%= link_to 'Back to all Fillings', admin_fillings_path %></div>
+  <div class="large-6 columns">
+    <h1>Editing <%= "#{@filling.title}" %></h1>
+  </div>
+  <div class="large-6 columns">
+    <%= link_to 'View Filling', admin_filling_path(@filling) %> | <%= link_to 'Back to all Fillings', admin_fillings_path %>
+  </div>
 </div>
 
 <%= render 'form' %>
-
-
