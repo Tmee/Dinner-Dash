@@ -25,7 +25,6 @@ class MenuController < ApplicationController
 
   def build_temp
     @item = Item.find(params[:id])
-    @cart = Cart.new
   end
 
   private
