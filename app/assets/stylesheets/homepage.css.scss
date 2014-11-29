@@ -200,7 +200,14 @@ a:hover {
   color:#969696;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="number"] {
+  width: 95%;
+  border: 1px solid;
+  border-radius: 10px;
+  left: 2.5%;
+}
+
+textarea {
   width: 95%;
   border: 1px solid;
   border-radius: 10px;
