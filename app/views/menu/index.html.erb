@@ -28,17 +28,15 @@
 
 <% @items.each do |item| %>
   <div class="show-block">
-    <li>
-      <figure>
-        <h1><%= item.name %></h1>
-        <%= image_tag item.image %>
-        <figcaption class="description transition">
-          <p>
-            <%= item.description %>
-          </p>
-        </figcaption>
-      </figure>
-    </li>
+    <figure>
+      <h1><%= item.name %></h1>
+      <%= image_tag item.image %>
+      <figcaption class="description transition">
+        <p>
+          <%= item.description %>
+        </p>
+      </figcaption>
+    </figure>
   </div>
 <%end%>
 
