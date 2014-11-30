@@ -9,7 +9,7 @@
   <ul class="small-block-grid-4">
     <% @items.each do |item| %>
         <li>
-          <a class='th'>
+          <a href="/build_temp/<%= item.id %>"class='th'>
             <h4><%= item.name %></h4>
             <%= image_tag(item.image, class: 'th') %>
           </a>
@@ -51,9 +51,8 @@
     <%= image_tag m.image.url(:medium) %>
     <p class="text-left"><p><%= m.description %></p></p>
     <p class="text-left"><p><%= link_to 'Show', controller: "menu", action: "show", id: m %></p></p>
-  </div>
-  <%end%>
-</div>
+  </div><%end%>
+</div><br/>
 
 <div class="row">
   <div class="large-12 columns">
@@ -68,7 +67,7 @@
     <img src="http://placehold.it/300x250&text=[things]">
     <p class="text-left"><p><%= m.description %></p></p>
   </div><%end%>
-</div>
+</div><br/>
 
 <div class="row">
   <div class="large-12 columns">
@@ -83,7 +82,7 @@
     <img src="http://placehold.it/300x250&text=[things]">
     <p class="text-left"><p><%= m.description %></p></p>
   </div><%end%>
-</div>
+</div><br/>
 
 <div class="row">
   <div class="large-12 columns">
