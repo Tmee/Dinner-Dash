@@ -5,7 +5,8 @@ RSpec.describe Filling, :type => :model do
     Filling.new(title: "Carnitas",
              description: "Hot and porky",
              price: 3,
-             food_group: "meats"
+             food_group: "meats",
+             retired: true
              )
   end
 
@@ -55,9 +56,25 @@ RSpec.describe Filling, :type => :model do
     expect(filling).to respond_to(:items)
   end
 
-   it 'is associated with a line item' do
+  it 'is associated with a line item' do
     expect(filling).to respond_to(:line_items)
   end
+
+  it "is valid with a retired state of true" do
+    filling.retired = true
+    expect(filling).to be_valid
+  end
+
+  it "is valid with a retired state of false" do
+    filling.retired = false
+    expect(filling).to be_valid
+  end
+
+  it "invalid without a retired state" do
+    filling.retired = nil
+    expect(filling).to_not be_valid
+  end
+
 
 
 end
