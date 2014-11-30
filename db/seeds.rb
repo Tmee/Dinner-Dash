@@ -7,6 +7,7 @@ class Seed
     generate_orders
   end
 
+
  def generate_users_and_roles
     User.create!(first_name: "Rachel",
                  last_name:  "Warbelow",
@@ -268,5 +269,3 @@ class Seed
     end
   end
 end
-
-Seed.new
