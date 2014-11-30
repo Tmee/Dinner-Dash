@@ -29,6 +29,7 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium'
   gem 'binding_of_caller'
+  gem 'launchy'
 end
 
 group :production, :staging do
