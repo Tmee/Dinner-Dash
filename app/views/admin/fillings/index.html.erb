@@ -35,8 +35,12 @@
         </td>
         <td>
           <div class="switch">
-            <input id="<%= filling.id %>" type="checkbox" >
-            <label for="<%= filling.id %>" type="submit"></label>
+            <% if filling.retired? %>
+              <input id="<%= filling.id %>" type="checkbox" checked>
+            <% else  %>
+              <input id="<%= filling.id %>" type="checkbox">
+            <% end %>
+            <label for="<%= filling.id %>"></label>
           </div>
         </td>
       </tr>
