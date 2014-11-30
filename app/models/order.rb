@@ -6,6 +6,9 @@ class Order < ActiveRecord::Base
   validates :state, presence: :true
 
   def items
-    line_items.map { |line_item| line_item.item.name.capitalize }.join(", ")
+    product_names = line_items.map do |line_item|
+      line_item.item.name.split.map(&:capitalize).join(" ")
+      end
+      product_names.sort.join(", ")
   end
 end
