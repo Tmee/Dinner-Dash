@@ -49,6 +49,6 @@ class Admin::FillingsController < Admin::BaseAdminController
     end
 
     def filling_params
-      params.require(:filling).permit(:title, :description, :price, :food_group, :image)
+      params.require(:filling).permit(:title, :description, :price, :food_group, :image, :retired)
     end
 end
