@@ -23,15 +23,14 @@ Rails.application.routes.draw do
   post '/register', to: 'users#create'
 
   get '/code', to: 'application#code'
-  get '/menu_item_builder/*', to: 'menu#build_item'
 
-  get  '/build', to: 'line_items#new'
-  get '/build_temp/:id', to: 'menu#build_temp'
+  get  '/build', to: 'line_items#index'
+  get '/build_item/:id', to: 'line_items#build_item'
 
-  post '/build_temp', to: 'cart#create'
+  post '/build_item', to: 'cart#create'
   post  '/cart', to: 'cart#update_quantity'
-  delete '/cart', to: 'cart#remove_item' 
+  delete '/cart', to: 'cart#remove_item'
 
   resources :cart, only: [:index]
-  
+
 end
