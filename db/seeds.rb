@@ -33,6 +33,12 @@ class Seed
                               username:   "josh",
                               password:   "password"
     )
+    admin_user2 = User.create!(first_name: "Horace",
+                              last_name:  "Worace",
+                              email:      "demo+horace@jumpstartlab.com",
+                              username:   "horace",
+                              password:   "password"
+    )
 
     webmaster_user = User.create!(first_name: "Bruce",
                                   last_name:  "Wayne",
@@ -42,8 +48,9 @@ class Seed
     )
 
     admin = Role.create!(name: "admin")
-    admin_user.roles     = [admin]
-    webmaster_user.roles = [Role.create!(name: "webmaster"), admin]
+    admin_user.roles      = [admin]
+    admin_user2.roles     = [admin]
+    webmaster_user.roles  = [Role.create!(name: "webmaster"), admin]
 
     puts "Users generated!"
   end
