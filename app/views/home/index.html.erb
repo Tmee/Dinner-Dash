@@ -1,20 +1,19 @@
 
-<% @items.each do |item| %>
 <div class="row" id="homepage-holder">
-  <div class="large-4 columns" id="container">
-    <div class="button_holder">
-      <div class="troublesome_image">
-        <div class="image1">
-
-          <%= link_to "/build_item/#{item.id}", class: "circle-link", id: "get-aligned"  do %>
-            <span class="text"><%= "Build A #{item.name}" %><br>$<%= item.price / 100 %></span>
-          <% end %>
+  <% @items.each do |item| %>
+    <div class="large-4 columns" id="container">
+      <div class="button_holder">
+        <div class="troublesome_image">
+          <div class="image1">
+            <%= link_to "/build_item/#{item.id}", class: "circle-link", id: "get-aligned"  do %>
+              <span class="text"><%= "Build A #{item.name}" %><br>$<%= item.price / 100 %></span>
+            <% end %>
+          </div>
         </div>
       </div>
+      <div>
+        <%= item.description %>
+      </div>
     </div>
-    <div>
-      <%= item.description %>
-    </div>
-  </div>
   <% end %>
-  </div>
+</div>
