@@ -30,6 +30,7 @@ group :development, :test do
   gem 'selenium'
   gem 'binding_of_caller'
   gem 'launchy'
+  gem 'guard-rspec', require: false
 end
 
 group :production, :staging do
