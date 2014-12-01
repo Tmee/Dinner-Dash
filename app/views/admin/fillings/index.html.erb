@@ -8,25 +8,24 @@
   <div class="large-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 16px" %></div>
 </div>
 
-<table class="responsive">
+<table class="table-fill">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Food Group</th>
-      <th>Actions</th>
-      <th>Retired?</th>
+      <th class="text-center">Title</th>
+      <th class="text-center">Description</th>
+      <th class="text-center">Price</th>
+      <th class="text-center">Food Group</th>
+      <th class="text-center">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @fillings.each do |filling| %>
       <tr>
-        <td><%= filling.title %></td>
-        <td><%= filling.description %></td>
-        <td><%= filling.price %></td>
-        <td><%= filling.food_group %></td>
+        <td class="text-center"><%= filling.title %></td>
+        <td class="text-left"><%= filling.description %></td>
+        <td class="text-center"><%= filling.price %></td>
+        <td class="text-center"><%= filling.food_group %></td>
         <td>
           <ul class="center-filling-links">
             <%= link_to 'Show', admin_filling_path(filling) %> |

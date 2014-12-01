@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
+
+
+<html lang="en">
+
 <head>
-  <title>Los Amigos Gordos</title>
   <%= stylesheet_link_tag "homepage" %>
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag "hover_description" %>
-  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+  <%= render partial: "shared/nav_bar", locals: { :items => @items } %>
+  <%= render partial: "shared/flash" %>
 </head>
 
 <body class="pattern_bg">

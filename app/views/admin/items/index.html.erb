@@ -6,21 +6,21 @@
   <div class="large-6 columns"><%= link_to 'New Item', new_admin_item_path, class: "button" %></div>
 </div>
 
-<table class="responsive">
+<table class="table-fill">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Actions</th>
+      <th class="text-left">Name</th>
+      <th class="text-left">Price</th>
+      <th class="text-left">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td>
+        <td class="text-left"><%= item.name %></td>
+        <td class="text-left"><%= item.price %></td>
+        <td class="text-left">
           <ul>
             <li><%= link_to 'Show', admin_item_path(item) %> | <%= link_to 'Edit', edit_admin_item_path(item) %> | <%= link_to 'Destroy', admin_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
