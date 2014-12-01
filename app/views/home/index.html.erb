@@ -5,7 +5,8 @@
     <div class="button_holder">
       <div class="troublesome_image">
         <div class="image1">
-          <%= link_to "/build_item/#{item.id}", class: "circle-link"  do %>
+
+          <%= link_to "/build_item/#{item.id}", class: "circle-link", id: "get-aligned"  do %>
             <span class="text"><%= "Build A #{item.name}" %><br>$<%= item.price / 100 %></span>
           <% end %>
         </div>

@@ -6,27 +6,27 @@
   <div class="large-6 columns"><%= link_to 'Create New User', new_admin_user_path, class: "button" %></div>
 </div>
 
-<table class="responsive">
+<table class="table-fill">
   <thead>
     <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Username</th>
-      <th>User Group</th>
-      <th>Do Shit</th> 
+      <th class="text-left">First Name</th>
+      <th class="text-left">Last Name</th>
+      <th class="text-left">Email</th>
+      <th class="text-left">Username</th>
+      <th class="text-left">User Group</th>
+      <th class="text-left">Do Shit</th> 
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.username %></td>
-        <td><%= user.roles.map {|role| role.name }.join(" ") %></td>
-        <td>
+        <td class="text-left"><%= user.first_name %></td>
+        <td class="text-left"><%= user.last_name %></td>
+        <td class="text-left"><%= user.email %></td>
+        <td class="text-left"><%= user.username %></td>
+        <td class="text-left"><%= user.roles.map {|role| role.name }.join(" ") %></td>
+        <td class="text-left">
           <ul>
             <li><%= link_to 'Show', admin_user_path(user) %></li>
             <li><%= link_to 'Edit', edit_admin_user_path(user) %></li>

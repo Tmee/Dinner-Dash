@@ -1,9 +1,23 @@
-<%= @order.id %>
+<div class="row" id="white-bg">
+  <h1>Order #<%= @order.id %></h1>
+  <h3> Ordered at: <%= @order.created_at %></h2>
+  <h3>Status: <%= @order.state.capitalize %></h2>
+  <hr>
 
-<%= @order.line_items.each do |line_item| %>
-  <p><%= line_item.id %></p>
-  <p><%= line_item.fillings.each do |filling| %></p>
-    <p><%= filling.id %></p>
-  <% end %>
-<% end %>
+  <div>
+    <% @order.line_items.each do |line_item| %>
+      <div class="line_item" >
+        <div class="circular" style="background: url(<%= line_item.item.image %>);">
+          <%= image_tag line_item.item.image %>
+          <h2><%= line_item.item.name.split.map(&:capitalize).join(" ") %></h2>
+          <h4><%= line_item.item.fillings.map(&:view_title).join(", ") %></h4>
+          <label>QTY: <%= line_item.quantity %><br>
+            $<%= line_item.item.price.to_s.insert(-3, ".") %></label>
+        </div>
+        <hr>
+      </div>
+    <% end %>
+  </div>
 
+  <%= link_to "⇠ Back to Orders", orders_path %>
+</div>
