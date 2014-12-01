@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   protect_from_forgery with: :null_session
   before_action :set_items
+  before_action :require_current_user
 
   def index
     @orders = current_user.orders
@@ -12,6 +13,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    require_current_user_id
     @line_items = @order.line_items
   end
 
@@ -35,4 +37,18 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:user_id, :state)
   end
+
+  def require_current_user_id
+    unless current_user.id == @order.user.id
+      redirect_to root_path, notice: "Unauthorized"
+    end
+  end
+
+  def require_current_user
+    unless current_user
+      redirect_to root_path, notice: "Unauthorized"
+    end
+  end
+
 end
+
