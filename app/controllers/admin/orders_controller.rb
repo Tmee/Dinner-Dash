@@ -2,7 +2,7 @@ class Admin::OrdersController < Admin::BaseAdminController
 
 
   def index
-    @orders = Orders.all
+    @orders = Order.all
   end
 
   def show
@@ -12,6 +12,13 @@ class Admin::OrdersController < Admin::BaseAdminController
 
   def update
 
+  end
+
+  def status_filter
+    @orders = Order.where(:state => params[:state])
+      respond_to do |format|
+        format.js
+    end
   end
 
 end

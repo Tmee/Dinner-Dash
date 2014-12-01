@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/menu', to: 'menu#index'
   resources :menu, only: [:show]
 
+  get '/fetch_orders', to: "admin/orders#status_filter", as: "fetch_orders"
 
   get  '/register', to: 'users#register'
   post '/register', to: 'users#create'

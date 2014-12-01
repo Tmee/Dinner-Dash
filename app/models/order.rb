@@ -1,8 +1,8 @@
 class Order < ActiveRecord::Base
-  scope :ordered, -> { where(state: ordered)}
-  scope :paid, -> { where(state: paid)}
-  scope :cancelled, -> { where(state: cancelled)}
-  scope :completed, -> { where(state: completed)}
+  scope :ordered, -> { where(state: "ordered")}
+  scope :paid, -> { where(state: "paid")}
+  scope :cancelled, -> { where(state: "cancelled")}
+  scope :completed, -> { where(state: "completed")}
 
 
   belongs_to :user

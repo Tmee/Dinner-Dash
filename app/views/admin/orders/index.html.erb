@@ -3,27 +3,17 @@
 <div class="row">
   <div id="h1-box"><h1> Your Past Orders</h1><hr id="h1-box"></div>
 
-  <table class="responsive" id="get-aligned">
-    <thead>
-      <tr>
-        <th>Order #</th>
-        <th>Items</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Details</th>
-      </tr>
-    </thead>
-
     <tbody>
-      <% @orders.each do |order| %>
       <tr>
-        <td><%= order.id %></td>
-        <td><%= order.items %></td>
-        <td><%= order.created_at %></td>
-        <td><%= order.state.capitalize %></td>
-        <td><%= link_to "View Order", order_path(order) %></li></td>
+        <%= link_to 'All', fetch_orders_path(:state => "all"), :remote => true %>
+        <%= link_to 'Paid', fetch_orders_path(:state => "paid"), :remote => true %>
+        <%= link_to 'Completed', fetch_orders_path(:state => "completed"), :remote => true %>
+        <%= link_to 'Canceled', fetch_orders_path(:state => "canceled"), :remote => true %>
       </tr>
-      <% end %>
     </tbody>
-  </table>
+
+<div id="grid">
+  <%= render partial: "order_table", locals: {orders: @orders}%>
+</div>
+
 </div>
