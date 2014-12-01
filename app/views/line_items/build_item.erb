@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="large-12 columns text-center">
+    <h1>~ Build your <%= @item.name%> ~</h1><br/>
+        <ul class="small-block-grid-4">
+          <li>
+              <h4><%= @item.name%></h4>
+              <%= image_tag(@item.image, class: 'th') %>
+              <a href="/build">Change Meal!</a>
+          </li>
+        </ul>
+  </div>
+</div><br/>
+
+    <%= form_tag '/build_item' do |f| %>
+
+<div class="row">
+  <ul class="small-block-grid-4">
+      <% @item.fillings.each do |filling| %>
+      <li>
+        <a class='th' onclick="">
+          <%= check_box_tag "item[filling_ids][]", filling.id %>
+          <%= label_tag("item[filling_ids][]", filling.title) %>
+          <%= image_tag filling.image.url(:medium) %>
+        </a>
+      </li>
+      <% end %>
+      <input name="item_id" type="hidden" value="<%= @item.id %>" />
+      <input name="quantity" type="hidden" value="1" />
+      <input name="id" type="hidden" value="<%= Random.rand(1000000) %>" />
+      <div>
+        <%= submit_tag "Submit" %>
+      </div>
+    <% end %>
+  </ul>
+</div>
