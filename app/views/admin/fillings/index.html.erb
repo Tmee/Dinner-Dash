@@ -1,11 +1,12 @@
 <%= stylesheet_link_tag    "responsive-tables" %>
 <%= javascript_include_tag "responsive-tables" %>
+<%= javascript_include_tag "checkbox-handler" %>
+
 <div class="row">
   <br>
   <div class="large-7 columns"><h1>Available Ingredients</h1></div>
-  <div class="large-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 34px" %></div>
+  <div class="large-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 16px" %></div>
 </div>
-
 
 <table class="responsive">
   <thead>
@@ -35,11 +36,7 @@
         </td>
         <td>
           <div class="switch">
-            <% if filling.retired? %>
-              <input id="<%= filling.id %>" type="checkbox" checked>
-            <% else  %>
-              <input id="<%= filling.id %>" type="checkbox">
-            <% end %>
+            <%= check_box_tag filling.id, "1", filling.retired?, onchange: "changeRetiredStatus(event)" %>
             <label for="<%= filling.id %>"></label>
           </div>
         </td>
