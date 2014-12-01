@@ -59,7 +59,7 @@
             <% end %>
             <% if !current_user %>
               <li><label>Need an account?</label></li>
-              <li><a href="#">Sign up</a></li>
+              <li><a><%= link_to "Sign Up", register_path %></a></li>
             <% end %>
           </ul>
         </li>
