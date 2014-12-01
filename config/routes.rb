@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, :fillings, :users
+    resources :orders, only: [:index, :show, :update]
   end
+
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
