@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Indie+Flower|Droid+Serif|Bangers);
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower|Droid+Serif:400,700|Bangers);
 .pattern_bg {
   width: auto;;
   height: 100%;
@@ -13,6 +13,10 @@
   margin: auto 1.5em;
   display: inline-block;
   width: auto;
+}
+
+#move-left {
+  float:left
 }
 
 div .content_box {
@@ -58,7 +62,7 @@ div #hermano-says {
 
 #site-content {
   background-position: center;
-  background-color: #DDDDD7;
+  background-color: #DDDDE4;
   background-image: linear-gradient(90deg, transparent 50%, rgba(255,255,255,.5) 50%);
   background-size: 50px 50px;
   width: 100%;
@@ -97,6 +101,7 @@ div #container {
 
 .container {
   float: left;
+  padding-left: -3vh;
 }
 
 #hermano-text {
@@ -158,7 +163,7 @@ body{
 
 h1 {
   color: #584B4F;
-  font-size: 40px;
+  font-size: 45px;
   font-family: "Droid Serif";
 }
 h2 {
@@ -166,7 +171,15 @@ h2 {
   font-size: 30px;
   text-align: center;
   margin-top: -10px;
+  font-family: "Droid Serif";
 }
+h3 {
+  color: #584B4F;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Droid Serif";
+}
+
 .hermano-says:before {
   content:'Hermano Says...';
   font-family: 'Indie Flower';
@@ -174,7 +187,7 @@ h2 {
 
 hr {
   border-width: 14px 0px 0px;
-  width: auto;;
+  width: auto;
 }
 
 .button-holder {
@@ -261,4 +274,59 @@ input[type="text"], input[type="password"] {
 #nav-h1 {
   font-family: "Bangers";
   font-size: 30px;
+}
+.line_item {
+  margin: auto;
+  width: 100%;
+  hr {
+    border-width: 2px 0px 0px;
+    border-color: #DDD;
+    width: auto;
+  }
+}
+.circular {
+  background-size: cover !important;
+  padding-left: 50vh;
+  margin-left: 3vh;
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+  img {
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  h2 {
+    width: 133vh;
+    margin-bottom: 5vh;
+  }
+  label {
+    color: #584B4F;
+    width: 270vh;
+    margin-top: -5vh;
+    font-size: 24px;
+    text-align: center;
+    font-family: "Droid Serif";
+    font-weight: 700;
+  }
+  h3 {
+    width: 130vh;
+    font-size: 18px;
+    padding-left: 6vh;
+    margin-bottom: 3vh;
+  }
+  h4 {
+    width: 120vh;
+    padding-left: 11vh;
+    color: #584B4F;
+    font-size: 16px;
+    text-align: center;
+    font-family: "Droid Serif";
+    font-weight: 700;
+  }
 }

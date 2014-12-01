@@ -7,25 +7,25 @@
 </div>
 
   
-<table class="responsive">
+<table class="table-fill">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Food Group</th>
-      <th>Actions</th>
+      <th class="text-left">Title</th>
+      <th class="text-left">Description</th>
+      <th class="text-left">Price</th>
+      <th class="text-left">Food Group</th>
+      <th class="text-left">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @fillings.each do |filling| %>
       <tr>
-        <td><%= filling.title %></td>
-        <td><%= filling.description %></td>
-        <td><%= filling.price %></td>
-        <td><%= filling.food_group %></td>
-        <td>
+        <td class="text-left"><%= filling.title %></td>
+        <td class="text-left"><%= filling.description %></td>
+        <td class="text-left"><%= filling.price %></td>
+        <td class="text-left"><%= filling.food_group %></td>
+        <td class="text-left">
           <ul>
             <li><%= link_to 'Show', admin_filling_path(filling) %> | <%= link_to 'Edit', edit_admin_filling_path(filling) %> | <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>

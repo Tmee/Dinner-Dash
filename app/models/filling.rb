@@ -10,4 +10,8 @@ class Filling < ActiveRecord::Base
                                          :thumb => "100x100#"},
                                          :default_url => 'onion.jpg'
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+
+  def view_title
+    title.split.map(&:capitalize).join(" ")
+  end
 end
