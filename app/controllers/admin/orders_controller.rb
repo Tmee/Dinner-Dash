@@ -1,8 +1,9 @@
 class Admin::OrdersController < Admin::BaseAdminController
-
+  layout 'admin'
 
   def index
     @orders = Order.all
+    @states = ['paid','completed','canceled','ordered']
   end
 
   def show
@@ -13,12 +14,4 @@ class Admin::OrdersController < Admin::BaseAdminController
   def update
 
   end
-
-  def status_filter
-    @orders = Order.where(:state => params[:state])
-      respond_to do |format|
-        format.js
-    end
-  end
-
 end

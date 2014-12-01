@@ -1,0 +1,288 @@
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+/* line 1, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.pattern_bg {
+  width: auto;
+  height: 100%;
+  background: url(http://subtlepatterns.com/patterns/photography.png);
+  text-align: center;
+  background-size: auto;
+  background-position: center;
+  font-family: helvetica;
+}
+
+/* line 11, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+#get-aligned {
+  margin: auto 1.5em;
+  display: inline-block;
+  width: auto;
+}
+
+/* line 17, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+div .content_box {
+  width: auto;
+  height: 100%;
+  color: white;
+}
+
+/* line 23, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+#chatbox {
+  width: auto;
+  display: block;
+  float: right;
+}
+
+/* line 30, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+#iamgodhere_foundation {
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 60%;
+  height: 30%;
+  z-index: -9999;
+}
+
+/* line 39, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+canvas {
+  position: absolute;
+}
+
+/* line 43, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+div .jorge_the_bird {
+  display: inline-block;
+  padding-bottom: 15px;
+  background-color: transparent;
+  z-index: -488484;
+}
+
+/* line 50, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+div #hermano-says {
+  background-color: transparent;
+  text-align: center;
+  width: auto;
+  background-size: auto;
+  background-position: center;
+}
+
+/* line 58, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+#site-content {
+  background: url(http://subtlepatterns.com/patterns/subtle_stripes.png);
+  background-size: auto;
+  background-position: center;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 30.6vh;
+  padding: 27vh 0;
+}
+
+/* line 68, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+#homepage-holder {
+  width: auto;
+  margin: 0 auto;
+}
+
+/* line 73, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+div #container {
+  background-color: whitesmoke;
+  width: 29%;
+  height: 50%;
+  text-align: center;
+  margin: 20px;
+  display: block;
+  box-shadow: 0px 6px 1px 3px rgba(187, 187, 187, 0.75);
+  -moz-box-shadow: 0px 6px 1px 3px rgba(187, 187, 187, 0.75);
+  -webkit-box-shadow: 0px 6px 1px 3px rgba(187, 187, 187, 0.75);
+  background-size: auto;
+  background-position: center;
+}
+
+/* line 87, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.container {
+  float: left;
+}
+
+/* line 91, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+#hermano-text {
+  margin-top: -1vh;
+  margin-left: -6vh;
+}
+
+/* line 97, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.bubble {
+  position: relative;
+  text-align: center;
+  width: 650px;
+  height: 190px;
+  padding: 3%;
+  float: right;
+  margin-top: 1%;
+  left: 4.5%;
+  background: #2ecc71;
+  -webkit-border-radius: 49px;
+  -moz-border-radius: 49px;
+  border-radius: 49px;
+  border: #2ecc71 solid 10px;
+}
+
+/* line 114, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.bubble:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 52px 76px 9px 0;
+  border-color: transparent #2ecc71;
+  display: block;
+  width: 0;
+  z-index: -1;
+  margin-top: -17px;
+  left: -65px;
+  top: 35%;
+}
+
+/* line 129, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.bubble:before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 64px 112px 16px 1px;
+  border-color: transparent #2ecc71;
+  display: block;
+  width: 0;
+  z-index: -1;
+  margin-top: -26px;
+  left: -84px;
+  top: 35%;
+}
+
+/* line 143, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+body {
+  background: black;
+  font-family: 'Varela', sans-serif;
+}
+
+/* line 149, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+h1 {
+  color: #584B4F;
+  font-size: 40px;
+  margin: auto;
+}
+
+/* line 154, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+h2 {
+  color: #584B4F;
+  font-size: 30px;
+  text-align: center;
+  margin-top: -10px;
+}
+
+/* line 160, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.hermano-says:before {
+  content: 'Hermano Says...';
+  font-family: 'Indie Flower';
+}
+
+/* line 165, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+hr {
+  border-width: 14px 0px 0px;
+  width: auto;
+}
+
+/* line 170, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.button-holder {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* line 175, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.image1 {
+  width: 260px;
+  height: 260px;
+  background-repeat: no-repeat;
+  color: #CCCCCC;
+  font-size: 24px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+/* line 185, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.circle-link {
+  height: 88%;
+  width: 88%;
+  margin-top: 0.7em;
+  margin-left: 0em;
+  background: rgba(236, 236, 224, 0.8);
+  display: inline-block;
+  border-radius: 50%;
+  text-decoration: none;
+  text-align: center;
+  color: #CCCCCC;
+}
+
+/* line 198, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+a:hover {
+  background: rgba(118, 184, 227, 0.8);
+  color: #969696;
+}
+
+/* line 203, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+input[type="text"], input[type="password"], input[type="number"] {
+  width: 95%;
+  border: 1px solid;
+  border-radius: 10px;
+  left: 2.5%;
+}
+
+/* line 210, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+textarea {
+  width: 95%;
+  border: 1px solid;
+  border-radius: 10px;
+  left: 2.5%;
+}
+
+/* line 217, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.text {
+  position: relative;
+  top: 40%;
+  left: 1%;
+}
+
+/* line 223, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.oppress-the-button {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10;
+  height: 30%;
+}
+
+/* line 232, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.fixed_footer {
+  width: 100%;
+  height: 46%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: -100;
+}
+
+/* line 238, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+.fixed_footer p {
+  color: #696969;
+  column-count: 2;
+  column-gap: 50px;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+/* line 245, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+#h1-box {
+  position: relative;
+  background: url(http://subtlepatterns.com/patterns/photography.png);
+  margin-bottom: 8vh;
+}
+/* line 249, /Users/Tim_Mee/Turing/projects/Dinner-Dash/app/assets/stylesheets/homepage.css.scss */
+#h1-box hr {
+  position: initial;
+  bottom: 0;
+}

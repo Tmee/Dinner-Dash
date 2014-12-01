@@ -1,19 +1,34 @@
-<%= stylesheet_link_tag    "responsive-tables" %>
-<%= javascript_include_tag "responsive-tables" %>
 <div class="row">
-  <div id="h1-box"><h1> Your Past Orders</h1><hr id="h1-box"></div>
+  <div id="h1-box"><h1> All Past Orders</h1><hr id="h1-box"></div>
 
-    <tbody>
+  <div class="filter">
+    <label>Filter By Status</label>
+    <%= select("order", "filter_state", @states, {include_blank: true}) %>
+  </div>
+
+
+<div class="orders">
+  <table class="table-fill" id="get-aligned">
+    <thead>
       <tr>
-        <%= link_to 'All', fetch_orders_path(:state => "all"), :remote => true %>
-        <%= link_to 'Paid', fetch_orders_path(:state => "paid"), :remote => true %>
-        <%= link_to 'Completed', fetch_orders_path(:state => "completed"), :remote => true %>
-        <%= link_to 'Canceled', fetch_orders_path(:state => "canceled"), :remote => true %>
+        <th class="text-center">Order #</th>
+        <th class="text-center">Username</th>
+        <th class="text-center">Date</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Details</th>
       </tr>
+    </thead>
+    <tbody class="table-hover">
+      <% @orders.each do |order| %>
+        <tr class="order" data-state="<%= order.state %>">
+          <td class="text-center"><%= order.id %></td>
+          <td class="text-left"><%= order.user.username %></td>
+          <td class="text-center"><%= order.created_at %></td>
+          <td class="text-center"><%= order.state.capitalize %></td>
+          <td class="text-center"><%= link_to "View Order", order_path(order) %></td>
+        </tr>
+      <% end %>
     </tbody>
-
-<div id="grid">
-  <%= render partial: "order_table", locals: {orders: @orders}%>
+  </table>
 </div>
-
 </div>
