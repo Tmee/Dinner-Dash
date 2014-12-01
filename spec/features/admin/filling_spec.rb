@@ -30,10 +30,10 @@ feature "Admin can retire a filling" do
     expect(page).to have_text("Available Ingredients")
   end
 
-  scenario "admin can retire a filling" do
+  scenario "admin can add a new filling" do
     visit "/admin/fillings"
-    click_button ""
-    expect(page).to have_text("Available Ingredients")
+    click_link "Add New Filling"
+    expect(page).to have_text("New Filling")
 
 
   end
