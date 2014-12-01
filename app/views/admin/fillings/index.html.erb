@@ -1,12 +1,13 @@
 <%= stylesheet_link_tag    "responsive-tables" %>
 <%= javascript_include_tag "responsive-tables" %>
+<%= javascript_include_tag "checkbox-handler" %>
+
 <div class="row">
   <br>
-  <div class="large-6 columns"><h1>Available Ingredients</h1></div>
-  <div class="large-6 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button" %></div>
+  <div class="large-7 columns"><h1>Available Ingredients</h1></div>
+  <div class="large-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 16px" %></div>
 </div>
 
-  
 <table class="responsive">
   <thead>
     <tr>
@@ -15,6 +16,7 @@
       <th>Price</th>
       <th>Food Group</th>
       <th>Actions</th>
+      <th>Retired?</th>
     </tr>
   </thead>
 
@@ -26,14 +28,19 @@
         <td><%= filling.price %></td>
         <td><%= filling.food_group %></td>
         <td>
-          <ul>
-            <li><%= link_to 'Show', admin_filling_path(filling) %> | <%= link_to 'Edit', edit_admin_filling_path(filling) %> | <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <ul class="center-filling-links">
+            <%= link_to 'Show', admin_filling_path(filling) %> |
+            <%= link_to 'Edit', edit_admin_filling_path(filling) %> |
+            <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %>
           </ul>
+        </td>
+        <td>
+          <div class="switch">
+            <%= check_box_tag filling.id, "1", filling.retired?, onchange: "changeRetiredStatus(event)" %>
+            <label for="<%= filling.id %>"></label>
+          </div>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-
-

@@ -4,7 +4,7 @@ class Admin::FillingsController < Admin::BaseAdminController
   layout 'admin'
 
   def index
-    @fillings = Filling.all
+    @fillings = Filling.order(id: :asc)
   end
 
   def show
@@ -30,7 +30,10 @@ class Admin::FillingsController < Admin::BaseAdminController
 
   def update
     if @filling.update_attributes(filling_params)
-      redirect_to admin_filling_path(@filling), notice: "You have updated a filling."
+      respond_to do |format|
+        format.json { render json: @filling.to_json }
+        format.html { redirect_to admin_filling_path(@filling), notice: "You have updated a filling." }
+      end
     else
       flash.now[:alert] = "The filling was not updated. Please try again."
       render :edit
@@ -49,6 +52,6 @@ class Admin::FillingsController < Admin::BaseAdminController
     end
 
     def filling_params
-      params.require(:filling).permit(:title, :description, :price, :food_group, :image)
+      params.require(:filling).permit(:title, :description, :price, :food_group, :image, :retired)
     end
 end
