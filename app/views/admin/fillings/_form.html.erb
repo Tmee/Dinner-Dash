@@ -1,6 +1,6 @@
 <%= form_for([:admin, @filling], html: {multipart: true}) do |f| %>
     <div class="row">
-      <div class="small-7 columns">
+      <div class="small-6 columns">
         <% if @filling.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@filling.errors.count, "error") %> prohibited this filling from being saved:</h2>
@@ -33,7 +33,7 @@
           <%= f.submit class: "button" %>
         </div>
       </div>
-    <div class="small-5 columns">
+    <div class="small-6 columns">
       <% if @filling.image.exists? %>
         <%= image_tag @filling.image.url :medium %><br/>
       <% end %>
