@@ -26,8 +26,16 @@ feature "Admin can retire a filling" do
   scenario "admin can visit the fillings page" do
     click_link "Admin Dashboard"
     expect(current_path).to eq("/admin")
-    click_link "Admin Dashboard"
-    expect(current_path).to eq("/admin")
+    click_link "Edit Fillings"
+    expect(page).to have_text("Available Ingredients")
+  end
+
+  scenario "admin can retire a filling" do
+    visit "/admin/fillings"
+    click_button ""
+    expect(page).to have_text("Available Ingredients")
+
+
   end
 
 end
