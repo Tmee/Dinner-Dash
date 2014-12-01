@@ -30,8 +30,8 @@ Rails.application.routes.draw do
 
   post '/build_temp', to: 'cart#create'
   post  '/cart', to: 'cart#update_quantity'
-  delete '/cart', to: 'cart#remove_item' 
+  delete '/cart', to: 'cart#remove_item'
 
   resources :cart, only: [:index]
-  
+
 end
