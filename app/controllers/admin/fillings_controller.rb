@@ -1,6 +1,7 @@
 class Admin::FillingsController < Admin::BaseAdminController
 
   before_action :set_filling, only: [:show, :edit, :update, :destroy]
+
   layout 'admin'
 
   def index
@@ -41,8 +42,12 @@ class Admin::FillingsController < Admin::BaseAdminController
   end
 
   def destroy
-    @filling.destroy
-    redirect_to admin_fillings_path, notice: "The filling was deleted."
+    if @filling.line_items.empty?
+      @filling.destroy
+      redirect_to admin_fillings_path, notice: "The filling was deleted."
+    else
+      redirect_to admin_fillings_path, notice: "Unauthorized. This Filling is in an existing order."
+    end
   end
 
   private

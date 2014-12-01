@@ -13,8 +13,9 @@ class Filling < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   scope :active, -> {where(retired: false)}
-
+  
   def view_title
     title.split.map(&:capitalize).join(" ")
   end
+
 end

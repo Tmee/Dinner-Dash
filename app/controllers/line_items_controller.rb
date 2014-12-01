@@ -8,7 +8,6 @@ class LineItemsController < ApplicationController
     @salsas   = find_food_group('salsas')
   end
 
-
   def build_item
     @item  = Item.find(params[:id])
     @items = Item.all
