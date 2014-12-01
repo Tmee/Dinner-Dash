@@ -9,7 +9,7 @@ class Admin::ItemsController < Admin::BaseAdminController
     end
 
     def show
-      @filling_names = @item.fillings.map {|filling| filling.title }
+      @filling_names = @item.fillings.map {|filling| filling.title }.uniq
     end
 
     def new

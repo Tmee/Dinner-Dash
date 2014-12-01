@@ -15,7 +15,7 @@
 
 <div class="row">
   <ul class="small-block-grid-4">
-      <% @item.fillings.each do |filling| %>
+      <% @fillings.each do |filling| %>
       <li>
         <a class='th' onclick="">
           <%= check_box_tag "item[filling_ids][]", filling.id %>

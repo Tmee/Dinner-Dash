@@ -11,16 +11,13 @@ class LineItemsController < ApplicationController
 
   def build_item
     @item  = Item.find(params[:id])
-    @items = Item.all ##### -Do not know why, but it breaks on the Nav Bar if this is not in there
+    @items = Item.all
+    @fillings = @item.fillings.active.uniq
   end
 
-
-
   private
-
 
   def find_food_group(food_group)
     Filling.where(food_group: food_group)
   end
-
 end
