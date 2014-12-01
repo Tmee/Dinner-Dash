@@ -49,7 +49,6 @@ class CartController < ApplicationController
 
   def create
     session[:cart] ||= []
-
     if params["item"] != nil
       line_item = {"item_id" => params["item_id"], 
                    "filling_ids" => params["item"]["filling_ids"], 
@@ -68,4 +67,10 @@ class CartController < ApplicationController
     redirect_to cart_index_path, notice: "Item quantity has been updated."
   end
 
+  private
+
+    def check_duplicate(line_item)
+       session[:cart].any? {|line| line.include?(line_item["item_id"]) && line.include?(line_item["item"]["filling_ids"]) }
+    end 
 end
+
