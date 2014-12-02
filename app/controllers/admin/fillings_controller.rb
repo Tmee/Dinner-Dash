@@ -22,7 +22,7 @@ class Admin::FillingsController < Admin::BaseAdminController
     @filling = Filling.new(filling_params)
 
     if @filling.save
-      redirect_to admin_filling_path(@filling), notice: 'Filling was successfully created.'
+      redirect_to admin_fillings_path, notice: 'Filling was successfully created.'
     else
       flash.now[:alert] = "The filling was not created. Please try again."
       render :new
@@ -33,7 +33,7 @@ class Admin::FillingsController < Admin::BaseAdminController
     if @filling.update_attributes(filling_params)
       respond_to do |format|
         format.json { render json: @filling.to_json }
-        format.html { redirect_to admin_filling_path(@filling), notice: "You have updated a filling." }
+        format.html { redirect_to admin_fillings_path, notice: "You have updated a filling." }
       end
     else
       flash.now[:alert] = "The filling was not updated. Please try again."
