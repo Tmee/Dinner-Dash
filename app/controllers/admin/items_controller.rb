@@ -5,7 +5,6 @@ class Admin::ItemsController < Admin::BaseAdminController
 
     def index
       @items = Item.order(id: :asc)
-      @all_fillings = Filling.order(id: :asc)
     end
 
     def show
