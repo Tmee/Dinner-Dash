@@ -2,10 +2,11 @@
   <div class="rows">
     <div class="small-12 columns">
       <h2>Available Fillings</h2>
+
       <ul class="no-bullet small-block-grid-4">
         <% @all_fillings.each do |filling| %>
-          <li><%= check_box_tag filling.id, filling.id, @item.fillings.include?(filling) %>
-          <%= label_tag filling.id, filling.title %></li>
+          <li><%= check_box_tag filling.id, filling.title, @item.fillings.include?(filling) %>
+              <%= label_tag filling.id, filling.title %></li>
         <% end %>
       </ul>
     </div>
@@ -27,14 +28,18 @@
 
       <div>
         <%= f.label :name %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :required => true %>
       </div>
       <div>
         <%= f.label :price %>
-        <%= f.number_field :price, max: 100000 %>
+        <%= f.number_field :price, max: 100000, :required => true %>
       </div>
       <div>
-        <%= f.submit class: "button" %>
+        <div data-alert class="alert-box" style="display: none;">
+          "You must select at least one checkbox"
+          <a href="#" class="close">&times;</a>
+        </div>
+        <%= f.submit class: "button", id: "submit-item" %>
       </div>
     </div>
     <div class="small-6 columns">
