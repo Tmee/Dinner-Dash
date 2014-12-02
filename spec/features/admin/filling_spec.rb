@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Admin can retire a filling" do
+feature "Admin Filling Navigation" do
 
   background do
     admin_user = User.create!(first_name: "Josh",
@@ -61,6 +61,15 @@ feature "Admin can retire a filling" do
       click_button "Update Filling"
 
       expect(page).to have_text("Cake")
+    end
+
+    scenario "admin can retire a filling" do
+      visit "/admin/fillings"
+
+      retired_box = find('input[type="checkbox"]')
+      retired_box.set(true)
+
+      expect(retired_box).to be_checked
     end
 
     scenario "admin can delete a filling" do
