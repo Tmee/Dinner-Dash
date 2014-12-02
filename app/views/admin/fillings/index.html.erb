@@ -4,8 +4,8 @@
 
 <div class="row">
   <br>
-  <div class="large-7 columns"><h1>Available Ingredients</h1></div>
-  <div class="large-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 22%" %></div>
+  <div class="small-7 columns"><h1>Available Ingredients</h1></div>
+  <div class="small-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 22%" %></div>
 </div>
 
 <table class="table-fill">
@@ -31,9 +31,9 @@
         <td class="text-center"><%= filling.food_group %></td>
         <td class="text-center">
           <ul class="stack button-group">
-            <li><%= link_to 'Show', admin_filling_path(filling), class: "button tiny" %></li>
+            <%# link_to 'Show', admin_filling_path(filling), class: "button tiny" %>
             <li><%= link_to 'Edit', edit_admin_filling_path(filling), class: "button tiny" %></li>
-            <li><%= link_to 'Destroy', admin_filling_path(filling), class: "button tiny" , method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to 'Destroy', admin_filling_path(filling), class: "button tiny", method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
         </td>
         <td class="text-center">
@@ -46,3 +46,5 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
