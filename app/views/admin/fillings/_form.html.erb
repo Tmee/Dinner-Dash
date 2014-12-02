@@ -15,19 +15,19 @@
 
         <div>
           <%= f.label :title %>
-          <%= f.text_field :title %>
+          <%= f.text_field :title, :required => true %>
         </div>
         <div>
           <%= f.label :description %>
-          <%= f.text_area :description, rows: 3 %>
+          <%= f.text_area :description, rows: 3, :required => true %>
         </div>
         <div>
           <%= f.label :price %>
-          <%= f.number_field :price, max: 100000 %>
+          <%= f.number_field :price, max: 100000, :required => true %>
         </div>
         <div>
           <%= f.label :food_group %>
-          <%= f.text_field :food_group %>
+          <%= f.text_field :food_group, :required => true %>
         </div>
         <div>
           <%= f.submit class: "button" %>
