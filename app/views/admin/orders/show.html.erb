@@ -17,6 +17,7 @@
           <label>QTY: <%= line_item.quantity %><br>
             $<%= line_item.item.price.to_s.insert(-3, ".") %></label>
         </div>
+        <p><%= link_to "Remove Item", admin_remove_item_path(:order => {:id => @order.id, :line_item_id => line_item.id}), method: :put %>
         <hr>
       </div>
     <% end %>

@@ -21,6 +21,12 @@ class Admin::OrdersController < Admin::BaseAdminController
     end
   end
 
+  def remove_item
+    @order = Order.find(params[:order][:id])
+    @order.line_items.find(params[:order][:line_item_id]).destroy
+    redirect_to admin_order_path(@order), notice: "You have removed the item from this order."
+  end
+
   private
 
   def order_params
