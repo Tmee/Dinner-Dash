@@ -10,20 +10,20 @@
 <table class="table-fill">
   <thead>
     <tr>
-      <th class="text-left">Image</th>
-      <th class="text-left">Name</th>
-      <th class="text-left">Price</th>
-      <th class="text-left">Actions</th>
+      <th class="text-center">Image</th>
+      <th class="text-center">Name</th>
+      <th class="text-center">Price</th>
+      <th class="text-center">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td class="text-left"><%= image_tag item.image, size: "10x10" %></td>
-        <td class="text-left"><%= item.name %></td>
-        <td class="text-left"><%= item.price %></td>
-        <td class="text-left">
+        <td class="text-center"><%= image_tag item.image, size: "150" %></td>
+        <td class="text-center"><%= item.name %></td>
+        <td class="text-center"><%= item.price %></td>
+        <td class="text-center">
           <ul class="stack button-group">
             <%# link_to 'Show', admin_item_path(item) %>
             <li><%= link_to 'Edit', edit_admin_item_path(item), class: "button tiny" %></li>
