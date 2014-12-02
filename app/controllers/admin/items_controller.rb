@@ -4,8 +4,8 @@ class Admin::ItemsController < Admin::BaseAdminController
   layout 'admin'
 
     def index
-      @items = Item.all
-      @all_fillings = Filling.all
+      @items = Item.order(id: :asc)
+      @all_fillings = Filling.order(id: :asc)
     end
 
     def show
