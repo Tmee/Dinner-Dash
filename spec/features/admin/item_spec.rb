@@ -35,7 +35,6 @@ feature "Admin Item Navigation" do
       Item.create!(name:        "Cake",
                    description: "It's not a lie. We promise.",
                    price:       700,
-<<<<<<< HEAD
                   )
 
       Filling.create!(title:       "Steak",
@@ -74,20 +73,3 @@ feature "Admin Item Navigation" do
 end
 
 # save_and_open_page
-=======
-                   image:       File.new("#{Rails.root}/app/assets/images/menu/items/taco.jpg")
-                  )
-    end
-
-    scenario "admin can add a new item" do
-      visit "/admin/items"
-      click_link "Add New Item"
-      expect(page).to have_text("New Item")
-
-
-    end
-
-  end
-
-end
->>>>>>> initial spec setup
