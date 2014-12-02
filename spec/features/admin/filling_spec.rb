@@ -40,7 +40,6 @@ feature "Admin Filling Navigation" do
     end
 
     scenario "admin can add a new filling" do
-
       visit "/admin/fillings"
       click_link "Add New Filling"
       expect(page).to have_text("New Filling")
@@ -79,5 +78,4 @@ feature "Admin Filling Navigation" do
       expect(page).to have_text("The filling was deleted.")
     end
   end
-
 end
