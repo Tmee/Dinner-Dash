@@ -69,5 +69,6 @@ feature "Admin can retire a filling" do
 
       expect(page).to have_text("The filling was deleted.")
     end
+  end
 
 end
