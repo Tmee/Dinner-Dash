@@ -2,15 +2,10 @@
   <h1>Order #<%= @order.id %></h1>
   <h3> Ordered at: <%= @order.created_at %></h3>
   <h3>Status: <%= @order.state.capitalize %></h3>
-  <div>
-    <h4>Change status:</h4>
-    <%= link_to 'Cancel', admin_order_path(:order => {:id => @order.id, :state => 'cancel'}), method: :put %> | 
-    <%= link_to 'Paid', admin_order_path(:order => {:id => @order.id, :state => 'paid'}), method: :put %> | 
-    <%= link_to 'Completed', admin_order_path(:order => {:id => @order.id, :state => 'completed'}), method: :put %>
-  </div>
+
+  <%= render partial: 'status_links', locals: {order: @order} %>
 
   <hr>
-
 
   <div>
     <% @order.line_items.each do |line_item| %>

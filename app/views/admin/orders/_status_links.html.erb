@@ -1,0 +1,12 @@
+<div>
+  <% case order.state %>
+  <% when 'ordered' %>
+    <h4>Change status:</h4>
+      <%= link_to 'Mark as Paid', admin_order_path(:order => {:id => order.id, :state => 'paid'}), method: :put %> |  
+      <%= link_to 'Cancel', admin_order_path(:order => {:id => order.id, :state => 'cancel'}), method: :put %>
+  <% when 'paid' %>
+    <h4>Change status:</h4>
+      <%= link_to 'Completed', admin_order_path(:order => {:id => order.id, :state => 'completed'}), method: :put %> |
+      <%= link_to 'Cancel', admin_order_path(:order => {:id => order.id, :state => 'cancel'}), method: :put %>
+  <% end %>
+</div>
