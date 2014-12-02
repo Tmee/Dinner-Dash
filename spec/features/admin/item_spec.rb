@@ -29,13 +29,20 @@ feature "Admin Item Navigation" do
     expect(page).to have_text("Available Items")
   end
 
+
+  scenario "admin can go to the new item page" do
+    visit "/admin/items"
+    click_link "Add New Item"
+    expect(page).to have_text("New Item")
+  end
+
   feature "admin can interact with items" do
 
     background do
-      Item.create!(name:        "Cake",
-                   description: "It's not a lie. We promise.",
-                   price:       700,
-                  )
+    @item = Item.create!(name:        "Cake",
+                         description: "It's not a lie. We promise.",
+                         price:       700,
+                        )
 
       Filling.create!(title:       "Steak",
                       description: "It's meat. From an animal.",
@@ -44,11 +51,6 @@ feature "Admin Item Navigation" do
                      )
     end
 
-    scenario "admin can go to the new item page" do
-      visit "/admin/items"
-      click_link "Add New Item"
-      expect(page).to have_text("New Item")
-    end
 
     scenario "admin can make a new item" do
       visit "/admin/items/new"
@@ -57,15 +59,38 @@ feature "Admin Item Navigation" do
       steak_checkbox.set(true)
       expect(steak_checkbox).to be_checked
 
-      fill_in "Name", with: "Cake"
+      fill_in "Name", with: "Pie"
       fill_in "Price", with: 100
-
       click_button "Create Item"
-      # expect(page.status_code).to eq(200)
-      # expect(current_path).to eq(admin_items_path)
-      # expect(Item.last.name).to eq("Cake")
-      # expect(page).to have_text("Cake")
 
+      expect(page).to have_text("Pie")
+    end
+
+    scenario "admin can edit an item" do
+      visit "/admin/items"
+
+      click_link "Edit"
+      fill_in "Name", with: "Pizza"
+      fill_in "Price", with: 490
+      click_button "Update Item"
+
+      expect(page).to have_text("Pizza")
+    end
+
+    scenario "admin can delete an item" do
+      visit "/admin/items"
+      click_link "Destroy"
+
+      expect(page).to have_text("The product was deleted.")
+    end
+
+    scenario "admin cant delete an item that's in an order" do
+      LineItem.create!(order_id: 1, item_id: @item.id)
+
+      visit "/admin/items"
+      click_link "Destroy"
+
+      expect(page).to have_text("This Item is in an existing order.")
     end
 
 
