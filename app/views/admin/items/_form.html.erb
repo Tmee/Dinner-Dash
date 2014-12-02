@@ -1,7 +1,20 @@
+<br>
+
 <%= form_for([:admin, @item]) do |f| %>
+  <div class="rows">
+    <div class="small-12 columns">
+      <h2>Available Fillings</h2>
+      <ul class="no-bullet small-block-grid-4">
+        <% @all_fillings.each do |filling| %>
+          <li><%= check_box_tag filling.id, filling.id, @item.fillings.include?(filling) %>
+          <%= label_tag filling.id, filling.title %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
   <div class="row">
-    <div class="small-5 columns">
+    <div class="small-4 columns">
       <% if @item.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -22,20 +35,16 @@
         <%= f.label :price %>
         <%= f.number_field :price, max: 100000 %>
       </div>
-      <% @all_fillings.each do |filling| %>
-        <%= check_box_tag filling.id, filling.id, @item.fillings.include?(filling) %>
-        <%= label_tag filling.id, filling.title %>
-      <% end %>
+      <div>
+        <%= f.submit class: "button" %>
+      </div>
     </div>
-    <div class="small-7 columns">
+    <div class="small-6 columns">
       <% if @item.image.exists? %>
         <%= image_tag @item.image.url :medium %><br/>
       <% end %>
       <%= f.label :image, "Attach an Image" %><br />
       <%= f.file_field :image %>
     </div>
-  </div>
-  <div>
-    <%= f.submit class: "button" %>
   </div>
 <% end %>
