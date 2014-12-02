@@ -23,11 +23,12 @@ class Admin::ItemsController < Admin::BaseAdminController
 
     def create
       @item = Item.new(item_params)
-
+      @item.filling_ids = params[:item][:filling_ids]
       if @item.save
-        redirect_to @item, notice: "Item created. Please log in."
+        redirect_to admin_items_path, notice: "Item created."
       else
         flash.now[:notice] = "Item could not be created."
+        @all_fillings = Filling.all
         render :new
       end
     end
@@ -45,8 +46,12 @@ class Admin::ItemsController < Admin::BaseAdminController
     end
 
     def destroy
-      @item.destroy
-      redirect_to admin_items_path, notice: "The product was deleted."
+      if @item.line_items.empty?
+        @item.destroy
+        redirect_to admin_items_path, notice: "The product was deleted."
+      else
+        redirect_to admin_items_path, notice: "Unauthorized. This Item is in an existing order."
+      end
     end
 
     private
