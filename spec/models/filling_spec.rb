@@ -75,6 +75,9 @@ RSpec.describe Filling, :type => :model do
     expect(filling).to_not be_valid
   end
 
-
+  it "can display it's view title" do
+    filling.title = "this is a title"
+    expect(filling.view_title).to eq("This Is A Title")
+  end
 
 end

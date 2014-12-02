@@ -5,37 +5,40 @@
 <div class="row">
   <br>
   <div class="large-7 columns"><h1>Available Ingredients</h1></div>
-  <div class="large-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 16px" %></div>
+  <div class="large-3 columns"><%= link_to 'Add New Filling', new_admin_filling_path, class: "button", style: "left: 22%" %></div>
 </div>
 
 <table class="table-fill">
   <thead>
     <tr>
+      <th class="text-center">Image</th>
       <th class="text-center">Title</th>
       <th class="text-center">Description</th>
       <th class="text-center">Price</th>
       <th class="text-center">Food Group</th>
       <th class="text-center">Actions</th>
+      <th class="text-center">Retire?</th>
     </tr>
   </thead>
 
   <tbody>
     <% @fillings.each do |filling| %>
       <tr>
+        <td class="text-center"><%= image_tag filling.image %></td>
         <td class="text-center"><%= filling.title %></td>
         <td class="text-left"><%= filling.description %></td>
         <td class="text-center"><%= filling.price %></td>
         <td class="text-center"><%= filling.food_group %></td>
-        <td>
-          <ul class="center-filling-links">
-            <%= link_to 'Show', admin_filling_path(filling) %> |
-            <%= link_to 'Edit', edit_admin_filling_path(filling) %> |
-            <%= link_to 'Destroy', admin_filling_path(filling), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td class="text-center">
+          <ul class="stack button-group">
+            <li><%= link_to 'Show', admin_filling_path(filling), class: "button tiny" %></li>
+            <li><%= link_to 'Edit', edit_admin_filling_path(filling), class: "button tiny" %></li>
+            <li><%= link_to 'Destroy', admin_filling_path(filling), class: "button tiny" , method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
         </td>
-        <td>
+        <td class="text-center">
           <div class="switch">
-            <%= check_box_tag filling.id, "1", filling.retired?, onchange: "changeRetiredStatus(event)" %>
+            <%= check_box_tag filling.id, filling.id, filling.retired?, onchange: "changeRetiredStatus(event)" %>
             <label for="<%= filling.id %>"></label>
           </div>
         </td>

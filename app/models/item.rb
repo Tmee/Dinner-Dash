@@ -4,8 +4,8 @@ class Item < ActiveRecord::Base
   belongs_to :line_item
   has_many  :item_fillings
   has_many :fillings, through: :item_fillings
-  has_attached_file :image, :styles => { :medium => "300x300#", 
-                                         :thumb => "100x100#"},       
+  has_attached_file :image, :styles => { :medium => "300x300#",
+                                         :thumb => "100x100#"},
                     :default_url => 'onion.jpg'
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
