@@ -35,6 +35,7 @@ feature "Admin Item Navigation" do
       Item.create!(name:        "Cake",
                    description: "It's not a lie. We promise.",
                    price:       700,
+<<<<<<< HEAD
                   )
 
       Filling.create!(title:       "Steak",
@@ -66,6 +67,18 @@ feature "Admin Item Navigation" do
       # expect(Item.last.name).to eq("Cake")
       # expect(page).to have_text("Cake")
 
+=======
+                   image:       File.new("#{Rails.root}/app/assets/images/menu/items/taco.jpg")
+                  )
+    end
+
+    scenario "admin can add a new item" do
+      visit "/admin/items"
+      click_link "Add New Item"
+      expect(page).to have_text("New Item")
+
+
+>>>>>>> initial spec setup
     end
 
   end
