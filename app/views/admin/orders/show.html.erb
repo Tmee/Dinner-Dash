@@ -15,18 +15,19 @@
           <h2><%= line_item.item.name.split.map(&:capitalize).join(" ") %></h2>
           <h4><%= line_item.item.fillings.map(&:view_title).join(", ") %></h4>
           qty: <%= line_item.quantity %>
-
           <p>  $<%= line_item.item.price.to_s.insert(-3, ".") %></p>
         </div>
         <p><%= link_to "Remove Item", admin_remove_item_path(:order => {:id => @order.id, :line_item_id => line_item.id}), method: :put %>
       </div>
-          Quantity: <%= form_tag "/admin/update_quantity" do %>
+      <% if line_item.order.state == "ordered" || line_item.order.state == "paid" %> 
+          Update quantity: <%= form_tag "/admin/update_quantity" do %>
                <input type="number" name="quantity" id="quantity" min="1" max="30" value="<%= line_item.quantity %>"/>
                <input type="hidden" name="line_item_id", value="<%= line_item.id %>" />
                <input type="hidden" name="id", value="<%= @order.id %>" />
                <button type= "submit" class="tiny button" >Update</button>
              <% end %>
-        <hr>
+      <% end %>
+      <hr>
     <% end %>
   </div>
 
