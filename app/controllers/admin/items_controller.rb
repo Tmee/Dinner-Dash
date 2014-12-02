@@ -27,6 +27,7 @@ class Admin::ItemsController < Admin::BaseAdminController
         redirect_to admin_items_path, notice: "Item successfully created."
       else
         flash.now[:alert] = "Item could not be created. Try again"
+        @all_fillings = Filling.all
         render :new
       end
     end
