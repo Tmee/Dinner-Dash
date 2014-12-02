@@ -13,4 +13,12 @@ class Item < ActiveRecord::Base
   def image_name
     "menu/items/#{name.downcase.tr(' ', '_')}.jpg"
   end
+
+  def view_name
+    name.split.map(&:capitalize).join(" ")
+  end
+
+  def view_price
+    "$#{price.to_s.insert(-3, ".")}"
+  end
 end

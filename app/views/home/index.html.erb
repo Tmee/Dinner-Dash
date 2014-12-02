@@ -1,19 +1,10 @@
+<div class="row">
+  <ul class = "ch-grid">
 
-<div class="row" id="homepage-holder">
   <% @items.each do |item| %>
-    <div class="large-4 columns" id="container">
-      <div class="button_holder">
-        <div class="troublesome_image">
-          <div class="image1">
-            <%= link_to "/build_item/#{item.id}", class: "circle-link", id: "get-aligned"  do %>
-              <span class="text"><%= "Build A #{item.name}" %><br>$<%= item.price / 100 %></span>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div>
-        <%= item.description %>
-      </div>
+    <div class="small-4 columns">
+      <%= render partial: "shared/circle_image", locals: { item: item } %>
     </div>
   <% end %>
+
 </div>
