@@ -245,7 +245,7 @@ class Seed
   end
 
   def generate_orders
-    states = %W(ordered completed canceled)
+    states = %W(ordered completed canceled paid)
 
     User.all.each do |user|
       5.times do |i|

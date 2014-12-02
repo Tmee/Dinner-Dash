@@ -13,9 +13,8 @@ class Admin::OrdersController < Admin::BaseAdminController
 
   def update
     @order = Order.find(params[:id])
-        # binding.pry
     if @order.update_attributes(order_params)
-        redirect_to admin_order_path(@order), notice: "You have updated a order."
+        redirect_to admin_order_path(@order), notice: "You have updated the order."
     else
       flash.now[:alert] = "The order was not updated. Please try again."
       render :show
