@@ -23,7 +23,7 @@
         </div>
         <div>
           <%= f.label :price %>
-          <%= f.number_field :price %>
+          <%= f.number_field :price, max: 100000 %>
         </div>
         <div>
           <%= f.label :food_group %>
