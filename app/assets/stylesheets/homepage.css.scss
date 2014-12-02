@@ -41,6 +41,11 @@ div .content_box {
   z-index: -9999;
 }
 
+#row-fix {
+  width: 390px;
+  height: auto;
+}
+
 canvas {
   position: absolute;
 }
@@ -81,6 +86,13 @@ div #hermano-says {
   padding-bottom: 15vh;
   height: auto;
   width: auto;
+}
+
+#white-bgg {
+  background-color: white;
+  padding-bottom: 15vh;
+  height: auto;
+  width: 290px;
 }
 
 div #container {
