@@ -245,7 +245,7 @@ class Seed
   end
 
   def generate_orders
-    states = %W(ordered completed canceled)
+    states = %W(ordered completed canceled paid)
 
     User.all.each do |user|
       5.times do |i|
@@ -264,7 +264,7 @@ class Seed
   def add_line_items(order_id)
     5.times do |i|
       item = Item.all.sample
-      line_item = LineItem.create!(order_id: order_id, item_id: item.id)
+      line_item = LineItem.create!(order_id: order_id, item_id: item.id, quantity: 1)
       add_line_item_fillings(line_item.id)
     end
   end

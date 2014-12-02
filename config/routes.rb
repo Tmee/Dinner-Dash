@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
   end
 
+  put 'admin/remove_item', to: 'admin/orders#remove_item'
+  post 'admin/update_quantity', to: 'admin/orders#update_quantity'
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
