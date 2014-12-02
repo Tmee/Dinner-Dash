@@ -17,15 +17,19 @@
   <%= render partial: "shared/flash" %>
   <h3 data-magellan-destination="top"></h3>
   <a name="top"></a>
-  <div class="content_box">
-    <div class="wrapper wrapper--main">
-    </div>
-  </div>
 
-  <section id="site-content">
+  <section class="header">
+    <div class="row">
+      <div class="large-12 columns" id="head-holder">
+        <%= image_tag "tim-da-hermano.png" %>
+      </div>
+    </div>
     <hr/>
-    <%= yield %>
   </section>
+
+  <div class="large-12 columns"  id="site-content">
+    <%= yield %>
+  </div>
 </body>
 
 <footer class="fixed_footer">
