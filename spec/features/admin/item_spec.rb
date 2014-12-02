@@ -68,23 +68,6 @@ feature "Admin Item Navigation" do
 
     end
 
-
-  end
-
-end
-
-# save_and_open_page
-                  )
-    end
-
-    scenario "admin can add a new item" do
-      visit "/admin/items"
-      click_link "Add New Item"
-      expect(page).to have_text("New Item")
-
-
-    end
-
   end
 
 end
