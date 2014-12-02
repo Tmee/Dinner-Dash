@@ -35,7 +35,6 @@ feature "Admin Item Navigation" do
       Item.create!(name:        "Cake",
                    description: "It's not a lie. We promise.",
                    price:       700,
-<<<<<<< HEAD
                   )
 
       Filling.create!(title:       "Steak",
@@ -75,8 +74,6 @@ feature "Admin Item Navigation" do
 end
 
 # save_and_open_page
-=======
-                   image:       File.new("#{Rails.root}/app/assets/images/menu/items/taco.jpg")
                   )
     end
 
@@ -91,4 +88,3 @@ end
   end
 
 end
->>>>>>> initial spec setup
