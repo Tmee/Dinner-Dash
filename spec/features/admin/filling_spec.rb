@@ -25,7 +25,6 @@ feature "Admin can retire a filling" do
 
   scenario "admin can visit the fillings page" do
     click_link "Admin Dashboard"
-    expect(page).to have_css("img[src*='http://placehold.it/1600x600&amp;text=Welcome, Admin!']")
   end
 
 end
