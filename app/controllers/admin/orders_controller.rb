@@ -27,6 +27,14 @@ class Admin::OrdersController < Admin::BaseAdminController
     redirect_to admin_order_path(@order), notice: "You have removed the item from this order."
   end
 
+  def update_quantity
+    @order = Order.find(params[:id])
+    line_item = LineItem.find(params[:line_item_id])
+    line_item.quantity = params[:quantity].to_i
+    line_item.save
+    redirect_to admin_order_path(@order), notice: "You have updated an item quantity for this order."
+  end
+
   private
 
   def order_params

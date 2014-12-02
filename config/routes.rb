@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   put 'admin/remove_item', to: 'admin/orders#remove_item'
+  post 'admin/update_quantity', to: 'admin/orders#update_quantity'
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
