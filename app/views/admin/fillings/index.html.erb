@@ -38,7 +38,7 @@
         </td>
         <td class="text-center">
           <div class="switch">
-            <%= check_box_tag filling.id, "1", filling.retired?, onchange: "changeRetiredStatus(event)" %>
+            <%= check_box_tag filling.id, filling.id, filling.retired?, onchange: "changeRetiredStatus(event)" %>
             <label for="<%= filling.id %>"></label>
           </div>
         </td>
