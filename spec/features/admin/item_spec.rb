@@ -56,7 +56,6 @@ feature "Admin Item Navigation" do
       steak_checkbox = find('input[type="checkbox"]')
       steak_checkbox.set(true)
       expect(steak_checkbox).to be_checked
-
       fill_in "Name", with: "Cake"
       fill_in "Price", with: 100
 
@@ -68,6 +67,9 @@ feature "Admin Item Navigation" do
 
     end
 
+
   end
 
 end
+
+# save_and_open_page
