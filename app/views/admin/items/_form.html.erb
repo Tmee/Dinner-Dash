@@ -13,7 +13,7 @@
   </div>
 
   <div class="row">
-    <div class="small-4 columns">
+    <div class="small-5 columns">
       <% if @item.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -63,5 +63,15 @@
       <%= f.label :image, "Attach an Image" %><br />
       <%= f.file_field :image %>
     </div>
+    <div class="small-7 columns">
+      <% if @item.image.exists? %>
+        <%= image_tag @item.image.url :medium %><br/>
+      <% end %>
+      <%= f.label :image, "Attach an Image" %><br />
+      <%= f.file_field :image %>
+    </div>
+  </div>
+  <div>
+    <%= f.submit class: "button" %>
   </div>
 <% end %>
