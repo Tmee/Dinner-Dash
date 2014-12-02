@@ -1,3 +1,5 @@
+<br>
+
 <%= form_for([:admin, @item]) do |f| %>
   <div class="rows">
     <div class="small-12 columns">
@@ -48,6 +50,9 @@
         </div>
         <%= f.submit class: "button", id: "submit-item" %>
       </div>
+      <div>
+        <%= f.submit class: "button" %>
+      </div>
     </div>
     <div class="small-6 columns">
       <% if @item.image.exists? %>
@@ -56,8 +61,5 @@
       <%= f.label :image, "Attach an Image" %><br />
       <%= f.file_field :image %>
     </div>
-  </div>
-  <div>
-    <%= f.submit class: "button" %>
   </div>
 <% end %>
