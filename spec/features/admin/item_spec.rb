@@ -35,7 +35,6 @@ feature "Admin Item Navigation" do
       Item.create!(name:        "Cake",
                    description: "It's not a lie. We promise.",
                    price:       700,
-                   image:       File.new("#{Rails.root}/app/assets/images/menu/items/taco.jpg")
                   )
     end
 
@@ -44,7 +43,7 @@ feature "Admin Item Navigation" do
       click_link "Add New Item"
       expect(page).to have_text("New Item")
 
-      
+
     end
 
   end
