@@ -4,8 +4,7 @@ class Admin::ItemsController < Admin::BaseAdminController
   layout 'admin'
 
     def index
-      @items = Item.all
-      @all_fillings = Filling.all
+      @items = Item.order(id: :asc)
     end
 
     def show
@@ -25,9 +24,9 @@ class Admin::ItemsController < Admin::BaseAdminController
       @item = Item.new(item_params)
       @item.filling_ids = params[:item][:filling_ids]
       if @item.save
-        redirect_to admin_items_path, notice: "Item created."
+        redirect_to admin_items_path, notice: "Item successfully created."
       else
-        flash.now[:notice] = "Item could not be created."
+        flash.now[:alert] = "Item could not be created. Try again"
         @all_fillings = Filling.all
         render :new
       end

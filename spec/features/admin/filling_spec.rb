@@ -29,6 +29,12 @@ feature "Admin Filling Navigation" do
     expect(page).to have_text("Available Ingredients")
   end
 
+  scenario "admin can go to the new filling page" do
+    visit "/admin/fillings"
+    click_link "Add New Filling"
+    expect(page).to have_text("New Filling")
+  end
+  
   feature "admin can interact with fillings" do
 
     background do
@@ -39,11 +45,9 @@ feature "Admin Filling Navigation" do
                     )
     end
 
-    scenario "admin can add a new filling" do
 
-      visit "/admin/fillings"
-      click_link "Add New Filling"
-      expect(page).to have_text("New Filling")
+    scenario "admin can add a new filling" do
+      visit "/admin/fillings/new"
 
       fill_in "Title",       with: "Cake"
       fill_in "Description", with: "This is circular food."
@@ -79,5 +83,4 @@ feature "Admin Filling Navigation" do
       expect(page).to have_text("The filling was deleted.")
     end
   end
-
 end
