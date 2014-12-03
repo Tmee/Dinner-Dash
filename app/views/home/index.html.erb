@@ -6,7 +6,7 @@
     </div>
     <div class="small-12 small-centered columns">
       <p>
-        We're a cutting edge restaurant where you, the eater, are empowered to create your own meals with the help of the Burrito Artists™ at Los Amigos Gordos.
+        We're a cutting-edge restaurant where you, the eater, are empowered to create your own meals with the help of the Burrito Artists™ at Los Amigos Gordos.
       </p>
       <p>Use the links below to start building your meal!</p>
     </div>
@@ -15,10 +15,11 @@
 
   <ul class = "ch-grid">
 
-  <% @items.each do |item| %>
-    <div class="small-12 medium-4 large-4 end columns">
-      <%= render partial: "shared/circle_image", locals: { item: item } %>
-    </div>
-  <% end %>
+    <% @items.each do |item| %>
+      <div class="small-12 medium-4 large-4 end columns">
+        <%= render partial: "shared/circle_image", locals: { item: item } %>
+      </div>
+    <% end %>
+  </ul>
 
 </div>
