@@ -4,6 +4,8 @@
     helper_method :current_user
 
     def index
+      @highest_selling_product = LineItem.highest_selling_product
+      @total_revenue = Order.total_revenue
       @products = Item.all[0..4]
       render :dashboard, layout: "admin"
     end
