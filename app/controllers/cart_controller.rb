@@ -2,7 +2,7 @@ class CartController < ApplicationController
 
   def index
     if cart_has_items
-      @items = Item.all
+      @items = Item.order(id: :asc)
       @cart = session[:cart]
       @cart_items ||= []
       get_cart_items
