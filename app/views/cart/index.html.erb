@@ -3,7 +3,7 @@
   <div id="h1-box">
     <h1>Your Cart</h1>
     <% if !current_user.present? %>
-      <h3>Please Log In above to complete your order</h3>
+      <h3>Please log in above to complete your order</h3>
     <% else %>
       <%= form_tag '/orders' do |f| %>
        <%= submit_tag "Place my Order", class: "button" %>

@@ -30,14 +30,14 @@ class Admin::ItemsController < Admin::BaseAdminController
         flash.now[:alert] = "Item could not be created. Try again"
         @all_fillings = Filling.all
         render :new
-      end
+      end 
     end
 
     def update
       @all_fillings = Filling.all
       if @item.update_attributes(item_params)
         @item.filling_ids = params[:item][:filling_ids]
-        redirect_to admin_item_path(@item), notice: "You have updated a product."
+        redirect_to admin_items_path, notice: "You have updated a product."
       else
         flash.now[:alert] = "The product was not updated. Please try again."
         render :edit
