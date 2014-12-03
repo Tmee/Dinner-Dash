@@ -1,18 +1,24 @@
 <div class="row">
   <div class="large-12 columns text-center">
-    <%= render partial: "shared/title_box", locals:{ text: "~ Build your #{@item.name} ~" } %>
+    <div id="h1-box">
+      <h1><%= @item.name %> Builder</h1>
+      <p>Select your desired fillings.</p>
+      <hr id="h1-box">
+    </div>
   </div>
 </div>
-
 
 <div class="row">
 
   <%= form_tag '/build_item' do |f| %>
+
     <% @fillings.each do |food_group, fillings| %>
+
       <div class="small-12 columns">
         <h1><%= food_group.capitalize %></h1>
         <hr>
       </div>
+
       <div class"small-2 small-centered columns">
         <ul class="ch-grid">
           <% fillings.each do |filling| %>
