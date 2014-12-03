@@ -1,29 +1,33 @@
+<%= javascript_include_tag "delivery-form" %>
 <div class="row">
 
   <div id="h1-box">
     <h1>Your Order: Step 2</h1>
+    
     <h3>Provide your delivery information:</h3>
       <%= form_tag '/orders' do |f| %>
-        <%= radio_button_tag(:delivery_method, "pickup") %>
-        <%= label_tag(:delivery_method_pickup, "Pickup") %>
-        <%= radio_button_tag(:delivery_method, "delivery") %>
+        <%= radio_button_tag(:delivery_method, "pickup", checked = true, id: "radio-pickup") %>
+        <%= label_tag(:delivery_method_pickup, "Pickup", ) %>
+        <%= radio_button_tag(:delivery_method, "delivery", checked = false , id: "radio-delivery") %>
         <%= label_tag(:delivery_method_delivery, "Delivery") %>
         <br>
-        <%= label_tag(:address_1, "Address line 1") %>
-        <%= text_field_tag(:address_1) %>   
-        <%= label_tag(:address_2, "Address line 2") %>
-        <%= text_field_tag(:address_2) %>
-        <%= label_tag(:city, "City") %>
-        <%= text_field_tag(:city) %>
-        <%= label_tag(:state, "State") %>
-        <%= text_field_tag(:state) %>
-        <%= label_tag(:zip_code, "Zip code") %>
-        <%= text_field_tag(:zip_code) %>
+        <div class="hidden" id="delivery-form">
+          <%= label_tag(:address_1, "Address line 1") %>
+          <%= text_field_tag(:address_1) %>   
+          <%= label_tag(:address_2, "Address line 2") %>
+          <%= text_field_tag(:address_2) %>
+          <%= label_tag(:city, "City") %>
+          <%= text_field_tag(:city) %>
+          <%= label_tag(:state, "State") %>
+          <%= text_field_tag(:state) %>
+          <%= label_tag(:zip_code, "Zip code") %>
+          <%= text_field_tag(:zip_code) %>
+        </div>
       <%= submit_tag "Submit Order", class: "button" %>
     <% end %>
-
+    
     <hr id="h1-box">
-</div>
+  </div>
 
 <div class="row">
   <table class="table-fill">
