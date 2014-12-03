@@ -1,7 +1,10 @@
-<div class="row" id='white-bg'>
-  <h1>Order #<%= @order.id %></h1>
-  <h3> Ordered at: <%= @order.created_at %></h3>
-  <h3>Status: <%= @order.state.capitalize %></h3>
+<div class="row" >
+  <div id="h1-box">
+    <h1>Order #<%= @order.id %></h1>
+    <h3> Ordered at: <%= @order.created_at %></h3>
+    <h3>Status: <%= @order.state.capitalize %></h3>
+  <hr id="h1-box">
+  </div>
 
   <%= render partial: 'status_links', locals: {order: @order} %>
 
@@ -31,5 +34,5 @@
     <% end %>
   </div>
 
-  <%= link_to "⇠ Back to Orders", admin_orders_path %>
+  <%= link_to "Back to Orders", admin_orders_path %>
 </div>
