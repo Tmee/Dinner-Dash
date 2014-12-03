@@ -1,89 +1,47 @@
-  <div class="row">
-    <div class="large-12 columns">
-      <img src="http://placehold.it/1600x600&text=Welcome, Admin!"><br><br>
+<div class="row">
+
+  <div class="large-12 columns"></br>
+    <h2>Welcome to Los Gordos Amigos Admin Tool <%= current_user.first_name %></h2>
+  </div> 
+  <div class="large-6 large-centered columns">
+    <%= render partial: "shared/hermano", locals: { hermano_said: @hermano_said } %>
+  </div>
+  <hr>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h3> Business Stats </h3>
+      <h3>Highest Selling Product</h3>
+      <%= image_tag @top_item.image, size: "200x200" %>
+      <h3><%= @highest_selling_product[1].count%> <%= @top_item.view_name.downcase.pluralize %> sold</h3>
+      <h3>Total Revenue: <%= "$#{@total_revenue.to_s.insert(-3, ".")}" %></h3>
+  </div>
+  
+  <div class="large-6 columns">
+    <h3> Recent Orders </h3><%= link_to "View all orders", admin_orders_path, class: "button" %>
+    <div class="orders">
+      <table class="table-fill" id="get-aligned">
+        <thead>
+          <tr>
+            <th class="text-center">Order #</th>
+            <th class="text-center">Username</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Details</th>
+          </tr>
+        </thead>
+        <tbody class="table-hover">
+          <% @latest_orders.each do |order| %>
+            <tr class="order" data-state="<%= order.state %>">
+              <td class="text-center"><%= order.id %></td>
+              <td class="text-left"><%= order.user.username %></td>
+              <td class="text-center"><%= order.state.capitalize %></td>
+              <td class="text-center"><%= link_to "View Order", admin_order_path(order) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="row">
-    <div class="large-12 columns show-for-small">
-      <img src="http://placehold.it/1200x700&text=Mobile Header">
-    </div>
-  </div><br>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="row">
-
-            <div class="large-4 small-6 columns">
-            <!-- ################    remove hard coded css styles    ################  -->
-              <h4 style="margin: auto 30; line-height: 60px;"><%= link_to "Top-Selling Products", admin_items_path %></h4><hr>
-
-              <% @products.each do |product| %>
-
-                <div class="row">
-                  <div class="large-1 column">
-                    <img src="http://placehold.it/50x50&text=234234234">
-                  </div>
-
-                  <div class="large-9 columns">
-                    <div style="float: left">
-                      <%= image_tag product.image_name, :size => '55x55' %>
-                    </div>
-                    <div style="width:100px; margin:auto auto;">
-                      <h5 style="display:block;"><%= product.name %></h5>
-                    </div>
-                  </div>
-                </div><hr>
-
-              <% end %>
-
-                <div class="hide-for-small">
-                  <div class="row">
-                    <div class="large-1 column">
-                      <img src="http://placehold.it/50x50&text=[img]">
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-            <div class="large-4 small-6 columns">
-              <img src="http://placehold.it/300x465&text=Image">
-            </div>
-
-
-
-
-            <div class="large-4 small-12 columns">
-
-              <h4>Blog</h4><hr>
-              <div class="panel">
-                <h5><a href="#">Post Title 1</a></h5>
-
-                <h6 class="subheader">
-                  Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
-                </h6>
-
-                <h6><a href="#">Read More »</a></h6>
-              </div>
-
-              <div class="panel hide-for-small">
-                <h5><a href="#">Post Title 2 »</a></h5>
-              </div>
-
-              <div class="panel hide-for-small">
-                <h5><a href="#">Post Title 3 »</a></h5>
-              </div>
-
-              <a href="#" class="right">Go To Blog »</a>
-
-            </div>
-
-
-          </div>
-        </div>
-      </div>
+</div>

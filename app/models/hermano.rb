@@ -1,5 +1,5 @@
 class Hermano
-  def self.say_that_cool_thing(say_this=nil)
+  def self.say_cool_thing(say_this=nil)
     cool_sayings = [
       "Buy more burritos!",
       "Give the bowls a try!",
