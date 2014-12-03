@@ -6,10 +6,11 @@
 
     def index
       @highest_selling_product = LineItem.highest_selling_product
-      @top_item = Item.find(@highest_selling_product[1][1].item_id)
-      @total_revenue = Order.total_revenue
-      @latest_orders = Order.order(created_at: :asc)[0..4]
-      @hermano_said  = Hermano.say_cool_thing
+      @top_item                = Item.find_by(id: @highest_selling_product.first) ||
+                                   Item.new(price: 0, name: 'n/a', description: 'n/a')
+      @total_revenue           = Order.total_revenue
+      @latest_orders           = Order.order(created_at: :asc)[0..4]
+      @hermano_said            = Hermano.say_cool_thing
       render :dashboard
     end
 

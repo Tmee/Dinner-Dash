@@ -25,17 +25,15 @@ describe 'unregistered user', type: :feature do
   it 'can build an item' do
     visit '/'
     click_link_or_button("Build a Burrito")
-    expect(page).to have_text("Build your Burrito")
+    expect(page).to have_text("Burrito Builder")
 
     check("Steak")
     click_link_or_button("Submit")
     expect(current_path).to eq("/cart")
-    expect(page).to have_text("Please Log In to complete your order")
+    expect(page).to have_text("Please log in above")
   end
 
 end
-
-
 
 describe 'registered user', type: :feature do
 
@@ -66,7 +64,7 @@ describe 'registered user', type: :feature do
   it 'can build an item' do
     visit '/'
     click_link_or_button("Build a Burrito")
-    expect(page).to have_text("Build your Burrito")
+    expect(page).to have_text("Burrito Builder")
 
     check("Steak")
     click_link_or_button("Submit")
