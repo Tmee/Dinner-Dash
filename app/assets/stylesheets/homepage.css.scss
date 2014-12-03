@@ -258,7 +258,7 @@ h3 {
 hr {
   border-width: 14px 0px 0px;
   width: auto;
-  margin: 0;
+  margin: 1em auto;
 }
 
 .button-holder {
@@ -341,60 +341,20 @@ textarea {
   font-family: "Bangers";
   font-size: 30px;
 }
-.line_item {
-  margin: auto;
-  width: 100%;
-  hr {
-    border-width: 2px 0px 0px;
-    border-color: #DDD;
-    width: auto;
+#line_item {
+  img {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    border-radius: 40%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 10%;
+    margin-top: 5%;
   }
 }
-.circular {
-  background-size: cover !important;
-  padding-left: 50vh;
-  margin-left: 3vh;
-  background-color: transparent;
-  width: 200px;
-  height: 200px;
-  border-radius: 150px;
-  -webkit-border-radius: 150px;
-  -moz-border-radius: 150px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .8);
-  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .8);
-  img {
-    opacity: 0;
-    filter: alpha(opacity=0);
-  }
-  h2 {
-    width: 133vh;
-    margin-bottom: 5vh;
-  }
-  label {
-    color: #584B4F;
-    width: 270vh;
-    margin-top: -5vh;
-    font-size: 24px;
-    text-align: center;
-    font-family: "Droid Serif";
-    font-weight: 700;
-  }
-  h3 {
-    width: 130vh;
-    font-size: 18px;
-    padding-left: 6vh;
-    margin-bottom: 3vh;
-  }
-  h4 {
-    width: 120vh;
-    padding-left: 11vh;
-    color: #584B4F;
-    font-size: 16px;
-    text-align: center;
-    font-family: "Droid Serif";
-    font-weight: 700;
-  }
+#skinny {
+  border-width: 2px 0px 0px;
+  border-color: #DDD;
 }
 body{
   background:#eeeeee;
