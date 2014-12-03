@@ -15,7 +15,7 @@
   </div>
   <div class="small-5 column">
     <h2><%= line_item.item.view_name %></h2>
-    <h3><%= line_item.item.fillings.map(&:view_title).join(", ") %></h3>
+    <h3>Fillings: <br> <%= line_item.fillings.map(&:view_title).join(", ") %></h3>
     <h3>Quantity: <%= line_item.quantity %></h3>
     <h3>Total: <%= number_to_currency(line_item.item.price) %></h3>
     <br>
