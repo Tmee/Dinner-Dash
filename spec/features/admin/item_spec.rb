@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "Admin Item Navigation" do
-
   background do
     admin = User.create!(first_name: "Josh",
                          last_name:  "Cheek",
@@ -92,10 +91,5 @@ feature "Admin Item Navigation" do
 
       expect(page).to have_text("This Item is in an existing order.")
     end
-
-
   end
-
 end
-
-# save_and_open_page

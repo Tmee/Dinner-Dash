@@ -31,7 +31,6 @@
         <td class="text-center"><%= filling.food_group %></td>
         <td class="text-center">
           <ul class="stack button-group">
-            <%# link_to 'Show', admin_filling_path(filling), class: "button tiny" %>
             <li><%= link_to 'Edit', edit_admin_filling_path(filling), class: "button tiny" %></li>
             <li><%= link_to 'Destroy', admin_filling_path(filling), class: "button tiny", method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
