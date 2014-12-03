@@ -8,7 +8,7 @@
   <div class="small-3 columns">
     <ul>
       <li><%= @filling.description%></li>
-      <li><%= @filling.view_price%></li>
+      <li><%= number_to_currency(@filling.price / 100.0) %></li>
       <li><%= @filling.food_group%></li>
     </ul>
   </div>

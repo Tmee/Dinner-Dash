@@ -27,7 +27,7 @@
         <td class="text-center"><%= image_tag filling.image %></td>
         <td class="text-center"><%= filling.title %></td>
         <td class="text-left"><%= filling.description %></td>
-        <td class="text-center"><%= filling.view_price %></td>
+        <td class="text-center"><%= number_to_currency(filling.price / 100.0 ) %></td>
         <td class="text-center"><%= filling.food_group %></td>
         <td class="text-center">
           <ul class="stack button-group">
