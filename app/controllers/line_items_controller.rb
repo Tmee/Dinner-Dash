@@ -11,7 +11,7 @@ class LineItemsController < ApplicationController
   def build_item
     @item  = Item.find(params[:id])
     @items = Item.all
-    @fillings = @item.fillings.active.uniq
+    @fillings = @item.fillings.active.uniq.group_by { |filling| filling.food_group }
   end
 
   private
