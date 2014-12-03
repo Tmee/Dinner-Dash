@@ -23,6 +23,8 @@ Rails.application.configure do
 
   config.log_level = :info
 
+  config.force_ssl = true
+
 
 
   # Prepend all log lines with the following tags.
