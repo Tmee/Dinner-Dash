@@ -1,7 +1,7 @@
 <div class="row" id="white-bg">
   <h1>Order #<%= @order.id %></h1>
-  <h3> Ordered at: <%= @order.created_at %></h2>
-  <h3>Status: <%= @order.state.capitalize %></h2>
+  <h3> Ordered at: <%= @order.created_at %></h3>
+  <h3>Status: <%= @order.state.capitalize %></h3>
   <hr>
 
     <% @order.line_items.each do |line_item| %>
@@ -16,6 +16,10 @@
       </div>
       <hr id="skinny">
     <% end %>
-
-  <%= link_to "View all my Past Orders", orders_path %>
+   <div class="small-12 column">
+    <br><br>
+    <h3>Thank you for ording from Los Amigos Gordos. Stay hungry my friend!</h3>
+    <br>
+    <%= link_to "View all my Past Orders", orders_path %>
+  </div>
 </div>
