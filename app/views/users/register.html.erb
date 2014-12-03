@@ -1,6 +1,7 @@
 <div class="row collapse">
-  <h3>Registration</h3>
+  <h2>Registration</h2>
   <div class="large-12 columns">
+
     <% if current_user %>
       <h3>Whoops!</h3>
       <p>Looks like you are already logged in.</p>
@@ -8,9 +9,11 @@
       <p>Please <%= link_to "Sign Out", logout_path, method: :delete %> to log in or register as a new user </p>
       <br/>
     <%else%>
-    <fieldset>
+
+
+
     <%= form_for User.new, :html => {:'data-abide' => true} do |f| %>
-      <div class="row">
+      <div class="row large-12 colums">
         <div class="large-6 columns">
           <div class="row collapse prefix-radius">
             <div class="small-3 columns">
@@ -26,24 +29,23 @@
         </div>
         <div class="large-6 columns">
           <div class="row collapse prefix-radius">
-            <div class="small-3 columns">
-              <span class="prefix"><%= label_tag :last_name, "Last Name".html_safe %></span>
-            </div>
+              <div class="small-3 columns">
+                <span class="prefix"><%= label_tag :last_name, "Last Name".html_safe %></span>
+              </div>
             <div class="name-field">
-            <div class="small-9 columns">
-              <%= f.text_field :last_name, :required => true, :pattern => '[a-zA-Z]+' %>
-              <small class="error">Please provide a first name.</small>
+              <div class="small-9 columns">
+                <%= f.text_field :last_name, :required => true, :pattern => '[a-zA-Z]+' %>
+                <small class="error">Please provide a first name.</small>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
+
         <div class="email-field">
            <%= label_tag :email, "Email"%>
           <%= f.text_field :email, :required => true, :pattern => 'email' %>
           <small class="error">An email address is required.</small>
         </div>
-      </div>
         <div class="username">
           <%= label_tag :username, "Username"%>
           <%= f.text_field :username, :required => false %>
@@ -58,9 +60,9 @@
           <%= f.password_field :password_confirmation, :required => true, :pattern => '[a-zA-Z]+' %>
           <small class="error">The passwords do not match.</small>
         </div>
-
         <button type="submit">Submit</button>
-      <%end%>
     <%end%>
-  </fieldset>
-</div></div>
+    <%end%>
+
+  </div>
+</div>
