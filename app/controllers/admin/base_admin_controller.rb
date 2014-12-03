@@ -2,10 +2,15 @@
     protect_from_forgery with: :null_session
     before_action :require_admin
     helper_method :current_user
+    layout "admin"
 
     def index
-      @products = Item.all[0..4]
-      render :dashboard, layout: "admin"
+      @highest_selling_product = LineItem.highest_selling_product
+      @top_item = Item.find(@highest_selling_product[1][1].item_id)
+      @total_revenue = Order.total_revenue
+      @latest_orders = Order.order(created_at: :asc)[0..4]
+      @hermano_said  = Hermano.say_cool_thing
+      render :dashboard
     end
 
     protected

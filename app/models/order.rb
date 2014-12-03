@@ -1,9 +1,8 @@
 class Order < ActiveRecord::Base
   scope :ordered, -> { where(state: "ordered")}
   scope :paid, -> { where(state: "paid")}
-  scope :cancelled, -> { where(state: "cancelled")}
+  scope :cancelled, -> { where(state: "canceled")}
   scope :completed, -> { where(state: "completed")}
-
 
   belongs_to :user
   has_many :line_items
@@ -15,6 +14,23 @@ class Order < ActiveRecord::Base
     names = product_names
     modify_for_quantity(names)
     return names.sort.join(", ")
+  end
+
+  def order_total
+    item_total = line_items.reduce(0) do |sum, line_item|
+      sum + (line_item.item.price * line_item.quantity)
+    end
+
+    fillings_total = line_items.reduce(0) do |sum, line_item|
+      sum + (line_item.fillings.reduce(0) do |sum, filling|
+        sum + (filling.price * line_item.quantity)
+      end)
+    end
+    item_total + fillings_total
+  end
+
+  def self.total_revenue
+    paid_orders.reduce(0) { |sum, order| sum + order.order_total }
   end
 
   def product_names
@@ -42,5 +58,11 @@ class Order < ActiveRecord::Base
         names[names.index(product)] = "#{product} x#{quantity[product]}"
       end
     end
+  end
+
+  private
+
+  def self.paid_orders
+    completed.merge(paid)
   end
 end
