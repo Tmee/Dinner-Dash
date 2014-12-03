@@ -1,26 +1,35 @@
-@import url(http://fonts.googleapis.com/css?family=Indie+Flower|Droid+Serif:400,700|Bangers|Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower|Droid+Serif:400,700|Bangers|Open+Sans|Sansita+One);
 .pattern_bg {
-  width: auto;;
+  width: auto;
   height: 100%;
-  background: url(http://subtlepatterns.com/patterns/food.png);
-  text-align: center;
-  background-size: auto;
+  background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/611/611362.png?1253715157);
+  background-size: 11%;
   background-position: center;
+  text-align: center;
   font-family: helvetica;
 }
 
 .header {
+  width: 100%;
   hr {
-    border-color: #F38F0E;
+    border-color: #584B45;
     margin-bottom: 0;
-    border-width: 14px 0px 0px;
+    margin-top: 0;
+    border-width: 10px 0px 0px;
+    width: 100%;
+    position: relative;
   }
 }
 
 #head-holder {
   img {
-    width: 10%;
+    width: 45%;
     background-color: transparent;
+    margin-bottom: -11%;
+  }
+  h1 {
+    font-family: "Sansita One";
+    font-size: 40px;
   }
 }
 
@@ -82,13 +91,23 @@ div #hermano-says {
 
 #site-content {
   background-position: center;
-  background-color: #DDDDE4;
+  background-color: #DDDDE6;
   background-image: linear-gradient(90deg, transparent 50%, rgba(255,255,255,.5) 50%);
   background-size: 50px 50px;
   width: 100%;
   margin: auto;
-  margin-bottom: 30.6vh;
-  position: relative;
+  padding-bottom: 3%;
+  padding-top: 3%;
+  #bottom {
+    position: relative;
+    bottom: 3%;
+    width: 115%;
+    left: -2%;
+    border-color: rgb(118, 125, 132);
+    border-width: 2px 0px 0px;
+
+  }
+
 }
 
 #homepage-holder {
@@ -125,56 +144,91 @@ div #container {
   padding-left: -3vh;
 }
 
-#hermano-text {
-  margin-top: -1vh;
-  margin-left: -6vh;
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight:300;
+  background-color:lightblue;
+  color:#FFF;
 }
-
-.bubble
-{
-  position: relative;
-  text-align: center;
-  width: 650px;
-  height: 190px;
-  padding: 3%;
-  float: right;
-  margin-top: 1%;
-  left: 4.5%;
-  background: #2ecc71;
-  -webkit-border-radius: 49px;
-  -moz-border-radius: 49px;
-  border-radius: 49px;
-  border: #2ecc71 solid 10px;
+section{
+  text-align:center;
 }
-
-.bubble:after
-{
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 52px 76px 9px 0;
-  border-color: transparent #2ecc71;
-  display: block;
-  width: 0;
-  z-index: -1;
-  margin-top: -17px;
-  left: -65px;
-  top: 35%;
+.footer #button{
+  width:35px;
+  height:35px;
+  border: #727172 12px solid;
+  border-radius:35px;
+  margin:0 auto;
+  position:relative;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
 }
-
-.bubble:before
-{
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 64px 112px 16px 1px;
-  border-color: transparent #2ecc71;
-  display: block;
-  width: 0;
-  z-index: -1;
-  margin-top: -26px;
-  left: -84px;
-  top: 35%;
+.footer #button:hover{
+  width:35px;
+  height:35px;
+  border: #3A3A3A 12px solid;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  position:relative;
+}
+.footer {
+  bottom:0;
+  left:0;
+  position:fixed;
+  width: 100%;
+  height: 2em;
+  overflow:hidden;
+  margin:0 auto;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  z-index:999;
+}
+.footer:hover {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  height: 10em;
+}
+.footer #container{
+  margin-top:5px;
+  width:110%;
+  height:100%;
+  position:relative;
+  top:0;
+  left:-10%;
+  background: #3A3A3A;
+}
+.footer #cont{
+  position:relative;
+  top:-45px;
+  right:190px;
+  width:150px;
+  height:auto;
+  margin:0 auto;
+}
+.footer_center{
+  width:500px;
+  float:left;
+  text-align:center;
+}
+.footer h3{
+  font-family: 'Helvetica';
+  font-size: 24px;
+  font-weight: 100;
+  margin-top:70px;
+  margin-left:40px;
 }
 
 body{
@@ -201,14 +255,11 @@ h3 {
   font-family: "Droid Serif";
 }
 
-.hermano-says:before {
-  content:'Hermano Says...';
-  font-family: 'Indie Flower';
-}
 
 hr {
   border-width: 14px 0px 0px;
   width: auto;
+  margin: 1em auto;
 }
 
 .button-holder {
@@ -273,90 +324,38 @@ textarea {
   height: 30%;
 }
 
-.fixed_footer{
-  width: 100%;
-  height: 46%;
-  position: fixed; left: 0; bottom: 0;
-  z-index: -100;
-}
-  .fixed_footer p{
-    color: #696969;
-    column-count: 2;
-    column-gap: 50px;
-    font-size: 1em;
-    font-weight: 300;
-  }
 #h1-box{
   position: relative;
   background: url(http://subtlepatterns.com/patterns/photography.png);
-  margin-bottom: 8vh;
+  margin-bottom: 3%;
+  margin-top: 3%;
   top: -1vh;
  hr {
   position: initial;
   bottom: 0;
   }
   h1 {
-    padding-top: 6vh;
+    padding-top: 2%;
   }
 }
 #nav-h1 {
   font-family: "Bangers";
   font-size: 30px;
 }
-.line_item {
-  margin: auto;
-  width: 100%;
-  hr {
-    border-width: 2px 0px 0px;
-    border-color: #DDD;
-    width: auto;
+#line_item {
+  img {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    border-radius: 40%;
+    box-shadow: 14px -6px 30px rgba(8, 0, 0, 0.1);
+    margin-bottom: 10%;
+    margin-top: 5%;
   }
 }
-.circular {
-  background-size: cover !important;
-  padding-left: 50vh;
-  margin-left: 3vh;
-  background-color: transparent;
-  width: 200px;
-  height: 200px;
-  border-radius: 150px;
-  -webkit-border-radius: 150px;
-  -moz-border-radius: 150px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .8);
-  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .8);
-  img {
-    opacity: 0;
-    filter: alpha(opacity=0);
-  }
-  h2 {
-    width: 133vh;
-    margin-bottom: 5vh;
-  }
-  label {
-    color: #584B4F;
-    width: 270vh;
-    margin-top: -5vh;
-    font-size: 24px;
-    text-align: center;
-    font-family: "Droid Serif";
-    font-weight: 700;
-  }
-  h3 {
-    width: 130vh;
-    font-size: 18px;
-    padding-left: 6vh;
-    margin-bottom: 3vh;
-  }
-  h4 {
-    width: 120vh;
-    padding-left: 11vh;
-    color: #584B4F;
-    font-size: 16px;
-    text-align: center;
-    font-family: "Droid Serif";
-    font-weight: 700;
-  }
+#skinny {
+  border-width: 2px 0px 0px;
+  border-color: #DDD;
 }
 body{
   background:#eeeeee;

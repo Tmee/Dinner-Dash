@@ -4,20 +4,20 @@
   <h3>Status: <%= @order.state.capitalize %></h2>
   <hr>
 
-  <div>
     <% @order.line_items.each do |line_item| %>
-      <div class="line_item" >
-        <div class="circular" style="background: url(<%= line_item.item.image %>);">
-          <%= image_tag line_item.item.image %>
-          <h2><%= line_item.item.name.split.map(&:capitalize).join(" ") %></h2>
-          <h4><%= line_item.item.fillings.map(&:view_title).join(", ") %></h4>
-          <label>QTY: <%= line_item.quantity %><br>
-            $<%= line_item.item.price.to_s.insert(-3, ".") %></label>
-        </div>
-        <hr>
+      <div class="small-3 column" id="line_item">
+        <%= image_tag line_item.item.image %>
       </div>
+      <div class="small-9 column">
+        <h2><%= line_item.item.view_name %></h2>
+        <h4><%= line_item.item.fillings.map(&:view_title).join(", ") %></h4>
+        <label>
+          QTY: <%= line_item.quantity %><br>
+          $<%= line_item.item.view_price %>
+        </label>
+      </div>
+      <hr id="skinny">
     <% end %>
-  </div>
 
   <%= link_to "⇠ Back to Orders", orders_path %>
 </div>

@@ -18,4 +18,7 @@ class Filling < ActiveRecord::Base
     title.split.map(&:capitalize).join(" ")
   end
 
+  def view_price
+    price.to_s.length < 3 ? "$#{price.to_s.insert(0, ".")}" : "$#{price.to_s.insert(-3, ".")}"
+  end
 end
