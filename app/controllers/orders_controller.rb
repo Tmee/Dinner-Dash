@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     require_current_user_id
     @line_items = @order.line_items
+    @order_total = @order.order_total
   end
 
   def create
