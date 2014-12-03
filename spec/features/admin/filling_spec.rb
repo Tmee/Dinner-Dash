@@ -34,7 +34,7 @@ feature "Admin Filling Navigation" do
     click_link "Add New Filling"
     expect(page).to have_text("New Filling")
   end
-  
+
   feature "admin can interact with fillings" do
 
     background do
