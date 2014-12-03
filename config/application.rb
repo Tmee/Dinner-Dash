@@ -9,5 +9,6 @@ Bundler.require(*Rails.groups)
 module DinnerDash
   class Application < Rails::Application
     config.serve_static_assets = true
+    config.assets.version = '1.1'
   end
 end
