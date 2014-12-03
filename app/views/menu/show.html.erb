@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-12 columns">
-    <h1><%= @filling.title %> Details</h1>
+  <div id="h1-box"><h1><%= @filling.title %> Details</h1><hr id="h1-box"></div>
     <p><% if @filling.image.exists? %>
         <%= image_tag @filling.image.url %>
         <% end %></p>
