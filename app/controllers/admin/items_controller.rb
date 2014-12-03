@@ -24,7 +24,7 @@ class Admin::ItemsController < Admin::BaseAdminController
       @item = Item.new(item_params)
       @item.filling_ids = params[:item][:filling_ids]
       if @item.save
-         redirect_to admin_items_path, notice: "Item successfully created."
+        redirect_to admin_items_path, notice: "Item successfully created."
       else
         flash.now[:alert] = "Item could not be created. Try again"
         @all_fillings = Filling.all
