@@ -5,12 +5,9 @@
     <% if !current_user.present? %>
       <h3>Please log in above to complete your order</h3>
     <% else %>
-      <%= form_tag '/orders' do |f| %>
-       <%= submit_tag "Place my Order", class: "button" %>
-      <% end %>
+      <%= link_to "Continue Order", order_delivery_path, class: "button" %>
     <%end%>
     <hr id="h1-box">
-  </div>
 </div>
 
 <div class="row">
@@ -53,9 +50,7 @@
           <td class="text-left">$ <%= @total_price.to_s.insert(-3, ".")%></td>
           <td class="text-left">
             <% if current_user.present? %>
-              <%= form_tag '/orders' do |f| %>
-                <%= submit_tag "Place my Order", class: "button tiny" %>
-              <% end %>
+              <%= link_to "Continue Order", order_delivery_path, class: "button" %>
             <%end%>
         </tr>
     </tbody>

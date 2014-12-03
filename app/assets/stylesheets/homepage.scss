@@ -9,8 +9,8 @@
   font-family: helvetica;
 }
 
-#flash {
-  display: block;
+.hidden {
+  display: none;
 }
 
 .header {
@@ -481,3 +481,4 @@ body{
 .ch-item:hover .ch-info {
   transform: rotate3d(0,1,0,-180deg);
 }
+

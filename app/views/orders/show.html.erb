@@ -1,5 +1,5 @@
 <div class="row" id="white-bg">
-  <h1>Order #<%= @order.id %></h1>
+  <h1>Completed Order #<%= @order.id %></h1>
   <h3> Ordered at: <%= @order.created_at %></h3>
   <h3>Status: <%= @order.state.capitalize %></h3>
   <hr>
@@ -10,9 +10,13 @@
       </div>
       <div class="small-9 column">
         <h2><%= line_item.item.view_name %></h2>
-        <h3><%= line_item.item.fillings.map(&:view_title).join(", ") %></h3>
+
+        <h3>Fillings: <br> <%= line_item.fillings.map(&:view_title).join(", ") %></h3>
+
         <h3>Quantity: <%= line_item.quantity %></h3>
+
         <h3>Total: <%= number_to_currency(line_item.item.price / 100.0) %></h3>
+
       </div>
       <hr id="skinny">
     <% end %>

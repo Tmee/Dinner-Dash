@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   post '/build_item', to: 'cart#create'
   post  '/cart', to: 'cart#update_quantity'
   delete '/cart', to: 'cart#remove_item'
+  get 'order/delivery', to: 'cart#delivery'
 
   resources :cart, only: [:index]
 

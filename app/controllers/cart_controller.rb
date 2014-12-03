@@ -67,6 +67,18 @@ class CartController < ApplicationController
     redirect_to cart_index_path, notice: "Item quantity has been updated."
   end
 
+  def delivery
+    if cart_has_items
+      @items = Item.order(id: :asc)
+      @cart = session[:cart]
+      @cart_items ||= []
+      get_cart_items
+      get_total_price
+    else
+      redirect_to root_path, notice: "Your cart is empty.  Please fill it up and give us money!"
+    end
+  end
+
   private
 
     def check_duplicate(line_item)
