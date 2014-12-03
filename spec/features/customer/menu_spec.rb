@@ -69,7 +69,7 @@ describe 'registered user', type: :feature do
     check("Steak")
     click_link_or_button("Submit")
     expect(current_path).to eq("/cart")
-    expect(page).to have_button("Place my Order")
+    expect(page).to have_text("Your Cart")
   end
 
 end
