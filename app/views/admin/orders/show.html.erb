@@ -15,7 +15,7 @@
           <h2><%= line_item.item.name.split.map(&:capitalize).join(" ") %></h2>
           <h4><%= line_item.item.fillings.map(&:view_title).join(", ") %></h4>
           qty: <%= line_item.quantity %>
-          <p>  $<%= line_item.item.price.to_s.insert(-3, ".") %></p>
+          <p>  $<%= (line_item.item.price * line_item.quantity).to_s.insert(-3, ".")  %></p>
         </div>
         <p><%= link_to "Remove Item", admin_remove_item_path(:order => {:id => @order.id, :line_item_id => line_item.id}), method: :put %>
       </div>
