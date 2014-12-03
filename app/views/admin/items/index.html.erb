@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag    "responsive-tables" %>
-<%= javascript_include_tag "responsive-tables" %> 
+<%= javascript_include_tag "responsive-tables" %>
 <div class="row">
   <br>
   <div class="large-6 columns"><h1>Available Items</h1></div>
@@ -19,7 +19,7 @@
     <% @items.each do |item| %>
       <tr>
         <td class="text-left"><%= item.name %></td>
-        <td class="text-left"><%= item.price %></td>
+        <td class="text-left"><%= item.view_price %></td>
         <td class="text-left">
           <ul>
             <li><%= link_to 'Show', admin_item_path(item) %> | <%= link_to 'Edit', edit_admin_item_path(item) %> | <%= link_to 'Destroy', admin_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></li>
@@ -31,4 +31,3 @@
 </table>
 
 <br>
-

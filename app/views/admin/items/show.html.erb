@@ -14,13 +14,12 @@
 <% end %>
 
 <ul>
-  <li>Price: $<%= @item.price / 100 %></li>
+  <li>Price: $<%= @item.view_price / 100 %></li>
   <li>Available Fillings:</li>
   <ul>
     <% @filling_names.each do |filling|%>
       <li><%= filling %></li>
-    <% end %>  
+    <% end %>
 
   </div>
 </div>
-

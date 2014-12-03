@@ -13,9 +13,12 @@ class Filling < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   scope :active, -> {where(retired: false)}
-  
+
   def view_title
     title.split.map(&:capitalize).join(" ")
   end
 
+  def view_price
+    price.to_s.length < 3 ? "$#{price.to_s.insert(0, ".")}" : "$#{price.to_s.insert(-3, ".")}"
+  end
 end
