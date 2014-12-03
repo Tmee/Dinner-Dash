@@ -1,26 +1,35 @@
-@import url(http://fonts.googleapis.com/css?family=Indie+Flower|Droid+Serif:400,700|Bangers|Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower|Droid+Serif:400,700|Bangers|Open+Sans|Sansita+One);
 .pattern_bg {
-  width: auto;;
+  width: auto;
   height: 100%;
-  background: url(http://subtlepatterns.com/patterns/food.png);
+  background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/3045/3045042.png?1351533110);
   text-align: center;
-  background-size: auto;
+  background-size: 29%;
   background-position: center;
   font-family: helvetica;
 }
 
 .header {
+  width: 100%;
   hr {
-    border-color: #F38F0E;
+    border-color: #584B5D;
     margin-bottom: 0;
-    border-width: 14px 0px 0px;
+    margin-top: 0;
+    border-width: 10px 0px 0px;
+    width: 100%;
+    position: relative;
   }
 }
 
 #head-holder {
   img {
-    width: 10%;
+    width: 45%;
     background-color: transparent;
+    margin-bottom: -11%;
+  }
+  h1 {
+    font-family: "Sansita One";
+    font-size: 40px;
   }
 }
 
@@ -87,8 +96,16 @@ div #hermano-says {
   background-size: 50px 50px;
   width: 100%;
   margin: auto;
-  margin-bottom: 30.6vh;
-  position: relative;
+  margin-bottom: 9%;
+  padding-top: 3%;
+  #bottom {
+    position: relative;
+    margin-bottom: 0;
+    width: 115%;
+    left: -1%;
+    border-color: rgb(118, 125, 132);
+  }
+
 }
 
 #homepage-holder {
@@ -125,9 +142,8 @@ div #container {
   padding-left: -3vh;
 }
 
-#hermano-text {
-  margin-top: -1vh;
-  margin-left: -6vh;
+#hermano-text h2 {
+  margin-bottom: 4%;
 }
 
 .bubble
@@ -140,11 +156,11 @@ div #container {
   float: right;
   margin-top: 1%;
   left: 4.5%;
-  background: #2ecc71;
+  background: #DDDDE4;
   -webkit-border-radius: 49px;
   -moz-border-radius: 49px;
   border-radius: 49px;
-  border: #2ecc71 solid 10px;
+  border: #DDDDE4 solid 10px;
 }
 
 .bubble:after
@@ -153,7 +169,7 @@ div #container {
   position: absolute;
   border-style: solid;
   border-width: 52px 76px 9px 0;
-  border-color: transparent #2ecc71;
+  border-color: transparent #DDDDE4;
   display: block;
   width: 0;
   z-index: -1;
@@ -168,7 +184,7 @@ div #container {
   position: absolute;
   border-style: solid;
   border-width: 64px 112px 16px 1px;
-  border-color: transparent #2ecc71;
+  border-color: transparent #DDDDE4;
   display: block;
   width: 0;
   z-index: -1;
@@ -209,6 +225,7 @@ h3 {
 hr {
   border-width: 14px 0px 0px;
   width: auto;
+  margin: 0;
 }
 
 .button-holder {
@@ -275,28 +292,31 @@ textarea {
 
 .fixed_footer{
   width: 100%;
-  height: 46%;
+  background-image:  url(http://subtlepatterns.com/patterns/photography.png);
+  height: 25%;
   position: fixed; left: 0; bottom: 0;
   z-index: -100;
+  padding: 4%;
 }
-  .fixed_footer p{
-    color: #696969;
-    column-count: 2;
-    column-gap: 50px;
-    font-size: 1em;
-    font-weight: 300;
-  }
+.fixed_footer p{
+  color: #696969;
+  column-count: 2;
+  column-gap: 50px;
+  font-size: 1em;
+  font-weight: 300;
+}
 #h1-box{
   position: relative;
   background: url(http://subtlepatterns.com/patterns/photography.png);
-  margin-bottom: 8vh;
+  margin-bottom: 3%;
+  margin-top: 3%;
   top: -1vh;
  hr {
   position: initial;
   bottom: 0;
   }
   h1 {
-    padding-top: 6vh;
+    padding-top: 2%;
   }
 }
 #nav-h1 {

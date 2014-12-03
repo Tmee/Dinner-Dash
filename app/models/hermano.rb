@@ -6,7 +6,7 @@ class Hermano
       "Welcome to my home, strange visitor!",
       "This site needs more goat meat...",
       "No beer? Bah!!",
-      "La ensalada viene con trozos de la felicidad ;)"
+      "Don't look, I'm changin'!"
       ]
       say_this.nil? || say_this.empty? ? cool_sayings.sample : say_this
   end
