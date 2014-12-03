@@ -34,7 +34,7 @@
             <td class="text-left"><%= image_tag line_item[:item].image.url :thumb %></td>
             <td class="text-left"><h3><%= line_item[:item].name %></h3></td>
             <td class="text-left"><% line_item[:fillings].each do |filling| %>
-                  <%= filling.title %>: $<%= filling.view_price %> (extra),
+                  <%= filling.title %>: <%= filling.view_price %> (extra),
                 <% end %> </td>
             <td class="text-left"><%= form_tag "/cart" do %>
                <input type="number" name="quantity" id="quantity" min="1" max="30" value="<%= line_item[:quantity] %>"/>
