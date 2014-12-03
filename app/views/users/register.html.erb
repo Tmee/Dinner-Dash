@@ -1,68 +1,69 @@
 <div class="row collapse">
+  <div class="panel">
   <h2>Registration</h2>
+  </div><br/>
   <div class="large-12 columns">
+    <div class="panel">
+      <% if current_user %>
+        <h3>Whoops!</h3>
+        <p>Looks like you are already logged in.</p>
+        <h5>Not <%=current_user.first_name%>?</h5>
+        <p>Please <%= link_to "Sign Out", logout_path, method: :delete %> to log in or register as a new user </p>
+        <br/>
+      <%else%>
 
-    <% if current_user %>
-      <h3>Whoops!</h3>
-      <p>Looks like you are already logged in.</p>
-      <h5>Not <%=current_user.first_name%>?</h5>
-      <p>Please <%= link_to "Sign Out", logout_path, method: :delete %> to log in or register as a new user </p>
-      <br/>
-    <%else%>
 
 
-
-    <%= form_for User.new, :html => {:'data-abide' => true} do |f| %>
-      <div class="row large-12 colums">
-        <div class="large-6 columns">
-          <div class="row collapse prefix-radius">
-            <div class="small-3 columns">
-              <span class="prefix"><%= label_tag :first_name, "First Name".html_safe %></span>
-            </div>
+      <%= form_for User.new, :html => {:'data-abide' => true} do |f| %>
+        <div class="row large-12 colums">
+          <div class="large-6 columns">
             <div class="name-field">
-            <div class="small-9 columns">
+               <%= label_tag :first_name, "First Name"%>
               <%= f.text_field :first_name, :required => true, :pattern => '[a-zA-Z]+' %>
               <small class="error">Please provide a first name.</small>
-              </div>
             </div>
           </div>
-        </div>
-        <div class="large-6 columns">
-          <div class="row collapse prefix-radius">
-              <div class="small-3 columns">
-                <span class="prefix"><%= label_tag :last_name, "Last Name".html_safe %></span>
-              </div>
+          <div class="large-6 columns">
             <div class="name-field">
-              <div class="small-9 columns">
-                <%= f.text_field :last_name, :required => true, :pattern => '[a-zA-Z]+' %>
-                <small class="error">Please provide a first name.</small>
-              </div>
+               <%= label_tag :last_name, "Last Name"%>
+              <%= f.text_field :last_name, :required => true, :pattern => '[a-zA-Z]+' %>
+              <small class="error">Please provide a last name.</small>
             </div>
           </div>
-        </div>
-
-        <div class="email-field">
-           <%= label_tag :email, "Email"%>
-          <%= f.text_field :email, :required => true, :pattern => 'email' %>
-          <small class="error">An email address is required.</small>
-        </div>
-        <div class="username">
-          <%= label_tag :username, "Username"%>
-          <%= f.text_field :username, :required => false %>
-        </div>
-        <div class="password-field">
-           <%= label_tag :password, "Password <small>(required)</small>".html_safe %>
-          <%= f.password_field :password, :required => true, :pattern => '[a-zA-Z]+' %>
-          <small class="error">Please provide a password.</small>
-        </div>
-        <div class="password-confirmation-field">
-           <%= label_tag :password_confirmation, "Confirm Password <small>(required)</small>".html_safe %>
-          <%= f.password_field :password_confirmation, :required => true, :pattern => '[a-zA-Z]+' %>
-          <small class="error">The passwords do not match.</small>
-        </div>
-        <button type="submit">Submit</button>
+          <div class="large-6 columns">
+            <div class="email-field">
+               <%= label_tag :email, "Email"%>
+              <%= f.text_field :email, :required => true, :pattern => 'email' %>
+              <small class="error">An email address is required.</small>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="username">
+              <%= label_tag :username, "Username"%>
+              <%= f.text_field :username, :required => false %>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="password-field">
+               <%= label_tag :password, "Password <small>(required)</small>".html_safe %>
+              <%= f.password_field :password, :required => true, :pattern => '[a-zA-Z]+' %>
+              <small class="error">Please provide a password.</small>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="password-confirmation-field">
+               <%= label_tag :password_confirmation, "Confirm Password <small>(required)</small>".html_safe %>
+              <%= f.password_field :password_confirmation, :required => true, :pattern => '[a-zA-Z]+' %>
+              <small class="error">The passwords do not match.</small>
+            </div>
+          </div>
+            <button type="submit">Submit</button>
+          </div>
+      </div>
     <%end%>
     <%end%>
-
   </div>
 </div>
+
+
+
