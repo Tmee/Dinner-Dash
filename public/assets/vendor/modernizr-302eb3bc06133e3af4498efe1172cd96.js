@@ -1224,7 +1224,7 @@ window.Modernizr = (function( window, document, undefined ) {
                                             // adds styling not present in IE6/7/8/9
                                             'mark{background:#FF0;color:#000}' +
                                             // hides non-rendered elements
-                                            'template{display:none}'
+                                            'template{display:block}'
                                          );
           }
           if (!supportsUnknownElements) {
