@@ -16,7 +16,7 @@
           <li>Food Group: <%= @filling.food_group%></li>
           <li>Available in the following menu items:</li>
           <ul>
-            <% @filling.items.each do |item| %>
+            <% @filling.items.uniq.each do |item| %>
               <li><%= item.name %></li>
             <% end %>
           </ul>
