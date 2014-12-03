@@ -7,7 +7,7 @@
   <%= render partial: 'status_links', locals: {order: @order} %>
 </div>
 <hr id="skinny">
-  
+
 <div class="row">
   <% @order.line_items.each do |line_item| %>
   <div class="small-3 column" id="line_item">
@@ -17,11 +17,11 @@
     <h2><%= line_item.item.view_name %></h2>
     <h3><%= line_item.item.fillings.map(&:view_title).join(", ") %></h3>
     <h3>Quantity: <%= line_item.quantity %></h3>
-    <h3>Total: <%= line_item.item.view_price %></h3>
+    <h3>Total: <%= number_to_currency(line_item.item.price) %></h3>
     <br>
   </div>
   <div class="small-2 column">
-    <% if line_item.order.state == "ordered" || line_item.order.state == "paid" %> 
+    <% if line_item.order.state == "ordered" || line_item.order.state == "paid" %>
       <h3><%= form_tag "/admin/update_quantity" do %>
            <input type="number" name="quantity" id="quantity" min="1" max="30" value="<%= line_item.quantity %>"/>
            <input type="hidden" name="line_item_id", value="<%= line_item.id %>" />
@@ -37,7 +37,7 @@
 </div>
 
 <div class="row">
-  
+
 
   <hr id="skinny">
 <% end %>

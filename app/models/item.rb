@@ -18,7 +18,4 @@ class Item < ActiveRecord::Base
     name.split.map(&:capitalize).join(" ")
   end
 
-  def view_price
-    "$#{price.to_s.insert(-3, ".")}"
-  end
 end

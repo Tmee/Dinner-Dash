@@ -32,7 +32,7 @@
           <td class="text-left"><h3><%= line_item[:item].name %></h3></td>
           <td class="text-left"><ul>
             <% line_item[:fillings].each do |filling| %>
-                <li><%= filling.title %>: <%= filling.view_price %> (extra),</li>
+                <li><%= filling.title %>: <%= number_to_currency(filling.price / 100.0) %> (extra),</li>
               <% end %> </ul></td>
           <td class="text-left"><%= form_tag "/cart" do %>
              <input type="number" name="quantity" id="quantity" min="1" max="30" value="<%= line_item[:quantity] %>"/>
