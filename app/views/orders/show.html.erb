@@ -10,14 +10,12 @@
       </div>
       <div class="small-9 column">
         <h2><%= line_item.item.view_name %></h2>
-        <h4><%= line_item.item.fillings.map(&:view_title).join(", ") %></h4>
-        <label>
-          QTY: <%= line_item.quantity %><br>
-          <%= line_item.item.view_price %>
-        </label>
+        <h3><%= line_item.item.fillings.map(&:view_title).join(", ") %></h3>
+        <h3>Quantity: <%= line_item.quantity %></h3>
+        <h3>Total: <%= line_item.item.view_price %></h3>
       </div>
       <hr id="skinny">
     <% end %>
 
-  <%= link_to "⇠ Back to Orders", orders_path %>
+  <%= link_to "View all my Past Orders", orders_path %>
 </div>
