@@ -2,8 +2,9 @@
 <div class="row">
   <br>
   <h1>Order #<%= @order.id %></h1>
-  <h3> Ordered at: <%= @order.created_at %></h3>
+  <h3>Ordered at: <%= @order.created_at %></h3>
   <h3>Status: <%= @order.state.capitalize %></h3>
+  <h3>Ordered by: <%= @order.user.first_name %> <%= @order.user.last_name %> (<%= @order.user.email %>)</h3>
   <%= render partial: 'status_links', locals: {order: @order} %>
 </div>
 <hr id="skinny">
