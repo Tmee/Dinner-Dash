@@ -2,7 +2,7 @@
 .pattern_bg {
   width: auto;
   height: 100%;
-  background: url("//colourlovers.com.s3.amazonaws.com/images/patterns/611/611362.png?1253715157");
+  background: asset-url("stripes_bg.png", image);
   background-size: 11%;
   background-position: center;
   text-align: center;
@@ -148,7 +148,7 @@ div #container {
   padding-left: -3vh;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
 body{
   font-family: 'Source Sans Pro', sans-serif;
   font-weight:300;
@@ -330,7 +330,7 @@ textarea {
 
 #h1-box{
   position: relative;
-  background: url(http://subtlepatterns.com/patterns/photography.png);
+  background: url("//subtlepatterns.com/patterns/photography.png");
   margin-bottom: 3%;
   margin-top: 3%;
   top: -1vh;
