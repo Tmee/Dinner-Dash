@@ -2,7 +2,7 @@
 .pattern_bg {
   width: auto;
   height: 100%;
-  background: asset-url("stripes_bg.png", image);
+  background: asset-url("stripes_bg.png");
   background-size: 11%;
   background-position: center;
   text-align: center;
@@ -330,7 +330,7 @@ textarea {
 
 #h1-box{
   position: relative;
-  background: asset-url("hermano_bg.png", image);
+  background: asset-url("hermano_bg.png");
   margin-bottom: 3%;
   margin-top: 3%;
   top: -1vh;
