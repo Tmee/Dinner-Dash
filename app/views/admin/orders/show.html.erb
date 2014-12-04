@@ -29,16 +29,15 @@
            <input type="hidden" name="id", value="<%= @order.id %>" />
            <button type= "submit" class="small button" >Update Quantity</button>
          <% end %>
-      <% end %>
   </div>
   <div class="small-2 column">
     <%= link_to "Remove Item", admin_remove_item_path(:order => {:id => @order.id, :line_item_id => line_item.id}), method: :put, class: "small button" %>
   </div>
+<% end %>
 </div>
 </div>
 
 <div class="row">
-
 
   <hr id="skinny">
 <% end %>
