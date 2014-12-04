@@ -1,8 +1,22 @@
 <div class="row">
-
-  <div class="large-12 columns"></br>
-    <h2>Welcome to Los Gordos Amigos Admin Tool <%= current_user.first_name %></h2>
+  <div class="small-12 small-centered columns"></br>
+    <h2>Welcome to the Los Gordos Amigos</h2>
   </div>
+</div>
+
+<div class="row">
+  <div class="small-12 small-centered columns">
+    <h2> Admin Dashboard,</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 small-centered columns">
+      <h1> Señor <%= current_user.first_name %> </h1>
+  </div>
+</div>
+
+<div class="row">
   <div class="large-4 small-centered columns">
     <%= render partial: "shared/hermano", locals: { hermano_said: @hermano_said } %>
   </div>
