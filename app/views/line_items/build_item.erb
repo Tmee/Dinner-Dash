@@ -15,7 +15,7 @@
     <% @fillings.each do |food_group, fillings| %>
 
       <div class="small-12 columns">
-        <h1><%= food_group.capitalize %></h1>
+        <h1>Add <%= food_group.capitalize %></h1>
         <hr>
       </div>
 
@@ -44,11 +44,10 @@
         </ul>
       </div>
     <% end %>
-
     <input name="item_id" type="hidden" value="<%= @item.id %>" />
     <input name="quantity" type="hidden" value="1" />
     <input name="id" type="hidden" value="<%= Random.rand(1000000) %>" />
-    <%= submit_tag "Submit", class: "button" %>
+    <%= submit_tag "Add to Cart", class: "large button" %>
   <% end %>
 
 </div>
