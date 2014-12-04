@@ -5,7 +5,7 @@
 
       <ul class="no-bullet small-block-grid-4">
         <% @all_fillings.each do |filling| %>
-          <li><%= check_box_tag filling.id, filling.title, @item.fillings.include?(filling) %>
+          <li><%= check_box_tag "item[filling_ids][]", filling.id, @item.fillings.include?(filling) %>
               <%= label_tag filling.id, filling.title %></li>
         <% end %>
       </ul>

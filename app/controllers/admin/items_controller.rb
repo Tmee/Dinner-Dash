@@ -35,6 +35,7 @@ class Admin::ItemsController < Admin::BaseAdminController
 
     def update
       @all_fillings = Filling.all
+      @item.filling_ids = params[:item][:filling_ids]
       if @item.update_attributes(item_params)
         @item.filling_ids = params[:item][:filling_ids]
         redirect_to admin_items_path, notice: "You have updated a product."
