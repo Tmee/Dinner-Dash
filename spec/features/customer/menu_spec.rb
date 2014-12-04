@@ -28,7 +28,7 @@ describe 'unregistered user', type: :feature do
     expect(page).to have_text("Burrito Builder")
 
     check("Steak")
-    click_link_or_button("Submit")
+    click_link_or_button("Add to Cart")
     expect(current_path).to eq("/cart")
     expect(page).to have_text("Please log in above")
   end
@@ -67,7 +67,7 @@ describe 'registered user', type: :feature do
     expect(page).to have_text("Burrito Builder")
 
     check("Steak")
-    click_link_or_button("Submit")
+    click_link_or_button("Add to Cart")
     expect(current_path).to eq("/cart")
     expect(page).to have_text("Your Cart")
   end
