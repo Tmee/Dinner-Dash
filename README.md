@@ -19,7 +19,7 @@ tacos, tortas and tamales.
   * [Los Amigos Gordos][lag]
 
 
-[lag]: https://amigosgordos.herokuapp.com/
+[lag]: https://amigos-gordos.herokuapp.com/
     
 We hope you enjoy the imaginary foods at Los Amigos 
 Gordos.
